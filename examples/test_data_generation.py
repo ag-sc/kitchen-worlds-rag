@@ -13,7 +13,7 @@ default_config_name, default_config_path, simulate = 'kitchen_full_pr2.yaml', No
 # default_config_name, default_config_path, simulate = None, join(root, 'config_pigi.yaml'), False
 
 config = get_config_from_argparse(default_config_name, default_config_path)
-config.sim.simulate = simulate
+config.simulate = simulate
 
 #####################################
 
