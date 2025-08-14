@@ -46,7 +46,7 @@ def parse_lines_into_lists_llama(string, n=1, planning_mode='actions'):
         match = re.match(r"^\s*\d+\.\s*(.+)$", line.strip())
         if match:
             actions.append(match.group(1))
-    return actions
+    return [actions]
 
 
 def query_llama_for_actions(api: LLAMPApi, goal, world, world_args, temperature: float = 0.0, first_query_kwargs=dict(),
