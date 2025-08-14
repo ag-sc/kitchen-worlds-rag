@@ -5,8 +5,8 @@ debug: false
 
 ## ---------- language planning agent
 agent:
-  api_class_name: 'llama_l'  # 'claude3' | 'gpt4' | 'llama_l' | 'llama_c'
-  llamp_planning_mode: 'sequence'  # 'sequence' | 'actions' | 'sequence-reprompt' | 'actions-reprompt'
+  api_class_name: 'llama_c'  # 'claude3' | 'gpt4' | 'llama_l' | 'llama_c'
+  llamp_planning_mode: 'actions'  # 'sequence' | 'actions' | 'sequence-reprompt' | 'actions-reprompt'
   object_reducer: 'object-related;heuristic-movables;all-joints'
   debug_step: -1
   k_plans: 1
@@ -27,8 +27,8 @@ problem:
 ## outputs to generate
 data:
   exp_dir: '../experiments'
-  exp_subdir: 'test_run_vlm_tamp_pr2_chicken_soup'
-  exp_name: 'vlm-tamp'
+  exp_subdir: 'cluster'
+  exp_name: 'rag_test'
   record_problem: true
   record_mp4: false
   save_testcase: false
@@ -70,13 +70,13 @@ streams:
   top_grasp_tolerance: null # 0.8
   use_all_grasps: false
   num_grasps: 15
-  ir_max_attempts: 10
+  ir_max_attempts: 25
 
 ## pybullet related
 sim:
   window_width: 720  # 1440
   window_height: 619  # 1238
-  viewer: true
+  viewer: false
   lock: true
   simulate: false
   drive: false
