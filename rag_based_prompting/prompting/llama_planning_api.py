@@ -27,7 +27,9 @@ class LlamaLocalPlanningApi(LLAMPApi):
 class LlamaClusterPlanningApi(LLAMPApi):
     def __init__(self, open_goal, vlm_kwargs=dict(), **kwargs):
         super(LlamaClusterPlanningApi, self).__init__(open_goal, **kwargs)
-        self.llm = LlamaClusterApi(**vlm_kwargs)
+        resources = kwargs.get('res', [(ResourceType.RECIPES, 0.5)])
+        rag = RAGManager(resources)
+        self.llm = LlamaClusterApi(rag, **vlm_kwargs)
 
     def parse_lines_into_lists_fn(self, string: str, **kwargs):
         return parse_lines_into_lists_llama(string, **kwargs)
