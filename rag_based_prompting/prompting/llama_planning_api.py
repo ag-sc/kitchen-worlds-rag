@@ -9,11 +9,10 @@ from rag_based_prompting.prompting.prompts import *
 
 
 class LlamaLocalPlanningApi(LLAMPApi):
-    def __init__(self, open_goal, vlm_kwargs=dict(), **kwargs):
-        super(LlamaLocalPlanningApi, self).__init__(open_goal, **kwargs)
-        resources = kwargs.get('res', [(ResourceType.RECIPES, 0.5)])
-        rag = RAGManager(resources)
-        self.llm = LlamaLocalApi(rag, **vlm_kwargs)
+    def __init__(self, open_goal, vlm_kwargs=dict(), rag_kwargs=dict(), **kwargs):
+        super(LlamaLocalPlanningApi, self).__init__(open_goal, image_mode='llm', **kwargs)
+        rag = turn_args_into_rag(**rag_kwargs)
+        self.llm = LlamaClusterApi(rag, **vlm_kwargs)
 
     def parse_lines_into_lists_fn(self, string: str, **kwargs):
         return parse_lines_into_lists_llama(string, **kwargs)
@@ -25,10 +24,9 @@ class LlamaLocalPlanningApi(LLAMPApi):
 
 
 class LlamaClusterPlanningApi(LLAMPApi):
-    def __init__(self, open_goal, vlm_kwargs=dict(), **kwargs):
-        super(LlamaClusterPlanningApi, self).__init__(open_goal, **kwargs)
-        resources = kwargs.get('res', [(ResourceType.RECIPES, 0.5)])
-        rag = RAGManager(resources)
+    def __init__(self, open_goal, vlm_kwargs=dict(), rag_kwargs=dict(), **kwargs):
+        super(LlamaClusterPlanningApi, self).__init__(open_goal, image_mode='llm', **kwargs)
+        rag = turn_args_into_rag(**rag_kwargs)
         self.llm = LlamaClusterApi(rag, **vlm_kwargs)
 
     def parse_lines_into_lists_fn(self, string: str, **kwargs):
@@ -38,6 +36,23 @@ class LlamaClusterPlanningApi(LLAMPApi):
                        include_preconditions=True, objects=None):
         return query_llama_for_actions(self, goal, world, world_args, temperature, first_query_kwargs,
                                        include_preconditions, objects)
+
+
+def turn_args_into_rag(**rag_kwargs) -> RAGManager:
+    db_types = []
+    rec_usage = rag_kwargs.get('rag_recipes')
+    if rec_usage > 0.0:
+        db_types.append((ResourceType.RECIPES, rec_usage))
+    wh_usage = rag_kwargs.get('rag_wikihow')
+    if wh_usage > 0.0:
+        db_types.append((ResourceType.WIKIHOW, wh_usage))
+    cut_usage = rag_kwargs.get('rag_cutting_vids')
+    if cut_usage > 0.0:
+        db_types.append((ResourceType.CUTTING_TUTORIALS, cut_usage))
+    csk_l_usage = rag_kwargs.get('rag_cskg_locations')
+    if csk_l_usage > 0.0:
+        db_types.append((ResourceType.CSKG_LOC, csk_l_usage))
+    return RAGManager(db_types)
 
 
 def parse_lines_into_lists_llama(string, n=1, planning_mode='actions'):

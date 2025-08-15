@@ -39,8 +39,14 @@ def get_problem_dict_from_open_goal(world, objects, args, load_llm_memory=None, 
     log_dir = join(temp_dir, 'log')
     img_dir = join(temp_dir, 'log', 'media')
     llamp_api_class = get_llamp_api(args.api_class_name)
+    # prepare the rag kwargs
+    rag_kwargs = dict()
+    rag_kwargs['rag_recipes'] = args.rag_recipes
+    rag_kwargs['rag_wikihow'] = args.rag_wikihow
+    rag_kwargs['rag_cutting_vids'] = args.rag_cutting_vids
+    rag_kwargs['rag_cskg_locations'] = args.rag_cskg_locations
     llamp_api = llamp_api_class(open_goal, planning_mode=planning_mode, load_memory=load_llm_memory, seed=args.seed,
-                                log_dir=log_dir, vlm_kwargs=dict(image_dir=img_dir))
+                                log_dir=log_dir, vlm_kwargs=dict(image_dir=img_dir), rag_kwargs=rag_kwargs)
     problem_dict = {'english_goal': open_goal, 'llamp_api': llamp_api}
 
     subgoals = llamp_api.get_subgoals(world, objects=objects)
