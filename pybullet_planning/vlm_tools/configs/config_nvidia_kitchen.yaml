@@ -1,5 +1,5 @@
 ## ---------- debug related
-seed: null
+seed: None
 verbose: false
 debug: false
 
@@ -26,9 +26,9 @@ problem:
 
 ## outputs to generate
 data:
-  exp_dir: '../experiments'
-  exp_subdir: 'cluster'
-  exp_name: 'rag_test'
+  exp_dir: '../rag_based_prompting/'
+  exp_subdir: 'eval_scenarios'
+  exp_name: 'rag_based_testing'
   record_problem: true
   record_mp4: false
   save_testcase: false
@@ -38,7 +38,7 @@ data:
 robot:
   robot_name: 'pr2'
   draw_base_limits: true
-  dual_arm: false
+  dual_arm: true
   self_collisions: false
   separate_base_planning: false
 
@@ -52,9 +52,9 @@ planner:
   evaluation_time: 30
   stream_planning_timeout: 60
   total_planning_timeout: 60
-  max_plans: 12
+  max_plans: 10
   max_solutions: 1
-  max_evaluation_plans: 12
+  max_evaluation_plans: 10
   max_complexity: 5
   max_iterations: 4
   log_failures: false

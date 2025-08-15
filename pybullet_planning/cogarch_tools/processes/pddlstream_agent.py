@@ -492,8 +492,8 @@ class PDDLStreamAgent(MotionAgent):
 
         agent_state_path = self.get_state_file_path(key='agent_state')
         print(f'pddlstream_agent.save_agent_state at {agent_state_path}')
-        with open(agent_state_path, 'bw') as f:
-            pickle.dump(self, f)
+        # with open(agent_state_path, 'bw') as f:
+        #     pickle.dump(self, f)
         # for k, v in self.__dict__.items():
         #     print(k)
         #     with open(agent_state_path, 'bw') as f:
