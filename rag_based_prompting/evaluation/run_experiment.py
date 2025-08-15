@@ -3,8 +3,7 @@ import random
 from pybullet_planning.tutorials.test_vlm_tamp import get_vlm_tamp_agent_parser_given_config
 from pybullet_planning.vlm_tools import run_vlm_tamp_with_argparse
 
-
-SEED_PATH = '../eval_scenarios/seeds.txt'
+SEED_PATH = path.join(path.dirname(__file__), "..", "eval_scenarios/seeds.txt")
 
 def update_parser(conf):
     parser = get_vlm_tamp_agent_parser_given_config(conf)
