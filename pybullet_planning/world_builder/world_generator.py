@@ -465,9 +465,12 @@ def generate_problem_pddl(world, facts, goals, world_name='lisdf', domain_name='
 
     ########################################################
 
-    if goals[0] == 'and':
-        goals = [list(n) for n in goals[1:]]
-    goal_pddl = '\n\t'.join([get_pddl_from_list(g, world) for g in sorted(goals)]).lower()
+    if len(goals) == 0:
+        goal_pddl = '(open fridge#1::fridge_door)'
+    else:
+        if goals[0] == 'and':
+            goals = [list(n) for n in goals[1:]]
+        goal_pddl = '\n\t'.join([get_pddl_from_list(g, world) for g in sorted(goals)]).lower()
 
     problem_pddl = PDDL_STR.format(
         objects_pddl=objects_pddl, init_pddl=init_pddl, goal_pddl=goal_pddl,
