@@ -2,6 +2,8 @@ import gc
 import random
 from os import path
 
+from tqdm import tqdm
+
 from pybullet_planning.tutorials.test_vlm_tamp import get_vlm_tamp_agent_parser_given_config
 from pybullet_planning.vlm_tools import run_vlm_tamp_with_argparse
 
@@ -24,7 +26,7 @@ def run_experiments():
     with open(SEED_PATH, "r") as f:
         seeds = [int(line.strip()) for line in f]
 
-    for s in seeds:
+    for s in tqdm(seeds, 'Experimenting with all seeds'):
         run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
         gc.collect()
 
