@@ -45,8 +45,9 @@ def run_all_experiments():
 
         if check_experiment_needed(folder):
             for s in tqdm(seeds, f"Running the experiment \'{name}\' with all seeds"):
-                run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
-                gc.collect()
+                if check_seed_needed(folder, s):
+                    run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
+                    gc.collect()
 
 
 def check_experiment_needed(folder: str, seed_amount=SEED_AMOUNT) -> bool:
@@ -57,6 +58,13 @@ def check_experiment_needed(folder: str, seed_amount=SEED_AMOUNT) -> bool:
     subfolders = [p for p in full_path.iterdir() if p.is_dir()]
     return len(subfolders) < seed_amount
 
+
+def check_seed_needed(folder: str, seed: str) -> bool:
+    # ToDo: Get path to experiment results automatically from experiment config
+    full_path = Path(__file__).parent / ".." / "eval_scenarios" / folder
+    full_path = full_path.resolve()
+    matching_folders = list(full_path.glob(f"*seed_{seed}"))
+    return len(matching_folders) == 0
 
 def generate_seeds_for_experiment(n=SEED_AMOUNT):
     seeds = []
