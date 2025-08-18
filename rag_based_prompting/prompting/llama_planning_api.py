@@ -12,7 +12,7 @@ class LlamaLocalPlanningApi(LLAMPApi):
     def __init__(self, open_goal, vlm_kwargs=dict(), rag_kwargs=dict(), **kwargs):
         super(LlamaLocalPlanningApi, self).__init__(open_goal, image_mode='llm', **kwargs)
         rag = turn_args_into_rag(**rag_kwargs)
-        self.llm = LlamaClusterApi(rag, **vlm_kwargs)
+        self.llm = LlamaLocalApi(rag, **vlm_kwargs)
 
     def parse_lines_into_lists_fn(self, string: str, **kwargs):
         return parse_lines_into_lists_llama(string, **kwargs)
