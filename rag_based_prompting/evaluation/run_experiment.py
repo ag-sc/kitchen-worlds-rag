@@ -35,6 +35,7 @@ def run_all_experiments():
         folder = row["subfolder"]
         sys.argv = [
             sys.argv[0],
+            "--open_goal", "make chicken soup",
             "--rag_recipes", str(row["recipes"]),
             "--rag_wikihow", str(row["wikihow"]),
             "--rag_cutting_vids", str(row["videos"]),
