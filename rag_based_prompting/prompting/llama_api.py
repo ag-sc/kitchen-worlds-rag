@@ -8,34 +8,42 @@ from pybullet_planning.vlm_tools.vlm_api import VLMApi
 
 
 class LlamaClusterApi(VLMApi):
+    _instance = None
     name = "Llama 3.3 (Cluster)"
 
-    def __init__(self, rag: RAGManager, **kwargs):
-        super(LlamaClusterApi, self).__init__(**kwargs)
-        self.model_name = "Llama-3.3-70B-Instruct"
-        self.rag_manager = rag
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
 
-        self.tokenizer = transformers.AutoTokenizer.from_pretrained(f'meta-llama/{self.model_name}')
-        self.tokenizer.pad_token_id = self.tokenizer.eos_token_id
-        bnb_config = transformers.BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_quant_type="nf4",
-            bnb_4bit_compute_dtype=torch.float16,
-            bnb_4bit_use_double_quant=True,
-        )
-        model_id = transformers.AutoModelForCausalLM.from_pretrained(
-            f'meta-llama/{self.model_name}',
-            quantization_config=bnb_config,
-            device_map="auto",
-            trust_remote_code=True,
-        )
-        self.generation_pipe = transformers.pipeline(
-            "text-generation",
-            model=model_id,
-            tokenizer=self.tokenizer,
-            trust_remote_code=True,
-            device_map="auto",  # finds GPU
-        )
+    def __init__(self, rag: RAGManager, **kwargs):
+        if not hasattr(self, "_initialized"):
+            super(LlamaClusterApi, self).__init__(**kwargs)
+            self.model_name = "Llama-3.3-70B-Instruct"
+            self.rag_manager = rag
+
+            self.tokenizer = transformers.AutoTokenizer.from_pretrained(f'meta-llama/{self.model_name}')
+            self.tokenizer.pad_token_id = self.tokenizer.eos_token_id
+            bnb_config = transformers.BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_quant_type="nf4",
+                bnb_4bit_compute_dtype=torch.float16,
+                bnb_4bit_use_double_quant=True,
+            )
+            model_id = transformers.AutoModelForCausalLM.from_pretrained(
+                f'meta-llama/{self.model_name}',
+                quantization_config=bnb_config,
+                device_map="auto",
+                trust_remote_code=True,
+            )
+            self.generation_pipe = transformers.pipeline(
+                "text-generation",
+                model=model_id,
+                tokenizer=self.tokenizer,
+                trust_remote_code=True,
+                device_map="auto",  # finds GPU
+            )
+            self._initialized = True
 
     def _ask(self, prompt: str, image_path: str = "None", continue_chat: bool = True, max_tokens: int = 1000,
              temperature: float = 0.0, **kwargs):
@@ -65,28 +73,36 @@ class LlamaClusterApi(VLMApi):
 
 
 class LlamaLocalApi(VLMApi):
+    _instance = None
     name = "Llama 3.2 (Local)"
 
-    def __init__(self, rag: RAGManager, **kwargs):
-        super(LlamaLocalApi, self).__init__(**kwargs)
-        self.model_name = "Llama-3.2-1B-Instruct"
-        self.rag_manager = rag
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
 
-        self.tokenizer = transformers.AutoTokenizer.from_pretrained(f'meta-llama/{self.model_name}')
-        self.tokenizer.pad_token_id = self.tokenizer.eos_token_id
-        model_id = transformers.AutoModelForCausalLM.from_pretrained(
-            f'meta-llama/{self.model_name}',
-            torch_dtype=torch.float32,  # CPU-friendly
-            device_map={"": "cpu"},  # Force CPU usage
-            trust_remote_code=True
-        )
-        self.generation_pipe = transformers.pipeline(
-            "text-generation",
-            model=model_id,
-            tokenizer=self.tokenizer,
-            trust_remote_code=True,
-            device_map={"": "cpu"},  # Explicit CPU mapping
-        )
+    def __init__(self, rag: RAGManager, **kwargs):
+        if not hasattr(self, "_initialized"):
+            super(LlamaLocalApi, self).__init__(**kwargs)
+            self.model_name = "Llama-3.2-1B-Instruct"
+            self.rag_manager = rag
+
+            self.tokenizer = transformers.AutoTokenizer.from_pretrained(f'meta-llama/{self.model_name}')
+            self.tokenizer.pad_token_id = self.tokenizer.eos_token_id
+            model_id = transformers.AutoModelForCausalLM.from_pretrained(
+                f'meta-llama/{self.model_name}',
+                torch_dtype=torch.float32,  # CPU-friendly
+                device_map={"": "cpu"},  # Force CPU usage
+                trust_remote_code=True
+            )
+            self.generation_pipe = transformers.pipeline(
+                "text-generation",
+                model=model_id,
+                tokenizer=self.tokenizer,
+                trust_remote_code=True,
+                device_map={"": "cpu"},  # Explicit CPU mapping
+            )
+            self._initialized = True
 
     def _ask(self, prompt: str, image_path: str = "None", continue_chat: bool = True, max_tokens: int = 2500,
              temperature: float = 0.0, **kwargs):

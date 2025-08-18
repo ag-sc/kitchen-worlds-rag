@@ -1,3 +1,4 @@
+import gc
 import random
 from os import path
 
@@ -25,6 +26,7 @@ def run_experiments():
 
     for s in seeds:
         run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
+        gc.collect()
 
 
 def generate_seeds_for_experiment(n=100):
