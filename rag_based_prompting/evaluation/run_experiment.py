@@ -1,13 +1,17 @@
 import gc
 import random
-from os import path
+import sys
+from pathlib import Path
 
+import pandas as pd
 from tqdm import tqdm
 
 from pybullet_planning.tutorials.test_vlm_tamp import get_vlm_tamp_agent_parser_given_config
 from pybullet_planning.vlm_tools import run_vlm_tamp_with_argparse
 
-SEED_PATH = path.join(path.dirname(__file__), "..", "eval_scenarios/seeds.txt")
+SEED_AMOUNT = 100
+SEED_PATH = Path(__file__).resolve().parent.parent / "eval_scenarios" / "seeds.txt"
+EXP_PATH = Path(__file__).resolve().parent / "experiment_setup.csv"
 
 def update_parser(conf):
     parser = get_vlm_tamp_agent_parser_given_config(conf)
@@ -22,16 +26,39 @@ def update_parser(conf):
     return parser
 
 
-def run_experiments():
+def run_all_experiments():
     with open(SEED_PATH, "r") as f:
         seeds = [int(line.strip()) for line in f]
 
-    for s in tqdm(seeds, 'Experimenting with all seeds'):
-        run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
-        gc.collect()
+    experiment_data = pd.read_csv(EXP_PATH, index_col="name")
+    for name, row in tqdm(experiment_data.iterrows(), f"Running all {len(experiment_data)} experiments..."):
+        folder = row["subfolder"]
+        sys.argv = [
+            sys.argv[0],
+            "--rag_recipes", str(row["recipes"]),
+            "--rag_wikihow", str(row["wikihow"]),
+            "--rag_cutting_vids", str(row["videos"]),
+            "--rag_cskg_locations", str(row["locations"]),
+            "--exp_subdir", folder,
+            "--planning_mode", "actions"
+        ]
+
+        if check_experiment_needed(folder):
+            for s in tqdm(seeds, f"Running the experiment \'{name}\' with all seeds"):
+                run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
+                gc.collect()
 
 
-def generate_seeds_for_experiment(n=100):
+def check_experiment_needed(folder: str, seed_amount=SEED_AMOUNT) -> bool:
+    # ToDo: Get path to experiment results automatically from experiment config
+    full_path = Path(__file__).parent / ".." / "eval_scenarios" / folder
+    full_path = full_path.resolve()
+    full_path.mkdir(parents=True, exist_ok=True)
+    subfolders = [p for p in full_path.iterdir() if p.is_dir()]
+    return len(subfolders) < seed_amount
+
+
+def generate_seeds_for_experiment(n=SEED_AMOUNT):
     seeds = []
     for i in range(n):
         seeds.append(random.randint(0, 10 ** 6 - 1))
@@ -51,4 +78,4 @@ class Range(object):
 
 if __name__ == "__main__":
     # generate_seeds_for_experiment()
-    run_experiments()
+    run_all_experiments()

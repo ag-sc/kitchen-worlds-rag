@@ -8,12 +8,12 @@ system_prompt_fl = """Translate the following list of actions written in natural
 def build_user_msg_nl(contexts=None, add_rules=True) -> str:
     prompt = """Respond with detailed but simple instructions in English. Each line must consists of only one action, where the mentioned objects must be items from the following list: {objects}.\n
     Currently, you can see the following objects: ``{observed}''"""
-    if contexts is not None:
+    if contexts is not None and len(contexts) > 0:
         prompt += "\nUse the following contexts for creating your action sequence:\n"
         for cont in contexts:
             prompt += f"{cont[0]}\n"
     if add_rules:
-        prompt += f"""You must obey the following commonsense rules:
+        prompt += f"""\nYou must obey the following commonsense rules:
         1. You must have at least one empty hand before you can pick up an object or open or close a joint.
         2. When you sprinkle or pour something into a container, there must not be objects placed on top of the container.
         3. You can only take actions on objects that you can see.
@@ -28,10 +28,10 @@ def build_user_msg_fl(contexts=None) -> str:
     Note that:\n
     1. The arguments shouldn't include robot parts, e.g., 'arm', 'gripper'.
     2. If a new object not mentioned in the set of objects is used as arguments, please name it with the same as the object that constitutes it the most and exists in the given list of objects.
-    3. If one action cannot be translated into the above set, skip that action.
+    3. If one action cannot be translated into the above set, skip that action.\n
     """
-    if contexts is not None:
-        prompt += "\nUse the following contexts for creating your action sequence:\n"
+    if contexts is not None and len(contexts) > 0:
+        prompt += "Use the following contexts for creating your action sequence:\n"
         for cont in contexts:
             prompt += f"{cont[0]}\n"
     prompt += "Return the actions in a sequential list and give no explanation. Don't repeat the primitive actions and available objects."
