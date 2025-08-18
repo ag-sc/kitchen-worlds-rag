@@ -167,6 +167,7 @@ def plans_to_tree(lists_of_plans, export_path, no_end=False):
 
 def export_tree_png(root, export_path, print_color=True, verbose=False):
     from anytree.exporter import UniqueDotExporter
+    os.makedirs(os.path.dirname(export_path), exist_ok=True)
 
     if not print_color:
         UniqueDotExporter(root).to_picture(export_path)
