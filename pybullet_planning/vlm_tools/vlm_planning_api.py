@@ -517,14 +517,17 @@ class LLAMPApi(object):
             os.unlink(last_log_dir)
         os.symlink(dirname(self.log_dir), last_log_dir)
 
-        ## move images over from default directory
-        images = [join(self.obs_dir, f) for f in os.listdir(self.obs_dir) if f.endswith('.png')]
+        ## move images over from default directory (only if that exists)
+        images = None
+        if os.path.exists(self.obs_dir):
+            images = [join(self.obs_dir, f) for f in os.listdir(self.obs_dir) if f.endswith('.png')]
 
         ## for accessing from cogarch agent
         self.obs_dir = join(self.log_dir, media_dir)
         os.makedirs(self.obs_dir)
-        for img in images:
-            shutil.move(img, join(self.obs_dir, basename(img)))
+        if images is not None:
+            for img in images:
+                shutil.move(img, join(self.obs_dir, basename(img)))
 
         abs_path = abspath(join(self.log_dir, "media", "planning_tree.png"))
         shutil.move(self.planning_tree_path, abs_path)
