@@ -1,6 +1,7 @@
 import gc
 import random
 import sys
+import time
 from pathlib import Path
 
 import pandas as pd
@@ -49,6 +50,8 @@ def run_all_experiments():
                 if check_seed_needed(folder, s):
                     run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
                     gc.collect()
+                    print(f'Finished experiment with seed {s}')
+                    time.sleep(5)
 
 
 def check_experiment_needed(folder: str, seed_amount=SEED_AMOUNT) -> bool:

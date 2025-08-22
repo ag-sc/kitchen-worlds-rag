@@ -5,7 +5,7 @@ system_prompt_fl = """Translate the following list of actions written in natural
     Each action in natural language may correspond to multiple primitive actions. The order of actions is important, keep it."""
 
 
-def build_user_msg_nl(contexts=None, add_rules=True) -> str:
+def build_user_msg_nl(contexts=None, add_rules=False) -> str:
     prompt = """Respond with detailed but simple instructions in English. Each line must consists of only one action, where the mentioned objects must be items from the following list: {objects}.\n
     Currently, you can see the following objects: ``{observed}''"""
     if contexts is not None and len(contexts) > 0:
