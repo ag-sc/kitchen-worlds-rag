@@ -42,7 +42,8 @@ def run_all_experiments():
             "--rag_cutting_vids", str(row["videos"]),
             "--rag_cskg_locations", str(row["locations"]),
             "--exp_subdir", folder,
-            "--planning_mode", "actions"
+            "--planning_mode", "actions",
+            "--dual_arm"
         ]
 
         if check_experiment_needed(folder):
