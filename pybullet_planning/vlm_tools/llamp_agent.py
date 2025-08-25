@@ -673,6 +673,8 @@ class LLAMPAgent(PDDLStreamAgent):
     def get_available_arm(self, subgoal):
         arms_used = [f[1] for f in self.state_facts if f[0].startswith('at') and f[0].endswith('grasp')]
         if subgoal[0] in ['arrange']:  ## has to be the same arm
+            if len(arms_used) == 0:
+                arms_used = [f[1] for f in self.state_facts if f[0].contains('arm')]
             return arms_used[0]
         arms_left = [a for a in self.robot.arms if a not in arms_used]
         if len(arms_left) == 0:
