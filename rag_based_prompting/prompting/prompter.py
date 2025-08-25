@@ -1,6 +1,6 @@
+from typing import List
+
 from RAG4Robots.src.manager import RAGManager
-from rag_based_prompting.prompting.prompts import *
-from rag_based_prompting.scenario import CurrentScenario
 
 
 class Prompter:
@@ -36,17 +36,6 @@ class Prompter:
         for cont in cont_rank:
             contexts.append(cont[0])
         return contexts
-
-    def prompt_model_for_scenario(self, scen: CurrentScenario) -> str:
-        self.set_current_goal(scen.get_goal())
-        contexts = self.get_context_through_rag(self.get_current_goal())
-        if scen.is_natural_language():
-            self._last_system_message = build_sys_msg_nl(scen.get_no_arms(), self.get_current_goal())
-            self._last_user_message = build_user_msg_nl(scen.get_objects(), scen.get_observed_objects(), contexts)
-        else:
-            self._last_system_message = build_sys_msg_fl()
-            self._last_user_message = build_user_msg_fl(scen.get_actions(), scen.get_objects(), contexts)
-        return self.prompt_model(self.get_last_system_message(), self.get_last_user_message())
 
     def prompt_model(self, system_msg: str, user_msg: str) -> str:
         pass
