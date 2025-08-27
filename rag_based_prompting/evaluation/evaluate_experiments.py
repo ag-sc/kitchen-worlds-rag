@@ -8,9 +8,9 @@ from run_experiment import EXP_PATH
 
 SUMMARY_COLUMNS = ['seed', 'cont_succ_rate', 'completed_succ_rate', 'true_succ_rate', 'plan_length', 'plan_time',
                    'effective_time', 'wasted_time']
-COLUMNS = ['no_seeds', 'avg_cont_sr', 'avg_completed_sr', 'avg_true_sr', 'total_plan_length', 'avg_plan_length',
-           'total_plan_time', 'avg_plan_time', 'total_effective_time', 'avg_effective_time', 'total_wasted_time',
-           'avg_wasted_time']
+COLUMNS = ['exp_name', 'no_seeds', 'avg_cont_sr', 'avg_completed_sr', 'avg_true_sr', 'total_plan_length',
+           'avg_plan_length', 'total_plan_time', 'avg_plan_time', 'total_effective_time', 'avg_effective_time',
+           'total_wasted_time', 'avg_wasted_time']
 
 
 def summarise_all_experiments():
@@ -69,18 +69,19 @@ def evaluate_experiment_summaries():
             effective_time += exp_row[SUMMARY_COLUMNS[6]]
             wasted_time += exp_row[SUMMARY_COLUMNS[7]]
         new_row = {
-            COLUMNS[0]: len(df),
-            COLUMNS[1]: round(cont_sr_count / cont_sr_total, 3),
-            COLUMNS[2]: round(completed_sr_count / completed_sr_total, 3),
-            COLUMNS[3]: round(true_sr_count / true_sr_total, 3),
-            COLUMNS[4]: round(plan_length, 2),
-            COLUMNS[5]: round(plan_length / len(df), 2),
-            COLUMNS[6]: round(plan_time, 2),
-            COLUMNS[7]: round(plan_time / len(df), 2),
-            COLUMNS[8]: round(effective_time, 2),
-            COLUMNS[9]: round(effective_time / len(df), 2),
-            COLUMNS[10]: round(wasted_time, 2),
-            COLUMNS[11]: round(wasted_time / len(df), 2),
+            COLUMNS[0]: name,
+            COLUMNS[1]: len(df),
+            COLUMNS[2]: round(cont_sr_count / cont_sr_total, 3),
+            COLUMNS[3]: round(completed_sr_count / completed_sr_total, 3),
+            COLUMNS[4]: round(true_sr_count / true_sr_total, 3),
+            COLUMNS[5]: round(plan_length, 2),
+            COLUMNS[6]: round(plan_length / len(df), 2),
+            COLUMNS[7]: round(plan_time, 2),
+            COLUMNS[8]: round(plan_time / len(df), 2),
+            COLUMNS[9]: round(effective_time, 2),
+            COLUMNS[10]: round(effective_time / len(df), 2),
+            COLUMNS[11]: round(wasted_time, 2),
+            COLUMNS[12]: round(wasted_time / len(df), 2),
         }
         df_eval = pd.concat([df_eval, pd.DataFrame([new_row])], ignore_index=True)
         df_eval.to_csv(f'{Path(__file__).parent / ".." / "eval_scenarios" / "summary.csv"}', index=False)
