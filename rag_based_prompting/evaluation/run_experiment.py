@@ -13,6 +13,7 @@ from pybullet_planning.vlm_tools import run_vlm_tamp_with_argparse
 SEED_AMOUNT = 100
 SEED_PATH = Path(__file__).resolve().parent.parent / "eval_scenarios" / "seeds.txt"
 EXP_PATH = Path(__file__).resolve().parent / "experiment_setup.csv"
+RAG_COLUMNS = ['recipes', 'wikihow', 'videos', 'locations']
 
 def update_parser(conf):
     parser = get_vlm_tamp_agent_parser_given_config(conf)
@@ -37,10 +38,10 @@ def run_all_experiments():
         sys.argv = [
             sys.argv[0],
             "--open_goal", "make chicken soup",
-            "--rag_recipes", str(row["recipes"]),
-            "--rag_wikihow", str(row["wikihow"]),
-            "--rag_cutting_vids", str(row["videos"]),
-            "--rag_cskg_locations", str(row["locations"]),
+            "--rag_recipes", str(row[RAG_COLUMNS[0]]),
+            "--rag_wikihow", str(row[RAG_COLUMNS[1]]),
+            "--rag_cutting_vids", str(row[RAG_COLUMNS[2]]),
+            "--rag_cskg_locations", str(row[RAG_COLUMNS[3]]),
             "--exp_subdir", folder,
             "--planning_mode", "actions",
             "--dual_arm"
