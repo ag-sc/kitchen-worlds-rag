@@ -512,10 +512,10 @@ class LLAMPApi(object):
             launch_log_page(log_dir)
 
         ## for viewing the log at http://0.0.0.0:9000/latest_run/log/
-        last_log_dir = join(dirname(dirname(dirname(self.log_dir))), 'latest_run')
-        if Path(last_log_dir).is_symlink():
-            os.unlink(last_log_dir)
-        os.symlink(dirname(self.log_dir), last_log_dir)
+        #last_log_dir = join(dirname(dirname(dirname(self.log_dir))), 'latest_run')
+        #if Path(last_log_dir).is_symlink():
+        #    os.unlink(last_log_dir)
+        #os.symlink(dirname(self.log_dir), last_log_dir)
 
         ## move images over from default directory (only if that exists)
         images = None
