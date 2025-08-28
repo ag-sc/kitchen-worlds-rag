@@ -1,3 +1,4 @@
+import argparse
 import gc
 import random
 import sys
@@ -28,12 +29,14 @@ def update_parser(conf):
     return parser
 
 
-def run_all_experiments():
+def run_all_experiments(start_idx: int):
     with open(SEED_PATH, "r") as f:
         seeds = [int(line.strip()) for line in f]
 
-    experiment_data = pd.read_csv(EXP_PATH, index_col="name")
-    for name, row in tqdm(experiment_data.iterrows(), f"Running all {len(experiment_data)} experiments..."):
+    experiment_data = pd.read_csv(EXP_PATH, index_col="exp_idx")
+    for idx, row in tqdm(experiment_data.iterrows(), f"Running all {len(experiment_data)} experiments..."):
+        if idx < start_idx:
+            continue
         folder = row["subfolder"]
         sys.argv = [
             sys.argv[0],
@@ -48,7 +51,7 @@ def run_all_experiments():
         ]
 
         if check_experiment_needed(folder):
-            for s in tqdm(seeds, f"Running the experiment \'{name}\' with all seeds"):
+            for s in tqdm(seeds, f"Running the experiment \'{row['name']}\' with all seeds"):
                 if check_seed_needed(folder, s):
                     run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
                     gc.collect()
@@ -92,4 +95,7 @@ class Range(object):
 
 if __name__ == "__main__":
     # generate_seeds_for_experiment()
-    run_all_experiments()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--exp_start_idx", type=int, default=0)
+    args = parser.parse_args()
+    run_all_experiments(args.exp_start_idx)
