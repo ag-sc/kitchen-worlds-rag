@@ -7,7 +7,7 @@ from datetime import datetime
 import csv
 import pprint
 
-TXT_FILE = abspath('txt_file.txt')
+TXT_FILE = abspath(f'{datetime.now().strftime("%m%d-%H%M%S")}_txt_file.txt')
 
 
 def clear_cache_text():
