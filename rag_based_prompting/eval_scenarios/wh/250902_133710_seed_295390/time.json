@@ -1,0 +1,2264 @@
+[
+    {
+        "goal": [
+            "open([(10, 1)])"
+        ],
+        "goal_original": [
+            [
+                "open",
+                [
+                    10,
+                    1
+                ]
+            ]
+        ],
+        "plan": [],
+        "plan_skeleton": [],
+        "plan_len": 0,
+        "init": [],
+        "planning": 0,
+        "preimage": 0,
+        "last_node": "1_a_['open', 'fridge door']",
+        "status": "already",
+        "object_reducer": "object-related",
+        "agent_state": "agent_state_0.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    10,
+                    1
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 12.7779,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            1
+        ],
+        "goal_original": [
+            [
+                "picked",
+                1
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1
+            ],
+            "joint": [],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "2_a_['pick', 'chicken leg']",
+        "agent_state": "agent_state_1.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                1
+            ]
+        ]
+    },
+    {
+        "planning": 6.3006,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            1
+        ],
+        "goal_original": [
+            [
+                "picked",
+                1
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q640=(2.0, 6.25, 0.2, 3.142), q736=(1.574, 4.855, 0.615, 2.025), c600=t(4, 52)))",
+            "Action(name='pick', args=('left', 1, p28311=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), g296=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), q736=(1.574, 4.855, 0.615, 2.025), c592=t(7, 41)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "pick(1,)"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "kin",
+                "left",
+                "1",
+                "p28311=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "g296=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)",
+                "q736=(1.574, 4.855, 0.615, 2.025)",
+                "c592=t(7, 41)"
+            ],
+            [
+                "atbconf",
+                "q640=(2.0, 6.25, 0.2, 3.142)"
+            ],
+            [
+                "grasp",
+                "1",
+                "g296=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)"
+            ],
+            [
+                "bconf",
+                "q736=(1.574, 4.855, 0.615, 2.025)"
+            ],
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "canmove"
+            ],
+            [
+                "reach",
+                "left",
+                "1",
+                "p28311=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "g296=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)",
+                "q736=(1.574, 4.855, 0.615, 2.025)"
+            ],
+            [
+                "atpose",
+                "1",
+                "p28311=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)"
+            ],
+            [
+                "graspable",
+                "1"
+            ],
+            [
+                "basemotion",
+                "q640=(2.0, 6.25, 0.2, 3.142)",
+                "c600=t(4, 52)",
+                "q736=(1.574, 4.855, 0.615, 2.025)"
+            ],
+            [
+                "bconf",
+                "q640=(2.0, 6.25, 0.2, 3.142)"
+            ],
+            [
+                "pose",
+                "1",
+                "p28311=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)"
+            ],
+            [
+                "handempty",
+                "left"
+            ],
+            [
+                "btraj",
+                "c600=t(4, 52)"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "canpick"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [
+                1
+            ],
+            "joint": [],
+            "surface": [],
+            "space": []
+        },
+        "status": "solved",
+        "object_reducer": "heuristic-movables",
+        "last_node": "2_a_['pick', 'chicken leg']",
+        "agent_state": "agent_state_1b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                1
+            ]
+        ]
+    },
+    {
+        "planning": 22.385,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            1,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                1
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "3_a_['arrange', 'chicken leg', 'counter top on the right']",
+        "agent_state": "agent_state_2.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                1
+            ]
+        ]
+    },
+    {
+        "planning": 18.1454,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            1,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                1
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q912=(1.574, 4.855, 0.615, 2.025), q600=(1.472, 8.589, 0.713, 1.464), c360=t(4, 89)))",
+            "Action(name='arrange', args=('left', 1, (3, None, 35), p28701=(0.687, 8.585, 0.848, 0.0, 0.0, -1.375), g296=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), q600=(1.472, 8.589, 0.713, 1.464), c800=t(7, 124)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "arrange(1, (3, None, 35))"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "reach",
+                "left",
+                "1",
+                "p28701=(0.687, 8.585, 0.848, 0.0, 0.0, -1.375)",
+                "g296=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)",
+                "q600=(1.472, 8.589, 0.713, 1.464)"
+            ],
+            [
+                "canmove"
+            ],
+            [
+                "grasp",
+                "1",
+                "g296=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)"
+            ],
+            [
+                "cfreeapproachpose",
+                "1",
+                "p28701=(0.687, 8.585, 0.848, 0.0, 0.0, -1.375)",
+                "g296=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)",
+                "5",
+                "p28694=(0.7, 8.893, 0.923, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "bconf",
+                "q600=(1.472, 8.589, 0.713, 1.464)"
+            ],
+            [
+                "pose",
+                "1",
+                "p28701=(0.687, 8.585, 0.848, 0.0, 0.0, -1.375)"
+            ],
+            [
+                "staticlink",
+                "(3, None, 35)"
+            ],
+            [
+                "supported",
+                "1",
+                "p28701=(0.687, 8.585, 0.848, 0.0, 0.0, -1.375)",
+                "(3, None, 35)"
+            ],
+            [
+                "cfreeposepose",
+                "1",
+                "p28701=(0.687, 8.585, 0.848, 0.0, 0.0, -1.375)",
+                "5",
+                "p28694=(0.7, 8.893, 0.923, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "stackable",
+                "1",
+                "(3, None, 35)"
+            ],
+            [
+                "graspable",
+                "1"
+            ],
+            [
+                "basemotion",
+                "q912=(1.574, 4.855, 0.615, 2.025)",
+                "c360=t(4, 89)",
+                "q600=(1.472, 8.589, 0.713, 1.464)"
+            ],
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "pose",
+                "5",
+                "p28694=(0.7, 8.893, 0.923, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "atbconf",
+                "q912=(1.574, 4.855, 0.615, 2.025)"
+            ],
+            [
+                "btraj",
+                "c360=t(4, 89)"
+            ],
+            [
+                "kin",
+                "left",
+                "1",
+                "p28701=(0.687, 8.585, 0.848, 0.0, 0.0, -1.375)",
+                "g296=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)",
+                "q600=(1.472, 8.589, 0.713, 1.464)",
+                "c800=t(7, 124)"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "atgrasp",
+                "left",
+                "1",
+                "g296=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)"
+            ],
+            [
+                "bconf",
+                "q912=(1.574, 4.855, 0.615, 2.025)"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ],
+                5
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "solved",
+        "object_reducer": "custom_add=braiserbody#1",
+        "last_node": "3_a_['arrange', 'chicken leg', 'counter top on the right']",
+        "agent_state": "agent_state_2b.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                1
+            ]
+        ]
+    },
+    {
+        "goal": [
+            "open([(3, 14)])"
+        ],
+        "goal_original": [
+            [
+                "open",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ],
+        "plan": [],
+        "plan_skeleton": [],
+        "plan_len": 0,
+        "init": [],
+        "planning": 0,
+        "preimage": 0,
+        "last_node": "4_a_['open', 'cabinet left door']",
+        "status": "already",
+        "object_reducer": "object-related",
+        "agent_state": "agent_state_3.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 11.8438,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            12
+        ],
+        "goal_original": [
+            [
+                "picked",
+                12
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q456=(1.472, 8.589, 0.713, -4.82), q232=(1.621, 7.554, 0.548, -3.31), c128=t(4, 53)))",
+            "Action(name='pick', args=('left', 12, p28766=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), g928=(-0.0, 0.0, 0.124, -3.142, -0.0, -3.142), q232=(1.621, 7.554, 0.548, -3.31), c800=t(7, 171)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "pick(12,)"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "grasp",
+                "12",
+                "g928=(-0.0, 0.0, 0.124, -3.142, -0.0, -3.142)"
+            ],
+            [
+                "basemotion",
+                "q456=(1.472, 8.589, 0.713, -4.82)",
+                "c128=t(4, 53)",
+                "q232=(1.621, 7.554, 0.548, -3.31)"
+            ],
+            [
+                "atbconf",
+                "q456=(1.472, 8.589, 0.713, -4.82)"
+            ],
+            [
+                "graspable",
+                "12"
+            ],
+            [
+                "atpose",
+                "12",
+                "p28766=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "canmove"
+            ],
+            [
+                "bconf",
+                "q456=(1.472, 8.589, 0.713, -4.82)"
+            ],
+            [
+                "kin",
+                "left",
+                "12",
+                "p28766=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)",
+                "g928=(-0.0, 0.0, 0.124, -3.142, -0.0, -3.142)",
+                "q232=(1.621, 7.554, 0.548, -3.31)",
+                "c800=t(7, 171)"
+            ],
+            [
+                "handempty",
+                "left"
+            ],
+            [
+                "bconf",
+                "q232=(1.621, 7.554, 0.548, -3.31)"
+            ],
+            [
+                "reach",
+                "left",
+                "12",
+                "p28766=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)",
+                "g928=(-0.0, 0.0, 0.124, -3.142, -0.0, -3.142)",
+                "q232=(1.621, 7.554, 0.548, -3.31)"
+            ],
+            [
+                "canpick"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "btraj",
+                "c128=t(4, 53)"
+            ],
+            [
+                "pose",
+                "12",
+                "p28766=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "solved",
+        "object_reducer": "object-related",
+        "last_node": "5_a_['pick', 'salt shaker']",
+        "agent_state": "agent_state_4.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                12
+            ]
+        ]
+    },
+    {
+        "planning": 13.2049,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            12,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                12
+            ],
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q776=(1.621, 7.554, 0.548, -9.593), q232=(1.768, 8.761, 0.598, 0.921), c224=t(4, 73)))",
+            "Action(name='arrange', args=('left', 12, (3, None, 35), p28807=(0.861, 9.0, 0.884, 0.0, -0.0, -2.78), g928=(-0.0, 0.0, 0.124, -3.142, -0.0, -3.142), q232=(1.768, 8.761, 0.598, 0.921), c832=t(7, 116)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "arrange(12, (3, None, 35))"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "atgrasp",
+                "left",
+                "12",
+                "g928=(-0.0, 0.0, 0.124, -3.142, -0.0, -3.142)"
+            ],
+            [
+                "canmove"
+            ],
+            [
+                "supported",
+                "12",
+                "p28807=(0.861, 9.0, 0.884, 0.0, -0.0, -2.78)",
+                "(3, None, 35)"
+            ],
+            [
+                "atbconf",
+                "q776=(1.621, 7.554, 0.548, -9.593)"
+            ],
+            [
+                "graspable",
+                "12"
+            ],
+            [
+                "grasp",
+                "12",
+                "g928=(-0.0, 0.0, 0.124, -3.142, -0.0, -3.142)"
+            ],
+            [
+                "reach",
+                "left",
+                "12",
+                "p28807=(0.861, 9.0, 0.884, 0.0, -0.0, -2.78)",
+                "g928=(-0.0, 0.0, 0.124, -3.142, -0.0, -3.142)",
+                "q232=(1.768, 8.761, 0.598, 0.921)"
+            ],
+            [
+                "bconf",
+                "q776=(1.621, 7.554, 0.548, -9.593)"
+            ],
+            [
+                "bconf",
+                "q232=(1.768, 8.761, 0.598, 0.921)"
+            ],
+            [
+                "stackable",
+                "12",
+                "(3, None, 35)"
+            ],
+            [
+                "pose",
+                "12",
+                "p28807=(0.861, 9.0, 0.884, 0.0, -0.0, -2.78)"
+            ],
+            [
+                "basemotion",
+                "q776=(1.621, 7.554, 0.548, -9.593)",
+                "c224=t(4, 73)",
+                "q232=(1.768, 8.761, 0.598, 0.921)"
+            ],
+            [
+                "kin",
+                "left",
+                "12",
+                "p28807=(0.861, 9.0, 0.884, 0.0, -0.0, -2.78)",
+                "g928=(-0.0, 0.0, 0.124, -3.142, -0.0, -3.142)",
+                "q232=(1.768, 8.761, 0.598, 0.921)",
+                "c832=t(7, 116)"
+            ],
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "staticlink",
+                "(3, None, 35)"
+            ],
+            [
+                "btraj",
+                "c224=t(4, 73)"
+            ],
+            [
+                "canmovebase"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            "space": []
+        },
+        "status": "solved",
+        "object_reducer": "object-related",
+        "last_node": "6_a_['arrange', 'salt shaker', 'counter top on the right']",
+        "agent_state": "agent_state_5.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                12
+            ],
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "goal": [
+            "open([(3, 10)])"
+        ],
+        "goal_original": [
+            [
+                "open",
+                [
+                    3,
+                    10
+                ]
+            ]
+        ],
+        "plan": [],
+        "plan_skeleton": [],
+        "plan_len": 0,
+        "init": [],
+        "planning": 0,
+        "preimage": 0,
+        "last_node": "7_a_['open', 'cabinet right door']",
+        "status": "already",
+        "object_reducer": "object-related",
+        "agent_state": "agent_state_6.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    10
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 11.8027,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            13
+        ],
+        "goal_original": [
+            [
+                "picked",
+                13
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q312=(1.768, 8.761, 0.598, 0.921), q544=(1.895, 7.472, 0.413, 2.155), c504=t(4, 36)))",
+            "Action(name='pick', args=('left', 13, p28872=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), g624=(-0.001, -0.001, 0.134, -3.142, -0.0, 0.0), q544=(1.895, 7.472, 0.413, 2.155), c48=t(7, 170)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "pick(13,)"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "bconf",
+                "q312=(1.768, 8.761, 0.598, 0.921)"
+            ],
+            [
+                "basemotion",
+                "q312=(1.768, 8.761, 0.598, 0.921)",
+                "c504=t(4, 36)",
+                "q544=(1.895, 7.472, 0.413, 2.155)"
+            ],
+            [
+                "canmove"
+            ],
+            [
+                "pose",
+                "13",
+                "p28872=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "handempty",
+                "left"
+            ],
+            [
+                "atpose",
+                "13",
+                "p28872=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "reach",
+                "left",
+                "13",
+                "p28872=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)",
+                "g624=(-0.001, -0.001, 0.134, -3.142, -0.0, 0.0)",
+                "q544=(1.895, 7.472, 0.413, 2.155)"
+            ],
+            [
+                "bconf",
+                "q544=(1.895, 7.472, 0.413, 2.155)"
+            ],
+            [
+                "kin",
+                "left",
+                "13",
+                "p28872=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)",
+                "g624=(-0.001, -0.001, 0.134, -3.142, -0.0, 0.0)",
+                "q544=(1.895, 7.472, 0.413, 2.155)",
+                "c48=t(7, 170)"
+            ],
+            [
+                "graspable",
+                "13"
+            ],
+            [
+                "grasp",
+                "13",
+                "g624=(-0.001, -0.001, 0.134, -3.142, -0.0, 0.0)"
+            ],
+            [
+                "btraj",
+                "c504=t(4, 36)"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "canpick"
+            ],
+            [
+                "atbconf",
+                "q312=(1.768, 8.761, 0.598, 0.921)"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [
+                13
+            ],
+            "joint": [],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "solved",
+        "object_reducer": "object-related",
+        "last_node": "8_a_['pick', 'pepper shaker']",
+        "agent_state": "agent_state_7.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                13
+            ]
+        ]
+    },
+    {
+        "planning": 10.3542,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            13,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                13
+            ],
+            [
+                "stacked",
+                13,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q432=(1.895, 7.472, 0.413, 2.155), q896=(1.741, 8.176, 0.451, 1.271), c584=t(4, 23)))",
+            "Action(name='arrange', args=('left', 13, (3, None, 35), p28920=(0.719, 8.516, 0.892, 0.0, -0.0, 2.495), g624=(-0.001, -0.001, 0.134, -3.142, -0.0, 0.0), q896=(1.741, 8.176, 0.451, 1.271), c728=t(7, 106)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "arrange(13, (3, None, 35))"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "atgrasp",
+                "left",
+                "13",
+                "g624=(-0.001, -0.001, 0.134, -3.142, -0.0, 0.0)"
+            ],
+            [
+                "staticlink",
+                "(3, None, 35)"
+            ],
+            [
+                "canmove"
+            ],
+            [
+                "bconf",
+                "q896=(1.741, 8.176, 0.451, 1.271)"
+            ],
+            [
+                "grasp",
+                "13",
+                "g624=(-0.001, -0.001, 0.134, -3.142, -0.0, 0.0)"
+            ],
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "pose",
+                "13",
+                "p28920=(0.719, 8.516, 0.892, 0.0, -0.0, 2.495)"
+            ],
+            [
+                "basemotion",
+                "q432=(1.895, 7.472, 0.413, 2.155)",
+                "c584=t(4, 23)",
+                "q896=(1.741, 8.176, 0.451, 1.271)"
+            ],
+            [
+                "btraj",
+                "c584=t(4, 23)"
+            ],
+            [
+                "atbconf",
+                "q432=(1.895, 7.472, 0.413, 2.155)"
+            ],
+            [
+                "graspable",
+                "13"
+            ],
+            [
+                "supported",
+                "13",
+                "p28920=(0.719, 8.516, 0.892, 0.0, -0.0, 2.495)",
+                "(3, None, 35)"
+            ],
+            [
+                "bconf",
+                "q432=(1.895, 7.472, 0.413, 2.155)"
+            ],
+            [
+                "kin",
+                "left",
+                "13",
+                "p28920=(0.719, 8.516, 0.892, 0.0, -0.0, 2.495)",
+                "g624=(-0.001, -0.001, 0.134, -3.142, -0.0, 0.0)",
+                "q896=(1.741, 8.176, 0.451, 1.271)",
+                "c728=t(7, 106)"
+            ],
+            [
+                "reach",
+                "left",
+                "13",
+                "p28920=(0.719, 8.516, 0.892, 0.0, -0.0, 2.495)",
+                "g624=(-0.001, -0.001, 0.134, -3.142, -0.0, 0.0)",
+                "q896=(1.741, 8.176, 0.451, 1.271)"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "stackable",
+                "13",
+                "(3, None, 35)"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [
+                13
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            "space": []
+        },
+        "status": "solved",
+        "object_reducer": "object-related",
+        "last_node": "9_a_['arrange', 'pepper shaker', 'counter top on the right']",
+        "agent_state": "agent_state_8.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                13
+            ],
+            [
+                "stacked",
+                13,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 77.0748,
+        "preimage": 0,
+        "goal": [
+            "turn-on",
+            [
+                6,
+                7
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    6,
+                    7
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    6,
+                    7
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "10_a_['turn-on', 'stove knob on the left']",
+        "agent_state": "agent_state_9.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    6,
+                    7
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 77.7151,
+        "preimage": 0,
+        "goal": [
+            "turn-on",
+            [
+                6,
+                7
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    6,
+                    7
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    6,
+                    7
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "10_a_['turn-on', 'stove knob on the left']",
+        "agent_state": "agent_state_9b.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    6,
+                    7
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 77.0749,
+        "preimage": 0,
+        "goal": [
+            "turn-on",
+            [
+                6,
+                7
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    6,
+                    7
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    6,
+                    7
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "10_a_['turn-on', 'stove knob on the left']",
+        "agent_state": "agent_state_9c.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    6,
+                    7
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 11.5354,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            5
+        ],
+        "goal_original": [
+            [
+                "picked",
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "11_a_['pick', 'pot body']",
+        "agent_state": "agent_state_10.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 10.846,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            5
+        ],
+        "goal_original": [
+            [
+                "picked",
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "11_a_['pick', 'pot body']",
+        "agent_state": "agent_state_10b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 11.2428,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            5
+        ],
+        "goal_original": [
+            [
+                "picked",
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                5
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "11_a_['pick', 'pot body']",
+        "agent_state": "agent_state_10c.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 0.1924,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            5,
+            [
+                3,
+                null,
+                4
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                5,
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            [
+                "placed",
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ],
+                5
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "12_a_['arrange', 'pot body', 'stove on the left']",
+        "agent_state": "agent_state_11.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                5,
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            [
+                "placed",
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 0.209,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            5,
+            [
+                3,
+                null,
+                4
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                5,
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            [
+                "placed",
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ],
+                5
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "12_a_['arrange', 'pot body', 'stove on the left']",
+        "agent_state": "agent_state_11b.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                5,
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            [
+                "placed",
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 0.3655,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            5,
+            [
+                3,
+                null,
+                4
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                5,
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            [
+                "placed",
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ],
+                5
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "12_a_['arrange', 'pot body', 'stove on the left']",
+        "agent_state": "agent_state_11c.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                5,
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            [
+                "placed",
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 13.5949,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            4
+        ],
+        "goal_original": [
+            [
+                "picked",
+                4
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                4
+            ],
+            "joint": [],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "13_a_['pick', 'pot lid']",
+        "agent_state": "agent_state_12.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                4
+            ]
+        ]
+    },
+    {
+        "planning": 12.8276,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            4
+        ],
+        "goal_original": [
+            [
+                "picked",
+                4
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                4
+            ],
+            "joint": [],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "13_a_['pick', 'pot lid']",
+        "agent_state": "agent_state_12b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                4
+            ]
+        ]
+    },
+    {
+        "planning": 12.8814,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            4
+        ],
+        "goal_original": [
+            [
+                "picked",
+                4
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                4
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "13_a_['pick', 'pot lid']",
+        "agent_state": "agent_state_12c.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                4
+            ]
+        ]
+    },
+    {
+        "planning": 20.0605,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            4,
+            5
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                4,
+                5
+            ],
+            [
+                "placed",
+                4
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                5,
+                4
+            ],
+            "joint": [],
+            "surface": [
+                5
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "14_a_['arrange', 'pot lid', 'pot body']",
+        "agent_state": "agent_state_13.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                4,
+                5
+            ],
+            [
+                "placed",
+                4
+            ]
+        ]
+    },
+    {
+        "planning": 18.2948,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            4,
+            5
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                4,
+                5
+            ],
+            [
+                "placed",
+                4
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                5,
+                4
+            ],
+            "joint": [],
+            "surface": [
+                5
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "14_a_['arrange', 'pot lid', 'pot body']",
+        "agent_state": "agent_state_13b.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                4,
+                5
+            ],
+            [
+                "placed",
+                4
+            ]
+        ]
+    },
+    {
+        "planning": 23.16,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            4,
+            5
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                4,
+                5
+            ],
+            [
+                "placed",
+                4
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                5,
+                4
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                5
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "14_a_['arrange', 'pot lid', 'pot body']",
+        "agent_state": "agent_state_13c.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                4,
+                5
+            ],
+            [
+                "placed",
+                4
+            ]
+        ]
+    },
+    {
+        "planning": 44.296,
+        "preimage": 0,
+        "goal": [
+            "turn-on",
+            [
+                9,
+                3
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    9,
+                    3
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "15_a_['turn-on', 'faucet handle']",
+        "agent_state": "agent_state_14.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 43.5883,
+        "preimage": 0,
+        "goal": [
+            "turn-on",
+            [
+                9,
+                3
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    9,
+                    3
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "15_a_['turn-on', 'faucet handle']",
+        "agent_state": "agent_state_14b.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 46.2783,
+        "preimage": 0,
+        "goal": [
+            "turn-on",
+            [
+                9,
+                3
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    9,
+                    3
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "15_a_['turn-on', 'faucet handle']",
+        "agent_state": "agent_state_14c.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 44.5572,
+        "preimage": 0,
+        "goal": [
+            "turn-on",
+            [
+                9,
+                3
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    9,
+                    3
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "15_a_['turn-on', 'faucet handle']",
+        "agent_state": "agent_state_15.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ]
+    },
+    {
+        "continuous_success_string": "0.9 (9 / 10)",
+        "task_progress_string": "1.4 (14 / 10)",
+        "total_problems_solved_string": "0.5 (6 / 12)",
+        "total_plan_len": 12,
+        "total_planning_time": 652.61,
+        "effective_planning_time": 71.6516,
+        "wasted_planning_time": 580.9577999999999,
+        "task_success": 0,
+        "num_solved_problems": 12,
+        "num_success": 6,
+        "num_problems_solved_continuously": 9,
+        "num_completed_problems": 14,
+        "total_num_problems": 10,
+        "continuous_success_rate": 0.9,
+        "task_progress": 1.4,
+        "total_problems_solved": 0.5,
+        "whole_goal_sequence": [
+            [
+                [
+                    "open",
+                    [
+                        10,
+                        1
+                    ]
+                ]
+            ],
+            [
+                [
+                    "picked",
+                    1
+                ]
+            ],
+            [
+                [
+                    "stacked",
+                    1,
+                    [
+                        3,
+                        null,
+                        35
+                    ]
+                ],
+                [
+                    "placed",
+                    1
+                ]
+            ],
+            [
+                [
+                    "open",
+                    [
+                        3,
+                        14
+                    ]
+                ]
+            ],
+            [
+                [
+                    "picked",
+                    12
+                ]
+            ],
+            [
+                [
+                    "placed",
+                    12
+                ],
+                [
+                    "stacked",
+                    12,
+                    [
+                        3,
+                        null,
+                        35
+                    ]
+                ]
+            ],
+            [
+                [
+                    "open",
+                    [
+                        3,
+                        10
+                    ]
+                ]
+            ],
+            [
+                [
+                    "picked",
+                    13
+                ]
+            ],
+            [
+                [
+                    "placed",
+                    13
+                ],
+                [
+                    "stacked",
+                    13,
+                    [
+                        3,
+                        null,
+                        35
+                    ]
+                ]
+            ],
+            [
+                [
+                    "turn-on",
+                    [
+                        9,
+                        3
+                    ]
+                ]
+            ]
+        ],
+        "subgoal_plan_len": [
+            0,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            2,
+            0,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "continuous_plan_len": 14,
+        "continuous_planning_time": 71.6516,
+        "continuous_subgoal_plan_len": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+        ],
+        "ungrounded_subgoals": [],
+        "reprompt_after_subgoals": [],
+        "num_reprompts": 0,
+        "failed_nodes": {
+            "10_a_['turn-on', 'stove knob on the left']": 3,
+            "11_a_['pick', 'pot body']": 3,
+            "12_a_['arrange', 'pot body', 'stove on the left']": 3,
+            "13_a_['pick', 'pot lid']": 3,
+            "14_a_['arrange', 'pot lid', 'pot body']": 3,
+            "15_a_['turn-on', 'faucet handle']": 4
+        }
+    }
+]
