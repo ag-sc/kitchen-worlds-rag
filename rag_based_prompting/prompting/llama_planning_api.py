@@ -1,5 +1,6 @@
 import re
 
+from RAG4Robots.src.plan_manager import RAGPlanManager
 from RAG4Robots.src.utils.enums import ResourceType
 from pybullet_planning.vlm_tools.vlm_planning_api import LLAMPApi
 from pybullet_planning.vlm_tools.vlm_utils import add_prompt_answer_to_chat, process_test_for_html, add_answer_to_chat, \
@@ -39,6 +40,9 @@ class LlamaClusterPlanningApi(LLAMPApi):
 
 
 def turn_args_into_rag(**rag_kwargs) -> RAGManager:
+    if rag_kwargs.get('rag_plans'):
+        return RAGPlanManager()
+
     db_types = []
     rec_usage = rag_kwargs.get('rag_recipes')
     if rec_usage > 0.0:
