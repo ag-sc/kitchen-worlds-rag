@@ -1,0 +1,744 @@
+    _get_log_collisions smaller_world = {}
+    _get_log_collisions self.world = {'[cc](10, 1)|fridge#1::fridge_door': 21}
+[llamp_agent.get_action_goal] action = ['pick', 1]
+
+
+saving statistics
+
+
+[llamp_agent._get_current_whole_goal_sequence] previous_goals
+    0    [['open', (10, 1)]]
+    1    [['picked', 1]]
+[llamp_agent._get_current_whole_goal_sequence] future_goals
+    2    [['pick', 1]]
+    3    [['arrange', 1, (3, None, 35)]]
+    4    [['open', (3, 14)]]
+    5    [['pick', 12]]
+    6    [['arrange', 12, (3, None, 35)]]
+    7    [['open', (3, 10)]]
+    8    [['pick', 13]]
+    9    [['arrange', 13, (3, None, 35)]]
+    10    [['pick', 5]]
+    11    [['arrange', 5, (3, None, 4)]]
+    12    [['pick', 4]]
+    13    [['arrange', 4, (3, None, 35)]]
+    14    [['turn-on', (6, 7)]]
+    15    [['pick', 1]]
+    16    [['arrange', 1, 5]]
+    17    [['turn-on', (9, 3)]]
+    18    [['arrange', 5, (8, None, 3)]]
+    19    [['turn-off', (9, 3)]]
+    20    [['pick', 4]]
+    21    [['arrange', 4, 5]]
+    22    [['turn-on', (6, 7)]]
+[llamp_agent.save_time_log]
++-------+-----------------------------------------------------+---------------+-------------+------------+-----------------+-----------------------+------------------+-----------------------------+---------------+
+| idx   | goal                                                | task_idx      | status      |   plan_len |   planning_time | planning_objects      | object_reducer   | planning_node               | agent_state   |
+|-------+-----------------------------------------------------+---------------+-------------+------------+-----------------+-----------------------+------------------+-----------------------------+---------------|
+| 1     | ['open([(10, 1)])'] -> [('graspedhandle', (10, 1))] | 1             | already     |          0 |           0     |                       | object-related   | 1_a_['open', 'fridge door'] |               |
+| 3     | ['pick', 1] -> [('picked', 1)]                      | 2             | solved      |          2 |           8.664 | 1 (graspable: 1)      | object-related   | 2_a_['pick', 'chicken leg'] |               |
+|       | 0.09 (2 / 23)                                       | 0.09 (2 / 23) | 1.0 (1 / 1) |          2 |           8.66  | 8.66 (effective time) | 0 (wasted time)  |                             |               |
++-------+-----------------------------------------------------+---------------+-------------+------------+-----------------+-----------------------+------------------+-----------------------------+---------------+
+[llamp_agent._get_current_whole_goal_sequence] previous_goals
+    0    [['open', (10, 1)]]
+    1    [['picked', 1]]
+[llamp_agent._get_current_whole_goal_sequence] future_goals
+    2    [['pick', 1]]
+    3    [['arrange', 1, (3, None, 35)]]
+    4    [['open', (3, 14)]]
+    5    [['pick', 12]]
+    6    [['arrange', 12, (3, None, 35)]]
+    7    [['open', (3, 10)]]
+    8    [['pick', 13]]
+    9    [['arrange', 13, (3, None, 35)]]
+    10    [['pick', 5]]
+    11    [['arrange', 5, (3, None, 4)]]
+    12    [['pick', 4]]
+    13    [['arrange', 4, (3, None, 35)]]
+    14    [['turn-on', (6, 7)]]
+    15    [['pick', 1]]
+    16    [['arrange', 1, 5]]
+    17    [['turn-on', (9, 3)]]
+    18    [['arrange', 5, (8, None, 3)]]
+    19    [['turn-off', (9, 3)]]
+    20    [['pick', 4]]
+    21    [['arrange', 4, 5]]
+    22    [['turn-on', (6, 7)]]
+0    Action(name='move_base', args=[q96=(2.0, 6.25, 0.2, 3.142), q704=(1.574, 4.855, 0.71, 2.025), c104=t(4, 44)])
+pddlstream_agent._update_state(step=0, Action(name='move_base', args=(q96=(2.0, 6.25, 0.2, 3.142), q704=(1.574, 4.855, 0.71, 2.025), c104=t(4, 44))))
+    0    MoveBaseAction{conf: q280=(2.0, 6.25, 0.2, 3.142)}
+1    Action(name='pick', args=('left', 1, p46355=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), q704=(1.574, 4.855, 0.71, 2.025), c576=t(7, 38)))
+
+update_facts    somehow mising [('grasp', 1, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))]
+
+pddlstream_agent._update_state(step=1, Action(name='pick', args=('left', 1, p46355=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), q704=(1.574, 4.855, 0.71, 2.025), c576=t(7, 38))))
+    1    MoveArmAction{conf: aq312=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)}
+    1    GripperAction{arm: left, extent: None, position: None, teleport: False, verbose: False}
+    1    AttachObjectAction{arm: left, attach_kwargs: {OBJ: False, attach_distance: None, debug_rc2oc: False, verbose: False}, body: 1, grasp: g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), verbose: True}
+    1    MoveArmAction{conf: aq680=(1.214, 0.004, 1.2, -0.783, 1.842, -1.827, 2.859)}
+filter_dynamic_facts     found grasps [('atgrasp', 'left', 1, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)), ('grasp', 1, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))]
+filter_dynamic_facts     found grasps []
+pddlstream_agent.save_agent_state at /homes/jtoeberg/kitchen-worlds-rag/rag_based_prompting/eval_scenarios/rec_vids_locs/250830_004827_seed_280147/states/agent_state_2.pkl
+----------------------------------------------------------------------------------------------------
+                                                   [llamp_agent._update_pddlstream_problem] problem_count = 2                                                    
+----------------------------------------------------------------------------------------------------
+    [llamp_agent._update_pddlstream_problem] world.collisions = {}
+    [llamp_agent._update_pddlstream_problem] self.world.collisions = {}
+[llamp_agent.fix_init]     removed ('handempty', 'left') and atpose []
+[llamp_agent.fix_init]     removed ('canpull', 'left') and atpose []
+
+================ summarize_supporting_surfaces ================
+    surface    [counter#1::front_left_stove, counter#1::front_right_stove, counter#1::hitman_countertop, counter#1::indigo_tmp, braiserbody#1, braiserbody#1::braiser_bottom, basin#1::basin_bottom, fridge#1::shelf_top]
+    supporter    []
+--------------- 
+    basin#1::basin_bottom    []
+    fridge#1::shelf_top    []
+    counter#1::front_left_stove    [braiserlid#1]
+    braiserbody#1    []
+================================================================
+
+
+================ summarize_supported_movables ================
+    movable    [chicken-leg, braiserlid#1, braiserbody#1, salt-shaker, pepper-shaker]
+--------------- 
+    chicken-leg    None
+    braiserlid#1    counter#1::front_left_stove
+    braiserbody#1    counter#1::indigo_tmp
+    salt-shaker    counter#1::sektion
+    pepper-shaker    counter#1::sektion
+================================================================
+[llamp_agent.get_action_goal] action = ['arrange', 1, (3, None, 35)]
+[llamp_agent._update_obstacles_in_stream_map]     using obstacles [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+
+--------------------------------------------------
+ problem_count = 2 
+--------------------------------------------------
+
+--------------------------------------------------------------------------------
+PART I: world objects | movable(1), surface(1) | obstacles(12) = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+--------------------------------------------------------------------------------
+0      |  PR2Robot: pr2robot      |  categories: ['pr2robot']    |  Pose: (0.0, 0.0, 0.0, 0.0, -0.0, 0.0)
+3      |  Object: counter#1      |  categories: ['counter'] | asset: None    |  Pose: (0.5, 7.6, 1.394, 0.0, -0.0, 0.0)
+(3, None, 35)      |  Surface: counter#1::indigo_tmp      |  categories: ['surface'] | asset: None    |  Pose: (0.603, 8.452, 0.829, 0.0, -0.0, 0.0)
+1      |  Movable: chicken-leg      |  categories: ['food'] | asset: MeatTurkeyLeg/0001    |  Pose: (1.095, 5.2, 1.559, 0.0, 0.0, -1.117)
+----------------
+2      |  Floor: living_room      |  categories: ['floor'] | asset: box    |  Pose: (2.3, 4.7, -0.002, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, 10)      |  Door: counter#1::chewie_door_right_joint      |  categories: ['door'] | asset: None    |  Handle: chewie_door_right_handle    |  JointLimit: (0.0, 2.34)    |  Pose: 1.872     (excluded from planning)
+(3, 14)      |  Door: counter#1::chewie_door_left_joint      |  categories: ['door'] | asset: None    |  Handle: chewie_door_left_handle    |  JointLimit: (-2.34, 0.0)    |  Pose: -1.872     (excluded from planning)
+(3, 48)      |  Drawer: counter#1::indigo_drawer_top_joint      |  categories: ['drawer'] | asset: None    |  Handle: indigo_drawer_handle_top    |  JointLimit: (0.0, 0.411)    |  Pose: 0.0     (excluded from planning)
+(3, None, 0)      |  Space: counter#1::sektion      |  categories: ['space'] | asset: None    |  Pose: (0.5, 7.6, 1.394, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 4)      |  Surface: counter#1::front_left_stove      |  categories: ['surface'] | asset: None    |  Pose: (0.567, 7.872, 0.773, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 5)      |  Surface: counter#1::front_right_stove      |  categories: ['surface'] | asset: None    |  Pose: (0.567, 8.18, 0.773, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 27)      |  Surface: counter#1::hitman_countertop      |  categories: ['surface'] | asset: None    |  Pose: (0.459, 6.779, 0.809, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 48)      |  Space: counter#1::indigo_drawer_top      |  categories: ['space'] | asset: None    |  Pose: (0.594, 8.843, 0.722, 0.0, -0.0, 0.0)     (excluded from planning)
+7      |  Object: dishwasher#1      |  categories: ['dishwasher'] | asset: Dishwasher/2085    |  Pose: (0.7, 6.4, 0.366, 0.0, -0.0, 3.142)     (excluded from planning)
+(7, 1)      |  Drawer: dishwasher#1::dishwasher_door      |  categories: ['drawer'] | asset: Dishwasher/2085    |  Handle: handle_link    |  JointLimit: (0.0, 0.49)    |  Pose: 0.0     (excluded from planning)
+(7, None, 5)      |  Space: dishwasher#1::upper_shelf      |  categories: ['space'] | asset: Dishwasher/2085    |  Pose: (0.772, 6.357, 0.279, 1.571, -0.0, 1.571)     (excluded from planning)
+8      |  Object: basin#1      |  categories: ['basin'] | asset: Basin/102379    |  Pose: (0.5, 5.6, 0.364, 0.0, -0.0, 3.142)     (excluded from planning)
+(8, None, 2)      |  Surface: basin#1::faucet_platform      |  categories: [] | asset: Basin/102379    |  Pose: (0.265, 5.593, 0.859, 1.571, -0.0, 1.571)     (excluded from planning)
+(8, None, 3)      |  Surface: basin#1::basin_bottom      |  categories: ['surface'] | asset: Basin/102379    |  Pose: (0.537, 5.6, 0.785, 1.571, -0.0, 1.571)     (excluded from planning)
+10      |  Object: fridge#1      |  categories: ['fridge'] | asset: Fridge/10144    |  Pose: (0.5, 4.9, 1.006, 0.0, -0.0, 3.142)     (excluded from planning)
+(10, 1)      |  Door: fridge#1::fridge_door      |  categories: ['door'] | asset: Fridge/10144    |  Handle: fridge_door_handle    |  JointLimit: (0.0, 2.967)    |  Pose: 1.78     (excluded from planning)
+(10, None, 8)      |  Surface: fridge#1::shelf_bottom      |  categories: ['surface'] | asset: Fridge/10144    |  Pose: (0.5, 4.9, 1.006, 1.571, -0.0, 1.571)     (excluded from planning)
+(10, None, 9)      |  Surface: fridge#1::shelf_top      |  categories: ['surface'] | asset: Fridge/10144    |  Pose: (0.5, 4.9, 1.006, 1.571, -0.0, 1.571)     (excluded from planning)
+11      |  Movable: cabbage      |  categories: ['food'] | asset: Food/VeggieCabbage    |  Pose: (0.668, 4.862, 0.83, 0.0, -0.0, 1.687)     (excluded from planning)
+14      |  Movable: fork      |  categories: ['utensil'] | asset: KitchenFork/10495    |  Pose: (0.735, 8.831, 0.689, 0.0, -0.0, 2.447)     (excluded from planning)
+9      |  Object: faucet#1      |  categories: ['faucet'] | asset: Faucet/104    |  Pose: (0.265, 5.593, 1.012, 0.0, -0.0, 3.142)     (excluded from planning)
+(9, 3)      |  Knob: faucet#1::joint_faucet_0      |  categories: ['knob', 'joint'] | asset: Faucet/104    |  Handle: link_0    |  JointLimit: (0.0, 1.571)    |  Pose: 0.0     (excluded from planning)
+(9, 5)      |  Knob: faucet#1::joint_faucet_1      |  categories: ['knob', 'joint'] | asset: Faucet/104    |  Handle: link_1    |  JointLimit: (-0.0, 1.571)    |  Pose: 0.0     (excluded from planning)
+4      |  Object: braiserlid#1      |  categories: ['braiserlid', 'movable'] | asset: BraiserLid/100015    |  Pose: (0.567, 7.872, 0.712, 0.0, -0.0, 2.667)     (excluded from planning)
+5      |  Object: braiserbody#1      |  categories: ['braiserbody', 'surface', 'region', 'space', 'movable'] | asset: BraiserBody/100015    |  Pose: (0.7, 8.829, 0.923, 0.0, -0.0, 1.571)     (excluded from planning)
+(5, None, 1)      |  Surface: braiserbody#1::braiser_bottom      |  categories: ['surface'] | asset: BraiserBody/100015    |  Pose: (0.7, 8.829, 0.923, 1.571, -0.0, -0.0)     (excluded from planning)
+6      |  Object: oven#1      |  categories: ['oven'] | asset: Oven/01909    |  Pose: (0.6, 8.0, 0.602, 0.0, -0.0, 3.142)     (excluded from planning)
+(6, 5)      |  Knob: oven#1::knob_joint_2      |  categories: ['knob', 'joint'] | asset: Oven/01909    |  Handle: knob_link_2    |  JointLimit: (-0.0, 1.047)    |  Pose: 0.0     (excluded from planning)
+(6, 7)      |  Knob: oven#1::knob_joint_3      |  categories: ['knob', 'joint'] | asset: Oven/01909    |  Handle: knob_link_3    |  JointLimit: (-0.0, 1.047)    |  Pose: 0.0     (excluded from planning)
+12      |  Movable: salt-shaker      |  categories: ['condiment', 'sprinkler'] | asset: Salter/3934    |  Pose: (0.771, 7.071, 1.152, 0.0, -0.0, 3.142)     (excluded from planning)
+13      |  Movable: pepper-shaker      |  categories: ['condiment', 'sprinkler'] | asset: Salter/5861    |  Pose: (0.764, 7.303, 1.164, 0.0, -0.0, 3.142)     (excluded from planning)
+------------------------- 
+PART II: WORLD ATTACHMENTS -------------------------
+{  chicken-leg: Attachment(pr2robot, chicken-leg),
+   braiserlid#1: ObjAttachment(counter#1::front_left_stove, braiserlid#1),
+   braiserbody#1: ObjAttachment(counter#1::indigo_tmp, braiserbody#1),
+   faucet#1: ObjAttachment(basin#1::faucet_platform, faucet#1),
+   cabbage: ObjAttachment(fridge#1::shelf_bottom, cabbage),
+   salt-shaker: ObjAttachment(counter#1::sektion, salt-shaker),
+   pepper-shaker: ObjAttachment(counter#1::sektion, pepper-shaker),
+   fork: ObjAttachment(counter#1::indigo_drawer_top, fork)}
+------------------------------------------------------------
+----------------
+Facts updated (object_reducer = object-related) (51)
+  = [2] : ['=', ('pickcost',), 1], ['=', ('placecost',), 1]
+  aconf [2] : ['aconf', 'left', aq80=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)], ['aconf', 'right', aq192=(-0.677, -0.343, -1.2, -1.467, -1.242, -1.954, -2.223)]
+  arm [2] : ['arm', 'left'], ['arm', 'right']
+  ataconf [2] : ['ataconf', 'left', aq80=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)], ['ataconf', 'right', aq192=(-0.677, -0.343, -1.2, -1.467, -1.242, -1.954, -2.223)]
+  atbconf [1] : ['atbconf', q272=(1.574, 4.855, 0.71, 2.025)]
+  atgrasp [1] : ['atgrasp', 'left', '1|chicken-leg', g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)]
+  atpose [4] : ['atpose', '12|salt-shaker', p46395=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)], ['atpose', '13|pepper-shaker', p46396=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)], ['atpose', '4|braiserlid#1', p46393=(0.567, 7.872, 0.712, 0.0, -0.0, 2.667)], ['atpose', '5|braiserbody#1', p46391=(0.7, 8.829, 0.923, 0.0, -0.0, 1.571)]
+  atposition [6] : ['atposition', '(10, 1)|fridge#1::fridge_door', pstn16829=1.78], ['atposition', '(3, 10)|counter#1::chewie_door_right_joint', pstn16827=1.872], ['atposition', '(3, 14)|counter#1::chewie_door_left_joint', pstn16828=-1.872], ['atposition', '(6, 5)|oven#1::knob_joint_2', pstn16830=0.0], ['atposition', '(6, 7)|oven#1::knob_joint_3', pstn16831=0.0], ['atposition', '(9, 3)|faucet#1::joint_faucet_0', pstn16832=0.0]
+  bconf [1] : ['bconf', q272=(1.574, 4.855, 0.71, 2.025)]
+  cangrasphandle [1] : ['cangrasphandle']
+  canmove [1] : ['canmove']
+  canmovebase [1] : ['canmovebase']
+  canpick [1] : ['canpick']
+  canpull [1] : ['canpull', 'right']
+  canungrasp [1] : ['canungrasp']
+  containable [2] : ['containable', '1|chicken-leg', '(3, none, 0)|counter#1::sektion'], ['containable', '1|chicken-leg', '5|braiserbody#1']
+  controllable [2] : ['controllable', 'left'], ['controllable', 'right']
+  food [1] : ['food', '1|chicken-leg']
+  grasp [1] : ['grasp', '1|chicken-leg', g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)]
+  graspable [1] : ['graspable', '1|chicken-leg']
+  handempty [1] : ['handempty', 'right']
+  pose [4] : ['pose', '12|salt-shaker', p46395=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)], ['pose', '13|pepper-shaker', p46396=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)], ['pose', '4|braiserlid#1', p46393=(0.567, 7.872, 0.712, 0.0, -0.0, 2.667)], ['pose', '5|braiserbody#1', p46391=(0.7, 8.829, 0.923, 0.0, -0.0, 1.571)]
+  position [6] : ['position', '(10, 1)|fridge#1::fridge_door', pstn16829=1.78], ['position', '(3, 10)|counter#1::chewie_door_right_joint', pstn16827=1.872], ['position', '(3, 14)|counter#1::chewie_door_left_joint', pstn16828=-1.872], ['position', '(6, 5)|oven#1::knob_joint_2', pstn16830=0.0], ['position', '(6, 7)|oven#1::knob_joint_3', pstn16831=0.0], ['position', '(9, 3)|faucet#1::joint_faucet_0', pstn16832=0.0]
+  region [1] : ['region', '(3, none, 35)|counter#1::indigo_tmp']
+  stackable [3] : ['stackable', '1|chicken-leg', '(3, none, 35)|counter#1::indigo_tmp'], ['stackable', '1|chicken-leg', '(5, none, 1)|braiserbody#1::braiser_bottom'], ['stackable', '1|chicken-leg', '(8, none, 3)|basin#1::basin_bottom']
+  staticlink [1] : ['staticlink', '(3, none, 35)|counter#1::indigo_tmp']
+  surface [1] : ['surface', '(3, none, 35)|counter#1::indigo_tmp']
+----------------
+Goal (2): (and
+   ('stacked', '1|chicken-leg', '(3, None, 35)|counter#1::indigo_tmp'),
+   ('placed', '1|chicken-leg'),
+)
+
+--------------------------------------------------
+Robot: pr2robot | Objects: [1, 3, (3, None, 35)]
+Movable: [pr2robot, 1] | Fixed: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] | Floor: [2]
+--------------------------------------------------
+
+
+    _get_log_collisions smaller_world = {}
+    _get_log_collisions self.world = {'[cc](10, 1)|fridge#1::fridge_door': 21}
+[llamp_agent.get_action_goal] action = ['pick', 1]
+
+
+saving statistics
+
+
+[llamp_agent._get_current_whole_goal_sequence] previous_goals
+    0    [['open', (10, 1)]]
+    1    [['picked', 1]]
+[llamp_agent._get_current_whole_goal_sequence] future_goals
+    2    [['pick', 1]]
+    3    [['arrange', 1, (3, None, 35)]]
+    4    [['open', (3, 14)]]
+    5    [['pick', 12]]
+    6    [['arrange', 12, (3, None, 35)]]
+    7    [['open', (3, 10)]]
+    8    [['pick', 13]]
+    9    [['arrange', 13, (3, None, 35)]]
+    10    [['pick', 5]]
+    11    [['arrange', 5, (3, None, 4)]]
+    12    [['pick', 4]]
+    13    [['arrange', 4, (3, None, 35)]]
+    14    [['turn-on', (6, 7)]]
+    15    [['pick', 1]]
+    16    [['arrange', 1, 5]]
+    17    [['turn-on', (9, 3)]]
+    18    [['arrange', 5, (8, None, 3)]]
+    19    [['turn-off', (9, 3)]]
+    20    [['pick', 4]]
+    21    [['arrange', 4, 5]]
+    22    [['turn-on', (6, 7)]]
+[llamp_agent.save_time_log]
++-------+-----------------------------------------------------+---------------+-------------+------------+-----------------+-----------------------+------------------+-----------------------------+---------------+
+| idx   | goal                                                | task_idx      | status      |   plan_len |   planning_time | planning_objects      | object_reducer   | planning_node               | agent_state   |
+|-------+-----------------------------------------------------+---------------+-------------+------------+-----------------+-----------------------+------------------+-----------------------------+---------------|
+| 1     | ['open([(10, 1)])'] -> [('graspedhandle', (10, 1))] | 1             | already     |          0 |           0     |                       | object-related   | 1_a_['open', 'fridge door'] |               |
+| 3     | ['pick', 1] -> [('picked', 1)]                      | 2             | solved      |          2 |           8.664 | 1 (graspable: 1)      | object-related   | 2_a_['pick', 'chicken leg'] |               |
+|       | 0.09 (2 / 23)                                       | 0.09 (2 / 23) | 1.0 (1 / 1) |          2 |           8.66  | 8.66 (effective time) | 0 (wasted time)  |                             |               |
++-------+-----------------------------------------------------+---------------+-------------+------------+-----------------+-----------------------+------------------+-----------------------------+---------------+
+[llamp_agent._get_current_whole_goal_sequence] previous_goals
+    0    [['open', (10, 1)]]
+    1    [['picked', 1]]
+[llamp_agent._get_current_whole_goal_sequence] future_goals
+    2    [['pick', 1]]
+    3    [['arrange', 1, (3, None, 35)]]
+    4    [['open', (3, 14)]]
+    5    [['pick', 12]]
+    6    [['arrange', 12, (3, None, 35)]]
+    7    [['open', (3, 10)]]
+    8    [['pick', 13]]
+    9    [['arrange', 13, (3, None, 35)]]
+    10    [['pick', 5]]
+    11    [['arrange', 5, (3, None, 4)]]
+    12    [['pick', 4]]
+    13    [['arrange', 4, (3, None, 35)]]
+    14    [['turn-on', (6, 7)]]
+    15    [['pick', 1]]
+    16    [['arrange', 1, 5]]
+    17    [['turn-on', (9, 3)]]
+    18    [['arrange', 5, (8, None, 3)]]
+    19    [['turn-off', (9, 3)]]
+    20    [['pick', 4]]
+    21    [['arrange', 4, 5]]
+    22    [['turn-on', (6, 7)]]
+0    Action(name='move_base', args=[q96=(2.0, 6.25, 0.2, 3.142), q704=(1.574, 4.855, 0.71, 2.025), c104=t(4, 44)])
+pddlstream_agent._update_state(step=0, Action(name='move_base', args=(q96=(2.0, 6.25, 0.2, 3.142), q704=(1.574, 4.855, 0.71, 2.025), c104=t(4, 44))))
+    0    MoveBaseAction{conf: q280=(2.0, 6.25, 0.2, 3.142)}
+1    Action(name='pick', args=('left', 1, p46355=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), q704=(1.574, 4.855, 0.71, 2.025), c576=t(7, 38)))
+
+update_facts    somehow mising [('grasp', 1, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))]
+
+pddlstream_agent._update_state(step=1, Action(name='pick', args=('left', 1, p46355=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), q704=(1.574, 4.855, 0.71, 2.025), c576=t(7, 38))))
+    1    MoveArmAction{conf: aq312=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)}
+    1    GripperAction{arm: left, extent: None, position: None, teleport: False, verbose: False}
+    1    AttachObjectAction{arm: left, attach_kwargs: {OBJ: False, attach_distance: None, debug_rc2oc: False, verbose: False}, body: 1, grasp: g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), verbose: True}
+    1    MoveArmAction{conf: aq680=(1.214, 0.004, 1.2, -0.783, 1.842, -1.827, 2.859)}
+filter_dynamic_facts     found grasps [('atgrasp', 'left', 1, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)), ('grasp', 1, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))]
+filter_dynamic_facts     found grasps []
+pddlstream_agent.save_agent_state at /homes/jtoeberg/kitchen-worlds-rag/rag_based_prompting/eval_scenarios/rec_vids_locs/250830_004827_seed_280147/states/agent_state_2.pkl
+----------------------------------------------------------------------------------------------------
+                                                   [llamp_agent._update_pddlstream_problem] problem_count = 2                                                    
+----------------------------------------------------------------------------------------------------
+    [llamp_agent._update_pddlstream_problem] world.collisions = {}
+    [llamp_agent._update_pddlstream_problem] self.world.collisions = {}
+[llamp_agent.fix_init]     removed ('handempty', 'left') and atpose []
+[llamp_agent.fix_init]     removed ('canpull', 'left') and atpose []
+
+================ summarize_supporting_surfaces ================
+    surface    [counter#1::front_left_stove, counter#1::front_right_stove, counter#1::hitman_countertop, counter#1::indigo_tmp, braiserbody#1, braiserbody#1::braiser_bottom, basin#1::basin_bottom, fridge#1::shelf_top]
+    supporter    []
+--------------- 
+    basin#1::basin_bottom    []
+    fridge#1::shelf_top    []
+    counter#1::front_left_stove    [braiserlid#1]
+    braiserbody#1    []
+================================================================
+
+
+================ summarize_supported_movables ================
+    movable    [chicken-leg, braiserlid#1, braiserbody#1, salt-shaker, pepper-shaker]
+--------------- 
+    chicken-leg    None
+    braiserlid#1    counter#1::front_left_stove
+    braiserbody#1    counter#1::indigo_tmp
+    salt-shaker    counter#1::sektion
+    pepper-shaker    counter#1::sektion
+================================================================
+[llamp_agent.get_action_goal] action = ['arrange', 1, (3, None, 35)]
+[llamp_agent._update_obstacles_in_stream_map]     using obstacles [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+
+--------------------------------------------------
+ problem_count = 2 
+--------------------------------------------------
+
+--------------------------------------------------------------------------------
+PART I: world objects | movable(1), surface(1) | obstacles(12) = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+--------------------------------------------------------------------------------
+0      |  PR2Robot: pr2robot      |  categories: ['pr2robot']    |  Pose: (0.0, 0.0, 0.0, 0.0, -0.0, 0.0)
+3      |  Object: counter#1      |  categories: ['counter'] | asset: None    |  Pose: (0.5, 7.6, 1.394, 0.0, -0.0, 0.0)
+(3, None, 35)      |  Surface: counter#1::indigo_tmp      |  categories: ['surface'] | asset: None    |  Pose: (0.603, 8.452, 0.829, 0.0, -0.0, 0.0)
+1      |  Movable: chicken-leg      |  categories: ['food'] | asset: MeatTurkeyLeg/0001    |  Pose: (1.095, 5.2, 1.559, 0.0, 0.0, -1.117)
+----------------
+2      |  Floor: living_room      |  categories: ['floor'] | asset: box    |  Pose: (2.3, 4.7, -0.002, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, 10)      |  Door: counter#1::chewie_door_right_joint      |  categories: ['door'] | asset: None    |  Handle: chewie_door_right_handle    |  JointLimit: (0.0, 2.34)    |  Pose: 1.872     (excluded from planning)
+(3, 14)      |  Door: counter#1::chewie_door_left_joint      |  categories: ['door'] | asset: None    |  Handle: chewie_door_left_handle    |  JointLimit: (-2.34, 0.0)    |  Pose: -1.872     (excluded from planning)
+(3, 48)      |  Drawer: counter#1::indigo_drawer_top_joint      |  categories: ['drawer'] | asset: None    |  Handle: indigo_drawer_handle_top    |  JointLimit: (0.0, 0.411)    |  Pose: 0.0     (excluded from planning)
+(3, None, 0)      |  Space: counter#1::sektion      |  categories: ['space'] | asset: None    |  Pose: (0.5, 7.6, 1.394, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 4)      |  Surface: counter#1::front_left_stove      |  categories: ['surface'] | asset: None    |  Pose: (0.567, 7.872, 0.773, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 5)      |  Surface: counter#1::front_right_stove      |  categories: ['surface'] | asset: None    |  Pose: (0.567, 8.18, 0.773, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 27)      |  Surface: counter#1::hitman_countertop      |  categories: ['surface'] | asset: None    |  Pose: (0.459, 6.779, 0.809, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 48)      |  Space: counter#1::indigo_drawer_top      |  categories: ['space'] | asset: None    |  Pose: (0.594, 8.843, 0.722, 0.0, -0.0, 0.0)     (excluded from planning)
+7      |  Object: dishwasher#1      |  categories: ['dishwasher'] | asset: Dishwasher/2085    |  Pose: (0.7, 6.4, 0.366, 0.0, -0.0, 3.142)     (excluded from planning)
+(7, 1)      |  Drawer: dishwasher#1::dishwasher_door      |  categories: ['drawer'] | asset: Dishwasher/2085    |  Handle: handle_link    |  JointLimit: (0.0, 0.49)    |  Pose: 0.0     (excluded from planning)
+(7, None, 5)      |  Space: dishwasher#1::upper_shelf      |  categories: ['space'] | asset: Dishwasher/2085    |  Pose: (0.772, 6.357, 0.279, 1.571, -0.0, 1.571)     (excluded from planning)
+8      |  Object: basin#1      |  categories: ['basin'] | asset: Basin/102379    |  Pose: (0.5, 5.6, 0.364, 0.0, -0.0, 3.142)     (excluded from planning)
+(8, None, 2)      |  Surface: basin#1::faucet_platform      |  categories: [] | asset: Basin/102379    |  Pose: (0.265, 5.593, 0.859, 1.571, -0.0, 1.571)     (excluded from planning)
+(8, None, 3)      |  Surface: basin#1::basin_bottom      |  categories: ['surface'] | asset: Basin/102379    |  Pose: (0.537, 5.6, 0.785, 1.571, -0.0, 1.571)     (excluded from planning)
+10      |  Object: fridge#1      |  categories: ['fridge'] | asset: Fridge/10144    |  Pose: (0.5, 4.9, 1.006, 0.0, -0.0, 3.142)     (excluded from planning)
+(10, 1)      |  Door: fridge#1::fridge_door      |  categories: ['door'] | asset: Fridge/10144    |  Handle: fridge_door_handle    |  JointLimit: (0.0, 2.967)    |  Pose: 1.78     (excluded from planning)
+(10, None, 8)      |  Surface: fridge#1::shelf_bottom      |  categories: ['surface'] | asset: Fridge/10144    |  Pose: (0.5, 4.9, 1.006, 1.571, -0.0, 1.571)     (excluded from planning)
+(10, None, 9)      |  Surface: fridge#1::shelf_top      |  categories: ['surface'] | asset: Fridge/10144    |  Pose: (0.5, 4.9, 1.006, 1.571, -0.0, 1.571)     (excluded from planning)
+11      |  Movable: cabbage      |  categories: ['food'] | asset: Food/VeggieCabbage    |  Pose: (0.668, 4.862, 0.83, 0.0, -0.0, 1.687)     (excluded from planning)
+14      |  Movable: fork      |  categories: ['utensil'] | asset: KitchenFork/10495    |  Pose: (0.735, 8.831, 0.689, 0.0, -0.0, 2.447)     (excluded from planning)
+9      |  Object: faucet#1      |  categories: ['faucet'] | asset: Faucet/104    |  Pose: (0.265, 5.593, 1.012, 0.0, -0.0, 3.142)     (excluded from planning)
+(9, 3)      |  Knob: faucet#1::joint_faucet_0      |  categories: ['knob', 'joint'] | asset: Faucet/104    |  Handle: link_0    |  JointLimit: (0.0, 1.571)    |  Pose: 0.0     (excluded from planning)
+(9, 5)      |  Knob: faucet#1::joint_faucet_1      |  categories: ['knob', 'joint'] | asset: Faucet/104    |  Handle: link_1    |  JointLimit: (-0.0, 1.571)    |  Pose: 0.0     (excluded from planning)
+4      |  Object: braiserlid#1      |  categories: ['braiserlid', 'movable'] | asset: BraiserLid/100015    |  Pose: (0.567, 7.872, 0.712, 0.0, -0.0, 2.667)     (excluded from planning)
+5      |  Object: braiserbody#1      |  categories: ['braiserbody', 'surface', 'region', 'space', 'movable'] | asset: BraiserBody/100015    |  Pose: (0.7, 8.829, 0.923, 0.0, -0.0, 1.571)     (excluded from planning)
+(5, None, 1)      |  Surface: braiserbody#1::braiser_bottom      |  categories: ['surface'] | asset: BraiserBody/100015    |  Pose: (0.7, 8.829, 0.923, 1.571, -0.0, -0.0)     (excluded from planning)
+6      |  Object: oven#1      |  categories: ['oven'] | asset: Oven/01909    |  Pose: (0.6, 8.0, 0.602, 0.0, -0.0, 3.142)     (excluded from planning)
+(6, 5)      |  Knob: oven#1::knob_joint_2      |  categories: ['knob', 'joint'] | asset: Oven/01909    |  Handle: knob_link_2    |  JointLimit: (-0.0, 1.047)    |  Pose: 0.0     (excluded from planning)
+(6, 7)      |  Knob: oven#1::knob_joint_3      |  categories: ['knob', 'joint'] | asset: Oven/01909    |  Handle: knob_link_3    |  JointLimit: (-0.0, 1.047)    |  Pose: 0.0     (excluded from planning)
+12      |  Movable: salt-shaker      |  categories: ['condiment', 'sprinkler'] | asset: Salter/3934    |  Pose: (0.771, 7.071, 1.152, 0.0, -0.0, 3.142)     (excluded from planning)
+13      |  Movable: pepper-shaker      |  categories: ['condiment', 'sprinkler'] | asset: Salter/5861    |  Pose: (0.764, 7.303, 1.164, 0.0, -0.0, 3.142)     (excluded from planning)
+------------------------- 
+PART II: WORLD ATTACHMENTS -------------------------
+{  chicken-leg: Attachment(pr2robot, chicken-leg),
+   braiserlid#1: ObjAttachment(counter#1::front_left_stove, braiserlid#1),
+   braiserbody#1: ObjAttachment(counter#1::indigo_tmp, braiserbody#1),
+   faucet#1: ObjAttachment(basin#1::faucet_platform, faucet#1),
+   cabbage: ObjAttachment(fridge#1::shelf_bottom, cabbage),
+   salt-shaker: ObjAttachment(counter#1::sektion, salt-shaker),
+   pepper-shaker: ObjAttachment(counter#1::sektion, pepper-shaker),
+   fork: ObjAttachment(counter#1::indigo_drawer_top, fork)}
+------------------------------------------------------------
+----------------
+Facts updated (object_reducer = object-related) (51)
+  = [2] : ['=', ('pickcost',), 1], ['=', ('placecost',), 1]
+  aconf [2] : ['aconf', 'left', aq80=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)], ['aconf', 'right', aq192=(-0.677, -0.343, -1.2, -1.467, -1.242, -1.954, -2.223)]
+  arm [2] : ['arm', 'left'], ['arm', 'right']
+  ataconf [2] : ['ataconf', 'left', aq80=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)], ['ataconf', 'right', aq192=(-0.677, -0.343, -1.2, -1.467, -1.242, -1.954, -2.223)]
+  atbconf [1] : ['atbconf', q272=(1.574, 4.855, 0.71, 2.025)]
+  atgrasp [1] : ['atgrasp', 'left', '1|chicken-leg', g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)]
+  atpose [4] : ['atpose', '12|salt-shaker', p46395=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)], ['atpose', '13|pepper-shaker', p46396=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)], ['atpose', '4|braiserlid#1', p46393=(0.567, 7.872, 0.712, 0.0, -0.0, 2.667)], ['atpose', '5|braiserbody#1', p46391=(0.7, 8.829, 0.923, 0.0, -0.0, 1.571)]
+  atposition [6] : ['atposition', '(10, 1)|fridge#1::fridge_door', pstn16829=1.78], ['atposition', '(3, 10)|counter#1::chewie_door_right_joint', pstn16827=1.872], ['atposition', '(3, 14)|counter#1::chewie_door_left_joint', pstn16828=-1.872], ['atposition', '(6, 5)|oven#1::knob_joint_2', pstn16830=0.0], ['atposition', '(6, 7)|oven#1::knob_joint_3', pstn16831=0.0], ['atposition', '(9, 3)|faucet#1::joint_faucet_0', pstn16832=0.0]
+  bconf [1] : ['bconf', q272=(1.574, 4.855, 0.71, 2.025)]
+  cangrasphandle [1] : ['cangrasphandle']
+  canmove [1] : ['canmove']
+  canmovebase [1] : ['canmovebase']
+  canpick [1] : ['canpick']
+  canpull [1] : ['canpull', 'right']
+  canungrasp [1] : ['canungrasp']
+  containable [2] : ['containable', '1|chicken-leg', '(3, none, 0)|counter#1::sektion'], ['containable', '1|chicken-leg', '5|braiserbody#1']
+  controllable [2] : ['controllable', 'left'], ['controllable', 'right']
+  food [1] : ['food', '1|chicken-leg']
+  grasp [1] : ['grasp', '1|chicken-leg', g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)]
+  graspable [1] : ['graspable', '1|chicken-leg']
+  handempty [1] : ['handempty', 'right']
+  pose [4] : ['pose', '12|salt-shaker', p46395=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)], ['pose', '13|pepper-shaker', p46396=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)], ['pose', '4|braiserlid#1', p46393=(0.567, 7.872, 0.712, 0.0, -0.0, 2.667)], ['pose', '5|braiserbody#1', p46391=(0.7, 8.829, 0.923, 0.0, -0.0, 1.571)]
+  position [6] : ['position', '(10, 1)|fridge#1::fridge_door', pstn16829=1.78], ['position', '(3, 10)|counter#1::chewie_door_right_joint', pstn16827=1.872], ['position', '(3, 14)|counter#1::chewie_door_left_joint', pstn16828=-1.872], ['position', '(6, 5)|oven#1::knob_joint_2', pstn16830=0.0], ['position', '(6, 7)|oven#1::knob_joint_3', pstn16831=0.0], ['position', '(9, 3)|faucet#1::joint_faucet_0', pstn16832=0.0]
+  region [1] : ['region', '(3, none, 35)|counter#1::indigo_tmp']
+  stackable [3] : ['stackable', '1|chicken-leg', '(3, none, 35)|counter#1::indigo_tmp'], ['stackable', '1|chicken-leg', '(5, none, 1)|braiserbody#1::braiser_bottom'], ['stackable', '1|chicken-leg', '(8, none, 3)|basin#1::basin_bottom']
+  staticlink [1] : ['staticlink', '(3, none, 35)|counter#1::indigo_tmp']
+  surface [1] : ['surface', '(3, none, 35)|counter#1::indigo_tmp']
+----------------
+Goal (2): (and
+   ('stacked', '1|chicken-leg', '(3, None, 35)|counter#1::indigo_tmp'),
+   ('placed', '1|chicken-leg'),
+)
+
+--------------------------------------------------
+Robot: pr2robot | Objects: [1, 3, (3, None, 35)]
+Movable: [pr2robot, 1] | Fixed: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] | Floor: [2]
+--------------------------------------------------
+
+[llamp_agent._get_current_whole_goal_sequence] previous_goals
+    0    [['open', (10, 1)]]
+    1    [['picked', 1]]
+[llamp_agent._get_current_whole_goal_sequence] future_goals
+    2    [['arrange', 1, (3, None, 35)]]
+    3    [['open', (3, 14)]]
+    4    [['pick', 12]]
+    5    [['arrange', 12, (3, None, 35)]]
+    6    [['open', (3, 10)]]
+    7    [['pick', 13]]
+    8    [['arrange', 13, (3, None, 35)]]
+    9    [['pick', 5]]
+    10    [['arrange', 5, (3, None, 4)]]
+    11    [['pick', 4]]
+    12    [['arrange', 4, (3, None, 35)]]
+    13    [['turn-on', (6, 7)]]
+    14    [['pick', 1]]
+    15    [['arrange', 1, 5]]
+    16    [['turn-on', (9, 3)]]
+    17    [['arrange', 5, (8, None, 3)]]
+    18    [['turn-off', (9, 3)]]
+    19    [['pick', 4]]
+    20    [['arrange', 4, 5]]
+    21    [['turn-on', (6, 7)]]
+[pddlstream_agent._check_subgoals_grounding]     goal = ('and', ['stacked', 1, (3, None, 35)])
+
+
+focused | | number of evaluations: 21
+
+
+Iteration: 1 | Complexity: 5 | Skeletons: 0 | Skeleton Queue: 0 | Disabled: 0 | Evaluations: 21 | Eager Calls: 0 | Cost: inf | Search Time: 0.000 | Sample Time: 0.000 | Total Time: 0.000
+
+
+log | number of evaluations 1: 21
+
+Exhausted optimistic:True
+Plan: 1 | Cost: 2 | Length: 2 | Runtime: 0.487 | Remaining: 9.513
+Actions: [arrange(v14, v4, v34)]
+
+Plans: 1 | Total runtime: 0.487
+0/1) Stream plan (0, 0, 0.000): 
+Action plan (2, 2.000): 
+    _
+    arrange ( left, 1|chicken-leg, (3, None, 35)|counter#1::indigo_tmp )
+
+
+
+focused.py | time.time() - start_time = 0.57 (timeout = 60)
+Summary: {complexity: 5, cost: 2.000, evaluations: 21, iterations: 1, length: 2, run_time: 0.571, sample_time: 0.000, search_time: 0.571, skeletons: 1, solutions: 1, solved: True, timeout: False}
+focused | sequencing time: 0.5698206424713135 | sampling time: 0
+[pddlstream_agent._check_subgoals_grounding]     symbolic plan = [Action(name='move_base', args=()), Action(name='arrange', args=('left', 1, (3, None, 35)))]
+
+--------------------------------------------------
+
+---------------------------------------- skeleton ----------------------------------------
+['arrange', 'left', 1, (3, None, 35)]
+------------------------------------------------------------------------------------------
+------------------------- PLANNER_KWARGS -------------------------
+{  'debug': False,
+   'domain_modifier': None,
+   'evaluation_time': 30,
+   'fc': <pigi_tools.feasibility_checkers.ChooseSkeleton object at 0x7bd979d545b0>,
+   'initial_complexity': 5,
+   'log_failures': False,
+   'max_complexity': 5,
+   'max_evaluation_plans': 10,
+   'max_iterations': 4,
+   'max_planner_time': 10,
+   'max_plans': 10,
+   'max_skeletons': 1,
+   'max_solutions': 1,
+   'max_time': inf,
+   'plan_dataset': [],
+   'search_sample_ratio': 0,
+   'stream_planning_timeout': 60,
+   'total_planning_timeout': 60,
+   'use_feedback': False,
+   'visualize': False,
+   'world': World(pr2robot)}
+------------------------------------------------------------
+
+
+focused | | number of evaluations: 51
+
+
+Iteration: 1 | Complexity: 5 | Skeletons: 0 | Skeleton Queue: 0 | Disabled: 0 | Evaluations: 51 | Eager Calls: 0 | Cost: inf | Search Time: 0.000 | Sample Time: 0.000 | Total Time: 0.000
+
+
+log | number of evaluations 1: 51
+
+Exhausted optimistic:True
+Plan: 1 | Cost: 2 | Length: 2 | Runtime: 0.487 | Remaining: 9.513
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 2 | Cost: 2 | Length: 2 | Runtime: 0.974 | Remaining: 9.026
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 3 | Cost: 2 | Length: 2 | Runtime: 1.470 | Remaining: 8.530
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 4 | Cost: 2 | Length: 2 | Runtime: 1.960 | Remaining: 8.040
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 5 | Cost: 2 | Length: 2 | Runtime: 2.440 | Remaining: 7.560
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 6 | Cost: 2 | Length: 2 | Runtime: 2.915 | Remaining: 7.085
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 7 | Cost: 2 | Length: 2 | Runtime: 3.398 | Remaining: 6.602
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 8 | Cost: 2 | Length: 2 | Runtime: 3.877 | Remaining: 6.123
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 9 | Cost: 2 | Length: 2 | Runtime: 4.353 | Remaining: 5.647
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 10 | Cost: 2 | Length: 2 | Runtime: 4.830 | Remaining: 5.170
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plans: 10 | Total runtime: 4.831
+
+
+Count Diverse Time: 5.141
+Count Diverse Plans: 10
+
+
+
+
+1/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t29))]
+2/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t31))]
+3/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t33))]
+4/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t35))]
+5/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t37))]
+6/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t39))]
+7/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t41))]
+8/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t43))]
+9/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t45))]
+10/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t47))]
+0/10) Stream plan (4, 4, 12.100): 
+   1 > sample-pose:(1, (3, None, 35))->(#p0)
+   2 > inverse-reachability:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))->(#q3)
+   3 > inverse-kinematics:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3)->(#t29)
+   4 > plan-base-motion:(q272=(1.574, 4.855, 0.71, 2.025), #q3)->(#t30)
+Action plan (2, 2.000): 
+    _
+    arrange ( left, 1|chicken-leg, (3, None, 35)|counter#1::indigo_tmp, #p0_[(3, None, 35)|counter#1::indigo_tmp]_, g264, #q3, #t29 )
+
+Plans: 1 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 2.03 sec
+
+1/10) Stream plan (4, 4, 12.100): 
+   1 > sample-pose:(1, (3, None, 35))->(#p0)
+   2 > inverse-reachability:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))->(#q3)
+   3 > inverse-kinematics:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3)->(#t31)
+   4 > plan-base-motion:(q272=(1.574, 4.855, 0.71, 2.025), #q3)->(#t32)
+Action plan (2, 2.000): 
+    _
+    arrange ( left, 1|chicken-leg, (3, None, 35)|counter#1::indigo_tmp, #p0_[(3, None, 35)|counter#1::indigo_tmp]_, g264, #q3, #t31 )
+
+Plans: 2 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 3.58 sec
+
+2/10) Stream plan (4, 4, 12.100): 
+   1 > sample-pose:(1, (3, None, 35))->(#p0)
+   2 > inverse-reachability:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))->(#q3)
+   3 > inverse-kinematics:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3)->(#t33)
+   4 > plan-base-motion:(q272=(1.574, 4.855, 0.71, 2.025), #q3)->(#t34)
+Action plan (2, 2.000): 
+    _
+    arrange ( left, 1|chicken-leg, (3, None, 35)|counter#1::indigo_tmp, #p0_[(3, None, 35)|counter#1::indigo_tmp]_, g264, #q3, #t33 )
+
+Plans: 3 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 5.22 sec
+
+3/10) Stream plan (4, 4, 12.100): 
+   1 > sample-pose:(1, (3, None, 35))->(#p0)
+   2 > inverse-reachability:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))->(#q3)
+   3 > inverse-kinematics:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3)->(#t35)
+   4 > plan-base-motion:(q272=(1.574, 4.855, 0.71, 2.025), #q3)->(#t36)
+Action plan (2, 2.000): 
+    _
+    arrange ( left, 1|chicken-leg, (3, None, 35)|counter#1::indigo_tmp, #p0_[(3, None, 35)|counter#1::indigo_tmp]_, g264, #q3, #t35 )
+
+Plans: 4 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 6.78 sec
+
+4/10) Stream plan (4, 4, 12.100): 
+   1 > sample-pose:(1, (3, None, 35))->(#p0)
+   2 > inverse-reachability:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))->(#q3)
+   3 > inverse-kinematics:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3)->(#t37)
+   4 > plan-base-motion:(q272=(1.574, 4.855, 0.71, 2.025), #q3)->(#t38)
+Action plan (2, 2.000): 
+    _
+    arrange ( left, 1|chicken-leg, (3, None, 35)|counter#1::indigo_tmp, #p0_[(3, None, 35)|counter#1::indigo_tmp]_, g264, #q3, #t37 )
+
+Plans: 5 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 8.35 sec
+
+5/10) Stream plan (4, 4, 12.100): 
+   1 > sample-pose:(1, (3, None, 35))->(#p0)
+   2 > inverse-reachability:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))->(#q3)
+   3 > inverse-kinematics:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3)->(#t39)
+   4 > plan-base-motion:(q272=(1.574, 4.855, 0.71, 2.025), #q3)->(#t40)
+Action plan (2, 2.000): 
+    _
+    arrange ( left, 1|chicken-leg, (3, None, 35)|counter#1::indigo_tmp, #p0_[(3, None, 35)|counter#1::indigo_tmp]_, g264, #q3, #t39 )
+
+Plans: 6 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 9.8 sec
+
+6/10) Stream plan (4, 4, 12.100): 
+   1 > sample-pose:(1, (3, None, 35))->(#p0)
+   2 > inverse-reachability:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))->(#q3)
+   3 > inverse-kinematics:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3)->(#t41)
+   4 > plan-base-motion:(q272=(1.574, 4.855, 0.71, 2.025), #q3)->(#t42)
+Action plan (2, 2.000): 
+    _
+    arrange ( left, 1|chicken-leg, (3, None, 35)|counter#1::indigo_tmp, #p0_[(3, None, 35)|counter#1::indigo_tmp]_, g264, #q3, #t41 )
+
+Plans: 7 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 11.43 sec
+
+7/10) Stream plan (4, 4, 12.100): 
+   1 > sample-pose:(1, (3, None, 35))->(#p0)
+   2 > inverse-reachability:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))->(#q3)
+   3 > inverse-kinematics:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3)->(#t43)
+   4 > plan-base-motion:(q272=(1.574, 4.855, 0.71, 2.025), #q3)->(#t44)
+Action plan (2, 2.000): 
+    _
+    arrange ( left, 1|chicken-leg, (3, None, 35)|counter#1::indigo_tmp, #p0_[(3, None, 35)|counter#1::indigo_tmp]_, g264, #q3, #t43 )
+
+Plans: 8 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 13.17 sec
+
+8/10) Stream plan (4, 4, 12.100): 
+   1 > sample-pose:(1, (3, None, 35))->(#p0)
+   2 > inverse-reachability:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))->(#q3)
+   3 > inverse-kinematics:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3)->(#t45)
+   4 > plan-base-motion:(q272=(1.574, 4.855, 0.71, 2.025), #q3)->(#t46)
+Action plan (2, 2.000): 
+    _
+    arrange ( left, 1|chicken-leg, (3, None, 35)|counter#1::indigo_tmp, #p0_[(3, None, 35)|counter#1::indigo_tmp]_, g264, #q3, #t45 )
+
+Plans: 9 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 14.9 sec
+
+9/10) Stream plan (4, 4, 12.100): 
+   1 > sample-pose:(1, (3, None, 35))->(#p0)
+   2 > inverse-reachability:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))->(#q3)
+   3 > inverse-kinematics:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3)->(#t47)
+   4 > plan-base-motion:(q272=(1.574, 4.855, 0.71, 2.025), #q3)->(#t48)
+Action plan (2, 2.000): 
+    _
+    arrange ( left, 1|chicken-leg, (3, None, 35)|counter#1::indigo_tmp, #p0_[(3, None, 35)|counter#1::indigo_tmp]_, g264, #q3, #t47 )
+
+Plans: 10 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 16.4 sec
+
+
+
+focused.py | time.time() - start_time = 21.56 (timeout = 60)
+
+Iteration: 2 | Complexity: 5 | Skeletons: 0 | Skeleton Queue: 0 | Disabled: 0 | Evaluations: 655 | Eager Calls: 0 | Cost: inf | Search Time: 5.223 | Sample Time: 16.338 | Total Time: 21.562
+
+
+log | number of evaluations 2: 655
+
+Exhausted optimistic:True
+Plan: 1 | Cost: 2 | Length: 2 | Runtime: 0.503 | Remaining: 9.497
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 2 | Cost: 2 | Length: 2 | Runtime: 0.998 | Remaining: 9.002
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 3 | Cost: 2 | Length: 2 | Runtime: 1.506 | Remaining: 8.494
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 4 | Cost: 2 | Length: 2 | Runtime: 2.008 | Remaining: 7.992
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 5 | Cost: 2 | Length: 2 | Runtime: 2.511 | Remaining: 7.489
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 6 | Cost: 2 | Length: 2 | Runtime: 3.035 | Remaining: 6.965
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 7 | Cost: 2 | Length: 2 | Runtime: 3.550 | Remaining: 6.450
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 8 | Cost: 2 | Length: 2 | Runtime: 4.058 | Remaining: 5.942
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 9 | Cost: 2 | Length: 2 | Runtime: 4.573 | Remaining: 5.427
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plan: 10 | Cost: 2 | Length: 2 | Runtime: 5.082 | Remaining: 4.918
+Actions: [arrange(v14, v4, v34, #p0, v42, #q3, #t28)]
+
+Plans: 10 | Total runtime: 5.082
+
+
+Count Diverse Time: 5.336
+Count Diverse Plans: 10
+
+
+
+
+1/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t49))]
+2/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t51))]
+3/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t53))]
+4/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t55))]
+5/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t57))]
+6/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t59))]
+7/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t61))]
+8/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t63))]
+9/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t65))]
+10/10) Score: True | Feasible: True | Cost: 2.0 | Length: 1 | Plan: [Action(name='arrange', args=(left, 1, (3, None, 35), #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3, #t67))]
+0/10) Stream plan (4, 4, 12.100): 
+   1 > sample-pose:(1, (3, None, 35))->(#p0)
+   2 > inverse-reachability:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0))->(#q3)
+   3 > inverse-kinematics:(left, 1, #p0, g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), #q3)->(#t49)
+   4 > plan-base-motion:(q272=(1.574, 4.855, 0.71, 2.025), #q3)->(#t50)
+Action plan (2, 2.000): 
+    _
+    arrange ( left, 1|chicken-leg, (3, None, 35)|counter#1::indigo_tmp, #p0_[(3, None, 35)|counter#1::indigo_tmp]_, g264, #q3, #t49 )
+
+Solved: False
+Cost: 0.000
+--------------------------------------------------
+
+[TIME LOG] (4)
+{'goal': ['open([(10, 1)])'], 'status': 'already', 'planning': 0, 'actual_goal': [('graspedhandle', (10, 1))], 'agent_state': 'agent_state_0.pkl', 'goal_original': [['open', (10, 1)]], 'last_node': "1_a_['open', 'fridge door']", 'object_reducer': 'object-related', 'plan': [], 'plan_len': 0, 'plan_skeleton': []}
+{'goal': ['pick', 1], 'status': 'solved', 'planning': 8.664, 'actual_goal': [('picked', 1)], 'agent_state': 'agent_state_1.pkl', 'goal_original': [['picked', 1]], 'last_node': "2_a_['pick', 'chicken leg']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [1], 'joint': [], 'surface': [], 'space': []}, 'plan': ["Action(name='move_base', args=(q96=(2.0, 6.25, 0.2, 3.142), q704=(1.574, 4.855, 0.71, 2.025), c104=t(4, 44)))", "Action(name='pick', args=('left', 1, p46355=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), g264=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), q704=(1.574, 4.855, 0.71, 2.025), c576=t(7, 38)))"], 'plan_len': 2, 'plan_skeleton': ['move_base()', 'pick(1,)']}
+{'goal': ['stacked((1, (3, None, 35)))', 'placed((1,))'], 'planning': 28.6902, 'goal_original': [['stacked', 1, (3, None, 35)], ['placed', 1]], 'objects_by_category': {'graspable': [1], 'joint': [], 'surface': [(3, None, 35)], 'space': []}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+
+--------------------------------------------------
+pddlstream.replan    step_count = 2
