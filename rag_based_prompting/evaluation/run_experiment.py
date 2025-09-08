@@ -20,7 +20,7 @@ EXP_PATH = Path(__file__).resolve().parent / "experiment_setup.csv"
 RAG_COLUMNS = ['recipes', 'wikihow', 'videos', 'locations']
 
 PLAN_FOLDER = "plans"
-PLAN_SEEDS = ['414', '992349', '910001']
+PLAN_SEEDS = [414, 992349, 910001]
 
 
 def update_parser(conf):
@@ -55,7 +55,7 @@ def run_all_experiments(start_idx: int):
             "--rag_cskg_locations", str(row[RAG_COLUMNS[3]]),
             "--exp_subdir", folder,
             "--planning_mode", "actions",
-            "--dual_arm", "--rag_plans"
+            "--dual_arm"
         ]
 
         if check_experiment_needed(folder):
@@ -170,7 +170,7 @@ if __name__ == "__main__":
     # generate_seeds_for_experiment()
     parser = argparse.ArgumentParser()
     parser.add_argument("--exp_start_idx", type=int, default=0)
-    parser.add_argument("--plan_exp", type=bool, default=False)
+    parser.add_argument("--plan_exp", action="store_true")
     args = parser.parse_args()
     if args.plan_exp:
         run_planning_experiment()

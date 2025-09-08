@@ -45,7 +45,7 @@ def get_problem_dict_from_open_goal(world, objects, args, load_llm_memory=None, 
     rag_kwargs['rag_wikihow'] = args.rag_wikihow
     rag_kwargs['rag_cutting_vids'] = args.rag_cutting_vids
     rag_kwargs['rag_cskg_locations'] = args.rag_cskg_locations
-    rag_kwargs['rag_plans'] = args.rag_planes
+    rag_kwargs['rag_plans'] = args.rag_plans
     if len(args.exp_name) == 0:
         args.exp_name = f'seed_{args.seed}'
     llamp_api = llamp_api_class(open_goal, planning_mode=planning_mode, load_memory=load_llm_memory, seed=args.seed,
