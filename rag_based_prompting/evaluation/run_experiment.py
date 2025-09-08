@@ -55,7 +55,7 @@ def run_all_experiments(start_idx: int):
             "--rag_cskg_locations", str(row[RAG_COLUMNS[3]]),
             "--exp_subdir", folder,
             "--planning_mode", "actions",
-            "--dual_arm"
+            "--dual_arm", "--rag_plans"
         ]
 
         if check_experiment_needed(folder):
@@ -77,7 +77,7 @@ def run_planning_experiment():
         "--rag_cskg_locations", "0.0",
         "--exp_subdir", PLAN_FOLDER,
         "--planning_mode", "actions",
-        "--dual_arm", "--rag_plans"
+        "--dual_arm"
     ]
 
     # Create the 3 foundational plans
