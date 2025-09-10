@@ -139,7 +139,6 @@ def get_plan_from_seed(seed: str) -> str:
         p for p in full_path.iterdir()
         if f"seed_{seed}" in p.name
     ]
-    # matching_folder = list(full_path.glob(f"*seed_{seed}"))
     if len(matching_folder) != 1:
         print(f'No matching folder found in {full_path}')
         return None
@@ -159,13 +158,19 @@ def get_plan_from_seed(seed: str) -> str:
 
 
 def transform_planning_string(node_desc: str):
-    match = re.search(r"\[(.*)\]", node_desc)
+    match = re.search(r"\[.*?\]", str(node_desc))
     if not match:
         return None
-    parts = ast.literal_eval("[" + match.group(1) + "]")
+    candidate = match.group(0)
+    candidate = re.sub(r">.*", "", candidate)
+    try:
+        parts = ast.literal_eval(candidate)
+    except Exception:
+        # Fallback: manually split strings inside the brackets
+        parts = [s.strip(" '\"") for s in candidate.strip("[]").split(",")]
     func = parts[0]
-    args = ", ".join(parts[1:])
-    return f"{func}({args})"
+    objs = ", ".join(parts[1:])
+    return f"{func}({objs})"
 
 
 def generate_seeds_for_experiment(n=SEED_AMOUNT, path=SEED_PATH):
