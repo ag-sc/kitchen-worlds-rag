@@ -33,7 +33,7 @@ def update_parser(conf):
                         help="What percentage of the cutting tutorial videos should be used in RAG?")
     parser.add_argument("--rag_cskg_locations", type=float, choices=[Range(  0.0, 1.0)], default=0.5,
                         help="What percentage of the CSKG Locations should be used in RAG?")
-    parser.add_argument("--rag_plans", type=bool, default=False, help="Should the dynamic plan database be used?")
+    parser.add_argument("--rag_plans", action="store_true", help="Should the dynamic plan database be used?")
     return parser
 
 
@@ -77,15 +77,20 @@ def run_planning_experiment():
         "--rag_cskg_locations", "0.0",
         "--exp_subdir", PLAN_FOLDER,
         "--planning_mode", "actions",
-        "--dual_arm"
+        "--dual_arm", "--rag_plans"
     ]
 
     # Create the 3 foundational plans
     for s in PLAN_SEEDS:
-        run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
-        gc.collect()
-        plan = get_plan_from_seed(s)
-        RAGPlanManager.add_new_plan(plan)
+        if check_seed_needed(PLAN_FOLDER, s):
+            run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
+            gc.collect()
+            plan = get_plan_from_seed(str(s))
+            print(f'PLAN: {plan}')
+            RAGPlanManager.add_new_plan(plan)
+            time.sleep(5)
+        else:
+            print(f'Seed {s} was already evaluated')
 
     # Perform the 100 experiment seeds
     with open(SEED_PATH, "r") as f:
@@ -121,11 +126,18 @@ def check_seed_needed(folder: str, seed: str) -> bool:
 def get_plan_from_seed(seed: str) -> str:
     full_path = Path(__file__).parent / ".." / "eval_scenarios" / PLAN_FOLDER
     full_path = full_path.resolve()
-    matching_folder = list(full_path.glob(f"*seed_{seed}"))
+    full_path.mkdir(parents=True, exist_ok=True)
+    matching_folder = [
+        p for p in full_path.iterdir()
+        if f"seed_{seed}" in p.name
+    ]
+    # matching_folder = list(full_path.glob(f"*seed_{seed}"))
     if len(matching_folder) != 1:
+        print(f'No matching folder found in {full_path}')
         return None
     res_csv = list(matching_folder[0].glob("seed_*.csv"))
     if len(res_csv) != 1:
+        print(f'No CSV file found in {matching_folder}')
         return None
     results = pd.read_csv(res_csv[0], index_col="idx")
     plan = []
