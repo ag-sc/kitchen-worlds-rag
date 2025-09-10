@@ -45,9 +45,9 @@ def summarise_all_experiments():
 
 def evaluate_experiment_summaries():
     experiment_metadata = pd.read_csv(EXP_PATH, index_col="name")
+    df_eval = pd.DataFrame(columns=COLUMNS)
     for name, row in tqdm(experiment_metadata.iterrows(),
                           f"Evaluating all {len(experiment_metadata)} experiment summaries..."):
-        df_eval = pd.DataFrame(columns=COLUMNS)
         summary_csv = Path(__file__).parent / ".." / "eval_scenarios" / row["subfolder"] / "experiment_summary.csv"
         df = pd.read_csv(summary_csv, index_col=SUMMARY_COLUMNS[0])
         cont_sr_count, cont_sr_total = 0, 0
@@ -85,7 +85,7 @@ def evaluate_experiment_summaries():
             COLUMNS[12]: round(wasted_time / len(df), 3),
         }
         df_eval = pd.concat([df_eval, pd.DataFrame([new_row])], ignore_index=True)
-        df_eval.to_csv(f'{Path(__file__).parent / ".." / "eval_scenarios" / "summary.csv"}', index=False)
+    df_eval.to_csv(f'{Path(__file__).parent / ".." / "eval_scenarios" / "summary.csv"}', index=False)
 
 
 def split_success_rate_string(sr: str) -> (int, int):
@@ -153,5 +153,8 @@ def evaluate_correlations():
 
 if __name__ == "__main__":
     summarise_all_experiments()
+    print('Finished summarising all seeds in each experiment setup')
     evaluate_experiment_summaries()
+    print('Finished calculating the complete summary over all seeds in an experiment')
     evaluate_correlations()
+    print('Finished evaluating the correlations between metrics')

@@ -65,6 +65,10 @@ def run_all_experiments(start_idx: int):
                     gc.collect()
                     print(f'Finished experiment with seed {s}')
                     time.sleep(5)
+                else:
+                    print(f'Seed {s} was already evaluated')
+        else:
+            print(f"Experiment \'{row['name']}\' is already finished")
 
 
 def run_planning_experiment():
@@ -82,7 +86,7 @@ def run_planning_experiment():
 
     # Create the 3 foundational plans
     for s in PLAN_SEEDS:
-        if check_seed_needed(PLAN_FOLDER, s):
+        if check_seed_needed(PLAN_FOLDER, str(s)):
             run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
             gc.collect()
             plan = get_plan_from_seed(str(s))
@@ -96,7 +100,7 @@ def run_planning_experiment():
     with open(SEED_PATH, "r") as f:
         seeds = [int(line.strip()) for line in f]
     if check_experiment_needed(PLAN_FOLDER):
-        for s in tqdm(seeds, f"Running the experiment \'Dynamic plans\' with all seeds"):
+        for s in tqdm(seeds, "Running the experiment \'Dynamic plans\' with all seeds"):
             if check_seed_needed(PLAN_FOLDER, s):
                 run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
                 gc.collect()
@@ -104,6 +108,10 @@ def run_planning_experiment():
                 plan = get_plan_from_seed(s)
                 RAGPlanManager.add_new_plan(plan)
                 time.sleep(5)
+            else:
+                print(f'Seed {s} was already evaluated')
+    else:
+        print("Experiment \'Dynamic plans\' is already finished")
 
 
 def check_experiment_needed(folder: str, seed_amount=SEED_AMOUNT) -> bool:
