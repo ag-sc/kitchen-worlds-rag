@@ -1,0 +1,4789 @@
+[
+    {
+        "goal": [
+            "open([(10, 1)])"
+        ],
+        "goal_original": [
+            [
+                "open",
+                [
+                    10,
+                    1
+                ]
+            ]
+        ],
+        "plan": [],
+        "plan_skeleton": [],
+        "plan_len": 0,
+        "init": [],
+        "planning": 0,
+        "preimage": 0,
+        "last_node": "1_a_['open', 'fridge door']",
+        "status": "already",
+        "object_reducer": "object-related",
+        "agent_state": "agent_state_0.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    10,
+                    1
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 14.2056,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            1
+        ],
+        "goal_original": [
+            [
+                "picked",
+                1
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1
+            ],
+            "joint": [],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "2_a_['pick', 'chicken leg']",
+        "agent_state": "agent_state_1.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                1
+            ]
+        ]
+    },
+    {
+        "planning": 8.1363,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            1
+        ],
+        "goal_original": [
+            [
+                "picked",
+                1
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q272=(2.0, 6.25, 0.2, 3.142), q936=(1.505, 4.825, 1.204, 1.859), c912=t(4, 48)))",
+            "Action(name='pick', args=('left', 1, p13969=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), g168=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), q936=(1.505, 4.825, 1.204, 1.859), c400=t(7, 89)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "pick(1,)"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "btraj",
+                "c912=t(4, 48)"
+            ],
+            [
+                "canpick"
+            ],
+            [
+                "bconf",
+                "q936=(1.505, 4.825, 1.204, 1.859)"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "pose",
+                "1",
+                "p13969=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)"
+            ],
+            [
+                "grasp",
+                "1",
+                "g168=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)"
+            ],
+            [
+                "atbconf",
+                "q272=(2.0, 6.25, 0.2, 3.142)"
+            ],
+            [
+                "graspable",
+                "1"
+            ],
+            [
+                "reach",
+                "left",
+                "1",
+                "p13969=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "g168=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)",
+                "q936=(1.505, 4.825, 1.204, 1.859)"
+            ],
+            [
+                "atpose",
+                "1",
+                "p13969=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)"
+            ],
+            [
+                "kin",
+                "left",
+                "1",
+                "p13969=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "g168=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)",
+                "q936=(1.505, 4.825, 1.204, 1.859)",
+                "c400=t(7, 89)"
+            ],
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "handempty",
+                "left"
+            ],
+            [
+                "basemotion",
+                "q272=(2.0, 6.25, 0.2, 3.142)",
+                "c912=t(4, 48)",
+                "q936=(1.505, 4.825, 1.204, 1.859)"
+            ],
+            [
+                "bconf",
+                "q272=(2.0, 6.25, 0.2, 3.142)"
+            ],
+            [
+                "canmove"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [
+                1
+            ],
+            "joint": [],
+            "surface": [],
+            "space": []
+        },
+        "status": "solved",
+        "object_reducer": "heuristic-movables",
+        "last_node": "2_a_['pick', 'chicken leg']",
+        "agent_state": "agent_state_1b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                1
+            ]
+        ]
+    },
+    {
+        "planning": 22.6444,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            1,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "3_a_['arrange', 'chicken leg', 'counter top on the right']",
+        "agent_state": "agent_state_2.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 35.1845,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            1,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "custom_add=braiserbody#1",
+        "last_node": "3_a_['arrange', 'chicken leg', 'counter top on the right']",
+        "agent_state": "agent_state_2b.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 33.7013,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            1,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "3_a_['arrange', 'chicken leg', 'counter top on the right']",
+        "agent_state": "agent_state_2c.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "goal": [
+            "open([(3, 14)])"
+        ],
+        "goal_original": [
+            [
+                "open",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ],
+        "plan": [],
+        "plan_skeleton": [],
+        "plan_len": 0,
+        "init": [],
+        "planning": 0,
+        "preimage": 0,
+        "last_node": "4_a_['open', 'cabinet left door']",
+        "status": "already",
+        "object_reducer": "object-related",
+        "agent_state": "agent_state_3.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 7.7691,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            12
+        ],
+        "goal_original": [
+            [
+                "picked",
+                12
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q464=(1.505, 4.825, 1.204, 1.859), q960=(1.619, 7.515, 0.406, -0.798), c912=t(4, 91)))",
+            "Action(name='pick', args=('right', 12, p15050=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), g576=(-0.0, 0.0, 0.124, -3.142, -0.0, -3.142), q960=(1.619, 7.515, 0.406, -0.798), c24=t(7, 64)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "pick(12,)"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "kin",
+                "right",
+                "12",
+                "p15050=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)",
+                "g576=(-0.0, 0.0, 0.124, -3.142, -0.0, -3.142)",
+                "q960=(1.619, 7.515, 0.406, -0.798)",
+                "c24=t(7, 64)"
+            ],
+            [
+                "canpick"
+            ],
+            [
+                "handempty",
+                "right"
+            ],
+            [
+                "atpose",
+                "12",
+                "p15050=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "bconf",
+                "q960=(1.619, 7.515, 0.406, -0.798)"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "btraj",
+                "c912=t(4, 91)"
+            ],
+            [
+                "reach",
+                "right",
+                "12",
+                "p15050=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)",
+                "g576=(-0.0, 0.0, 0.124, -3.142, -0.0, -3.142)",
+                "q960=(1.619, 7.515, 0.406, -0.798)"
+            ],
+            [
+                "graspable",
+                "12"
+            ],
+            [
+                "canmove"
+            ],
+            [
+                "bconf",
+                "q464=(1.505, 4.825, 1.204, 1.859)"
+            ],
+            [
+                "atbconf",
+                "q464=(1.505, 4.825, 1.204, 1.859)"
+            ],
+            [
+                "pose",
+                "12",
+                "p15050=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "grasp",
+                "12",
+                "g576=(-0.0, 0.0, 0.124, -3.142, -0.0, -3.142)"
+            ],
+            [
+                "basemotion",
+                "q464=(1.505, 4.825, 1.204, 1.859)",
+                "c912=t(4, 91)",
+                "q960=(1.619, 7.515, 0.406, -0.798)"
+            ],
+            [
+                "controllable",
+                "right"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "solved",
+        "object_reducer": "object-related",
+        "last_node": "5_a_['pick', 'salt shaker']",
+        "agent_state": "agent_state_4.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                12
+            ]
+        ]
+    },
+    {
+        "planning": 76.9763,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            13
+        ],
+        "goal_original": [
+            [
+                "picked",
+                13
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                13,
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5,
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "6_a_['pick', 'pepper shaker']",
+        "agent_state": "agent_state_5.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                13
+            ]
+        ]
+    },
+    {
+        "planning": 84.6963,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            13
+        ],
+        "goal_original": [
+            [
+                "picked",
+                13
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                13,
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5,
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "6_a_['pick', 'pepper shaker']",
+        "agent_state": "agent_state_5b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                13
+            ]
+        ]
+    },
+    {
+        "planning": 0.9602,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            13
+        ],
+        "goal_original": [
+            [
+                "picked",
+                13
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                13,
+                12
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "6_a_['pick', 'pepper shaker']",
+        "agent_state": "agent_state_5c.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                13
+            ]
+        ]
+    },
+    {
+        "planning": 5.3932,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            12,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                12
+            ],
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "7_a_['arrange', 'salt shaker', 'counter top on the right']",
+        "agent_state": "agent_state_6.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                12
+            ],
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 4.6494,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            12,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                12
+            ],
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "7_a_['arrange', 'salt shaker', 'counter top on the right']",
+        "agent_state": "agent_state_6b.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                12
+            ],
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 5.4969,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            12,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                12
+            ],
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12,
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "7_a_['arrange', 'salt shaker', 'counter top on the right']",
+        "agent_state": "agent_state_6c.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                12
+            ],
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 61.167,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            13,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                13,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                13
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                13,
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5,
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "8_a_['arrange', 'pepper shaker', 'counter top on the right']",
+        "agent_state": "agent_state_7.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                13,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                13
+            ]
+        ]
+    },
+    {
+        "planning": 62.7585,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            13,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                13,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                13
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                13,
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5,
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "8_a_['arrange', 'pepper shaker', 'counter top on the right']",
+        "agent_state": "agent_state_7b.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                13,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                13
+            ]
+        ]
+    },
+    {
+        "planning": 76.7351,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            13,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                13,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                13
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                13,
+                1,
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5,
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "8_a_['arrange', 'pepper shaker', 'counter top on the right']",
+        "agent_state": "agent_state_7c.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                13,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                13
+            ]
+        ]
+    },
+    {
+        "planning": 41.3978,
+        "preimage": 0,
+        "goal": [
+            "close",
+            [
+                3,
+                14
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "9_a_['close', 'cabinet left door']",
+        "agent_state": "agent_state_8.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 0.6051,
+        "preimage": 0,
+        "goal": [
+            "close",
+            [
+                3,
+                14
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "9_a_['close', 'cabinet left door']",
+        "agent_state": "agent_state_8b.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 0.7385,
+        "preimage": 0,
+        "goal": [
+            "close",
+            [
+                3,
+                14
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "9_a_['close', 'cabinet left door']",
+        "agent_state": "agent_state_8c.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 43.1434,
+        "preimage": 0,
+        "goal": [
+            "close",
+            [
+                10,
+                1
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    10,
+                    1
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [
+                [
+                    10,
+                    1
+                ]
+            ],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "10_a_['close', 'fridge door']",
+        "agent_state": "agent_state_9.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    10,
+                    1
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 0.5984,
+        "preimage": 0,
+        "goal": [
+            "close",
+            [
+                10,
+                1
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    10,
+                    1
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    10,
+                    1
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "10_a_['close', 'fridge door']",
+        "agent_state": "agent_state_9b.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    10,
+                    1
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 0.741,
+        "preimage": 0,
+        "goal": [
+            "close",
+            [
+                10,
+                1
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    10,
+                    1
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "10_a_['close', 'fridge door']",
+        "agent_state": "agent_state_9c.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    10,
+                    1
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 0.6225,
+        "preimage": 0,
+        "goal": [
+            "turn-on",
+            [
+                6,
+                7
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    6,
+                    7
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    6,
+                    7
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "11_a_['turn-on', 'stove knob on the left']",
+        "agent_state": "agent_state_10.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    6,
+                    7
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 0.6414,
+        "preimage": 0,
+        "goal": [
+            "turn-on",
+            [
+                6,
+                7
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    6,
+                    7
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    6,
+                    7
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "11_a_['turn-on', 'stove knob on the left']",
+        "agent_state": "agent_state_10b.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    6,
+                    7
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 0.6105,
+        "preimage": 0,
+        "goal": [
+            "turn-on",
+            [
+                6,
+                7
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    6,
+                    7
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    6,
+                    7
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "11_a_['turn-on', 'stove knob on the left']",
+        "agent_state": "agent_state_10c.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    6,
+                    7
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 42.1471,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            5
+        ],
+        "goal_original": [
+            [
+                "picked",
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "12_a_['pick', 'pot body']",
+        "agent_state": "agent_state_11.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 41.8788,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            5
+        ],
+        "goal_original": [
+            [
+                "picked",
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "12_a_['pick', 'pot body']",
+        "agent_state": "agent_state_11b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 49.575,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            5
+        ],
+        "goal_original": [
+            [
+                "picked",
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "12_a_['pick', 'pot body']",
+        "agent_state": "agent_state_11c.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 3.4393,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            5,
+            [
+                3,
+                null,
+                4
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                5
+            ],
+            [
+                "stacked",
+                5,
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "13_a_['arrange', 'pot body', 'stove on the left']",
+        "agent_state": "agent_state_12.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                5
+            ],
+            [
+                "stacked",
+                5,
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 1.1759,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            5,
+            [
+                3,
+                null,
+                4
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                5
+            ],
+            [
+                "stacked",
+                5,
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "13_a_['arrange', 'pot body', 'stove on the left']",
+        "agent_state": "agent_state_12b.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                5
+            ],
+            [
+                "stacked",
+                5,
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 3.7233,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            5,
+            [
+                3,
+                null,
+                4
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                5
+            ],
+            [
+                "stacked",
+                5,
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12,
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "13_a_['arrange', 'pot body', 'stove on the left']",
+        "agent_state": "agent_state_12c.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                5
+            ],
+            [
+                "stacked",
+                5,
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 0.7642,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            4
+        ],
+        "goal_original": [
+            [
+                "picked",
+                4
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                4,
+                12
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "14_a_['pick', 'pot lid']",
+        "agent_state": "agent_state_13.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                4
+            ]
+        ]
+    },
+    {
+        "planning": 66.094,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            4
+        ],
+        "goal_original": [
+            [
+                "picked",
+                4
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                4,
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "14_a_['pick', 'pot lid']",
+        "agent_state": "agent_state_13b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                4
+            ]
+        ]
+    },
+    {
+        "planning": 62.2307,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            4
+        ],
+        "goal_original": [
+            [
+                "picked",
+                4
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                4,
+                1,
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "14_a_['pick', 'pot lid']",
+        "agent_state": "agent_state_13c.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                4
+            ]
+        ]
+    },
+    {
+        "planning": 77.7684,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            4,
+            5
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                4,
+                5
+            ],
+            [
+                "placed",
+                4
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                4,
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "15_a_['arrange', 'pot lid', 'pot body']",
+        "agent_state": "agent_state_14.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                4,
+                5
+            ],
+            [
+                "placed",
+                4
+            ]
+        ]
+    },
+    {
+        "planning": 10.3718,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            4,
+            5
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                4,
+                5
+            ],
+            [
+                "placed",
+                4
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                4,
+                12,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "15_a_['arrange', 'pot lid', 'pot body']",
+        "agent_state": "agent_state_14b.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                4,
+                5
+            ],
+            [
+                "placed",
+                4
+            ]
+        ]
+    },
+    {
+        "planning": 62.5497,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            4,
+            5
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                4,
+                5
+            ],
+            [
+                "placed",
+                4
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                4,
+                1,
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "15_a_['arrange', 'pot lid', 'pot body']",
+        "agent_state": "agent_state_14c.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                4,
+                5
+            ],
+            [
+                "placed",
+                4
+            ]
+        ]
+    },
+    {
+        "planning": 43.4466,
+        "preimage": 0,
+        "goal": [
+            "turn-on",
+            [
+                9,
+                3
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [
+                [
+                    9,
+                    3
+                ]
+            ],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "16_a_['turn-on', 'faucet handle']",
+        "agent_state": "agent_state_15.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 42.7675,
+        "preimage": 0,
+        "goal": [
+            "turn-on",
+            [
+                9,
+                3
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [
+                [
+                    9,
+                    3
+                ]
+            ],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "16_a_['turn-on', 'faucet handle']",
+        "agent_state": "agent_state_15b.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 0.6398,
+        "preimage": 0,
+        "goal": [
+            "turn-on",
+            [
+                9,
+                3
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    9,
+                    3
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "16_a_['turn-on', 'faucet handle']",
+        "agent_state": "agent_state_15c.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 2.0313,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            5
+        ],
+        "goal_original": [
+            [
+                "picked",
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "17_a_['pick', 'pot body']",
+        "agent_state": "agent_state_16.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 43.4625,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            5
+        ],
+        "goal_original": [
+            [
+                "picked",
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "17_a_['pick', 'pot body']",
+        "agent_state": "agent_state_16b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 5.6834,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            5
+        ],
+        "goal_original": [
+            [
+                "picked",
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12,
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "17_a_['pick', 'pot body']",
+        "agent_state": "agent_state_16c.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 5.0828,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            5,
+            [
+                8,
+                null,
+                3
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                5
+            ],
+            [
+                "stacked",
+                5,
+                [
+                    8,
+                    null,
+                    3
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    8,
+                    null,
+                    3
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "18_a_['arrange', 'pot body', 'kitchen sink']",
+        "agent_state": "agent_state_17.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                5
+            ],
+            [
+                "stacked",
+                5,
+                [
+                    8,
+                    null,
+                    3
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 1.2822,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            5,
+            [
+                8,
+                null,
+                3
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                5
+            ],
+            [
+                "stacked",
+                5,
+                [
+                    8,
+                    null,
+                    3
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    8,
+                    null,
+                    3
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "18_a_['arrange', 'pot body', 'kitchen sink']",
+        "agent_state": "agent_state_17b.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                5
+            ],
+            [
+                "stacked",
+                5,
+                [
+                    8,
+                    null,
+                    3
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 5.251,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            5,
+            [
+                8,
+                null,
+                3
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                5
+            ],
+            [
+                "stacked",
+                5,
+                [
+                    8,
+                    null,
+                    3
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12,
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    8,
+                    null,
+                    3
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "18_a_['arrange', 'pot body', 'kitchen sink']",
+        "agent_state": "agent_state_17c.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                5
+            ],
+            [
+                "stacked",
+                5,
+                [
+                    8,
+                    null,
+                    3
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 0.4948,
+        "preimage": 0,
+        "goal": [
+            "turn-off",
+            [
+                9,
+                3
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    9,
+                    3
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "19_a_['turn-off', 'faucet handle']",
+        "agent_state": "agent_state_18.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 0.4897,
+        "preimage": 0,
+        "goal": [
+            "turn-off",
+            [
+                9,
+                3
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    9,
+                    3
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "19_a_['turn-off', 'faucet handle']",
+        "agent_state": "agent_state_18b.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 0.4859,
+        "preimage": 0,
+        "goal": [
+            "turn-off",
+            [
+                9,
+                3
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    9,
+                    3
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "19_a_['turn-off', 'faucet handle']",
+        "agent_state": "agent_state_18c.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    9,
+                    3
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 41.9469,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            1
+        ],
+        "goal_original": [
+            [
+                "picked",
+                1
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "20_a_['pick', 'chicken leg']",
+        "agent_state": "agent_state_19.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                1
+            ]
+        ]
+    },
+    {
+        "planning": 40.17,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            1
+        ],
+        "goal_original": [
+            [
+                "picked",
+                1
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "20_a_['pick', 'chicken leg']",
+        "agent_state": "agent_state_19b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                1
+            ]
+        ]
+    },
+    {
+        "planning": 51.3514,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            1
+        ],
+        "goal_original": [
+            [
+                "picked",
+                1
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "20_a_['pick', 'chicken leg']",
+        "agent_state": "agent_state_19c.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                1
+            ]
+        ]
+    },
+    {
+        "planning": 21.6365,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            1,
+            5
+        ],
+        "goal_original": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                5
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q576=(1.619, 7.515, 0.406, -0.798), q896=(1.353, 8.699, 0.425, 2.454), c640=t(4, 70)))",
+            "Action(name='arrange', args=('left', 1, 5, p15387=(0.699, 8.889, 0.865, 0.0, -0.0, 0.525), g168=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), q896=(1.353, 8.699, 0.425, 2.454), c648=t(7, 35)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "arrange(1, 5)"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "staticlink",
+                "5"
+            ],
+            [
+                "atgrasp",
+                "left",
+                "1",
+                "g168=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)"
+            ],
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "kin",
+                "left",
+                "1",
+                "p15387=(0.699, 8.889, 0.865, 0.0, -0.0, 0.525)",
+                "g168=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)",
+                "q896=(1.353, 8.699, 0.425, 2.454)",
+                "c648=t(7, 35)"
+            ],
+            [
+                "bconf",
+                "q896=(1.353, 8.699, 0.425, 2.454)"
+            ],
+            [
+                "grasp",
+                "1",
+                "g168=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)"
+            ],
+            [
+                "contained",
+                "1",
+                "p15387=(0.699, 8.889, 0.865, 0.0, -0.0, 0.525)",
+                "5"
+            ],
+            [
+                "reach",
+                "left",
+                "1",
+                "p15387=(0.699, 8.889, 0.865, 0.0, -0.0, 0.525)",
+                "g168=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)",
+                "q896=(1.353, 8.699, 0.425, 2.454)"
+            ],
+            [
+                "graspable",
+                "1"
+            ],
+            [
+                "pose",
+                "5",
+                "p15355=(0.7, 8.896, 0.923, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "cfreeapproachpose",
+                "1",
+                "p15387=(0.699, 8.889, 0.865, 0.0, -0.0, 0.525)",
+                "g168=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)",
+                "5",
+                "p15355=(0.7, 8.896, 0.923, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "basemotion",
+                "q576=(1.619, 7.515, 0.406, -0.798)",
+                "c640=t(4, 70)",
+                "q896=(1.353, 8.699, 0.425, 2.454)"
+            ],
+            [
+                "pose",
+                "1",
+                "p15387=(0.699, 8.889, 0.865, 0.0, -0.0, 0.525)"
+            ],
+            [
+                "containable",
+                "1",
+                "5"
+            ],
+            [
+                "cfreeposepose",
+                "1",
+                "p15387=(0.699, 8.889, 0.865, 0.0, -0.0, 0.525)",
+                "5",
+                "p15355=(0.7, 8.896, 0.923, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "bconf",
+                "q576=(1.619, 7.515, 0.406, -0.798)"
+            ],
+            [
+                "btraj",
+                "c640=t(4, 70)"
+            ],
+            [
+                "atbconf",
+                "q576=(1.619, 7.515, 0.406, -0.798)"
+            ],
+            [
+                "canmove"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    5,
+                    null,
+                    1
+                ],
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "solved",
+        "object_reducer": "object-related",
+        "last_node": "21_a_['arrange', 'chicken leg', 'pot body']",
+        "agent_state": "agent_state_20.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 0.1333,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            12
+        ],
+        "goal_original": [
+            [
+                "picked",
+                12
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "22_a_['pick', 'salt shaker']",
+        "agent_state": "agent_state_21.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                12
+            ]
+        ]
+    },
+    {
+        "planning": 0.0705,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            12
+        ],
+        "goal_original": [
+            [
+                "picked",
+                12
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "22_a_['pick', 'salt shaker']",
+        "agent_state": "agent_state_21b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                12
+            ]
+        ]
+    },
+    {
+        "planning": 0.124,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            12
+        ],
+        "goal_original": [
+            [
+                "picked",
+                12
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "22_a_['pick', 'salt shaker']",
+        "agent_state": "agent_state_21c.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                12
+            ]
+        ]
+    },
+    {
+        "planning": 0.3912,
+        "preimage": 0,
+        "goal": [
+            "sprinkle",
+            12,
+            5
+        ],
+        "goal_original": [
+            [
+                "sprinkledto",
+                12,
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "23_a_['sprinkle', 'salt shaker', 'pot body']",
+        "agent_state": "agent_state_22.pkl",
+        "actual_goal": [
+            [
+                "sprinkledto",
+                12,
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 0.3698,
+        "preimage": 0,
+        "goal": [
+            "sprinkle",
+            12,
+            5
+        ],
+        "goal_original": [
+            [
+                "sprinkledto",
+                12,
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "23_a_['sprinkle', 'salt shaker', 'pot body']",
+        "agent_state": "agent_state_22b.pkl",
+        "actual_goal": [
+            [
+                "sprinkledto",
+                12,
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 0.6972,
+        "preimage": 0,
+        "goal": [
+            "sprinkle",
+            12,
+            5
+        ],
+        "goal_original": [
+            [
+                "sprinkledto",
+                12,
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12,
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                5
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "23_a_['sprinkle', 'salt shaker', 'pot body']",
+        "agent_state": "agent_state_22c.pkl",
+        "actual_goal": [
+            [
+                "sprinkledto",
+                12,
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 9.7776,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            13
+        ],
+        "goal_original": [
+            [
+                "picked",
+                13
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q240=(1.353, 8.699, 0.425, 2.454), q96=(1.615, 7.196, 0.772, 2.672), c200=t(4, 38)))",
+            "Action(name='pick', args=('left', 13, p15494=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), g824=(-0.001, -0.001, 0.134, -3.142, -0.0, 0.0), q96=(1.615, 7.196, 0.772, 2.672), c144=t(7, 83)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "pick(13,)"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "canpick"
+            ],
+            [
+                "bconf",
+                "q96=(1.615, 7.196, 0.772, 2.672)"
+            ],
+            [
+                "pose",
+                "13",
+                "p15494=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "atpose",
+                "13",
+                "p15494=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "btraj",
+                "c200=t(4, 38)"
+            ],
+            [
+                "basemotion",
+                "q240=(1.353, 8.699, 0.425, 2.454)",
+                "c200=t(4, 38)",
+                "q96=(1.615, 7.196, 0.772, 2.672)"
+            ],
+            [
+                "grasp",
+                "13",
+                "g824=(-0.001, -0.001, 0.134, -3.142, -0.0, 0.0)"
+            ],
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "reach",
+                "left",
+                "13",
+                "p15494=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)",
+                "g824=(-0.001, -0.001, 0.134, -3.142, -0.0, 0.0)",
+                "q96=(1.615, 7.196, 0.772, 2.672)"
+            ],
+            [
+                "kin",
+                "left",
+                "13",
+                "p15494=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)",
+                "g824=(-0.001, -0.001, 0.134, -3.142, -0.0, 0.0)",
+                "q96=(1.615, 7.196, 0.772, 2.672)",
+                "c144=t(7, 83)"
+            ],
+            [
+                "handempty",
+                "left"
+            ],
+            [
+                "graspable",
+                "13"
+            ],
+            [
+                "bconf",
+                "q240=(1.353, 8.699, 0.425, 2.454)"
+            ],
+            [
+                "atbconf",
+                "q240=(1.353, 8.699, 0.425, 2.454)"
+            ],
+            [
+                "canmove"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [
+                13
+            ],
+            "joint": [],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "solved",
+        "object_reducer": "object-related",
+        "last_node": "24_a_['pick', 'pepper shaker']",
+        "agent_state": "agent_state_23.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                13
+            ]
+        ]
+    },
+    {
+        "planning": 3.5136,
+        "preimage": 0,
+        "goal": [
+            "sprinkle",
+            13,
+            5
+        ],
+        "goal_original": [
+            [
+                "sprinkledto",
+                13,
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                13,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "25_a_['sprinkle', 'pepper shaker', 'pot body']",
+        "agent_state": "agent_state_24.pkl",
+        "actual_goal": [
+            [
+                "sprinkledto",
+                13,
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 1.2341,
+        "preimage": 0,
+        "goal": [
+            "sprinkle",
+            13,
+            5
+        ],
+        "goal_original": [
+            [
+                "sprinkledto",
+                13,
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                13,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "25_a_['sprinkle', 'pepper shaker', 'pot body']",
+        "agent_state": "agent_state_24b.pkl",
+        "actual_goal": [
+            [
+                "sprinkledto",
+                13,
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 4.0137,
+        "preimage": 0,
+        "goal": [
+            "sprinkle",
+            13,
+            5
+        ],
+        "goal_original": [
+            [
+                "sprinkledto",
+                13,
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                13,
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "25_a_['sprinkle', 'pepper shaker', 'pot body']",
+        "agent_state": "agent_state_24c.pkl",
+        "actual_goal": [
+            [
+                "sprinkledto",
+                13,
+                5
+            ]
+        ]
+    },
+    {
+        "planning": 4.0212,
+        "preimage": 0,
+        "goal": [
+            "sprinkle",
+            13,
+            5
+        ],
+        "goal_original": [
+            [
+                "sprinkledto",
+                13,
+                5
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                13,
+                5
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    27
+                ],
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "25_a_['sprinkle', 'pepper shaker', 'pot body']",
+        "agent_state": "agent_state_25.pkl",
+        "actual_goal": [
+            [
+                "sprinkledto",
+                13,
+                5
+            ]
+        ]
+    },
+    {
+        "continuous_success_string": "0.29 (2 / 7)",
+        "task_progress_string": "3.43 (24 / 7)",
+        "total_problems_solved_string": "0.17 (4 / 23)",
+        "total_plan_len": 8,
+        "total_planning_time": 1341.86,
+        "effective_planning_time": 47.3195,
+        "wasted_planning_time": 1294.5398999999998,
+        "task_success": 0,
+        "num_solved_problems": 23,
+        "num_success": 4,
+        "num_problems_solved_continuously": 2,
+        "num_completed_problems": 24,
+        "total_num_problems": 7,
+        "continuous_success_rate": 0.2857142857142857,
+        "task_progress": 3.4285714285714284,
+        "total_problems_solved": 0.17391304347826086,
+        "whole_goal_sequence": [
+            [
+                [
+                    "open",
+                    [
+                        10,
+                        1
+                    ]
+                ]
+            ],
+            [
+                [
+                    "picked",
+                    1
+                ]
+            ],
+            [
+                [
+                    "open",
+                    [
+                        3,
+                        14
+                    ]
+                ]
+            ],
+            [
+                [
+                    "picked",
+                    12
+                ]
+            ],
+            [
+                [
+                    "placed",
+                    1
+                ],
+                [
+                    "stacked",
+                    1,
+                    5
+                ]
+            ],
+            [
+                [
+                    "picked",
+                    13
+                ]
+            ],
+            [
+                [
+                    "sprinkle",
+                    13,
+                    5
+                ]
+            ]
+        ],
+        "subgoal_plan_len": [
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0
+        ],
+        "continuous_plan_len": 6,
+        "continuous_planning_time": 8.1363,
+        "continuous_subgoal_plan_len": [
+            2,
+            2,
+            2,
+            2
+        ],
+        "ungrounded_subgoals": [],
+        "reprompt_after_subgoals": [],
+        "num_reprompts": 0,
+        "failed_nodes": {
+            "3_a_['arrange', 'chicken leg', 'counter top on the right']": 3,
+            "6_a_['pick', 'pepper shaker']": 3,
+            "7_a_['arrange', 'salt shaker', 'counter top on the right']": 3,
+            "8_a_['arrange', 'pepper shaker', 'counter top on the right']": 3,
+            "9_a_['close', 'cabinet left door']": 3,
+            "10_a_['close', 'fridge door']": 3,
+            "11_a_['turn-on', 'stove knob on the left']": 3,
+            "12_a_['pick', 'pot body']": 3,
+            "13_a_['arrange', 'pot body', 'stove on the left']": 3,
+            "14_a_['pick', 'pot lid']": 3,
+            "15_a_['arrange', 'pot lid', 'pot body']": 3,
+            "16_a_['turn-on', 'faucet handle']": 3,
+            "17_a_['pick', 'pot body']": 3,
+            "18_a_['arrange', 'pot body', 'kitchen sink']": 3,
+            "19_a_['turn-off', 'faucet handle']": 3,
+            "20_a_['pick', 'chicken leg']": 3,
+            "22_a_['pick', 'salt shaker']": 3,
+            "23_a_['sprinkle', 'salt shaker', 'pot body']": 3,
+            "25_a_['sprinkle', 'pepper shaker', 'pot body']": 4
+        }
+    }
+]
