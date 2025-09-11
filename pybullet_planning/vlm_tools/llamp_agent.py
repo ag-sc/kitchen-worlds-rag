@@ -656,6 +656,9 @@ class LLAMPAgent(PDDLStreamAgent):
         arm = self.get_available_arm(subgoal)
         action_name = subgoal[0]
         action_args = subgoal[1:]
+        if isinstance(action_args, str):
+            print(f'ERROR: action_args is not a list but a single string: {action_args}')
+            action_args = list(action_args)
         skeleton = [[action_name, arm] + action_args]
 
         if action_name in pseudo_pull_actions:
