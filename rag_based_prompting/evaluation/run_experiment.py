@@ -89,12 +89,11 @@ def run_planning_experiment():
         if check_seed_needed(PLAN_FOLDER, str(s)):
             run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
             gc.collect()
-            plan = get_plan_from_seed(str(s))
-            print(f'PLAN: {plan}')
-            RAGPlanManager.add_new_plan(plan)
-            time.sleep(5)
         else:
             print(f'Seed {s} was already evaluated')
+        plan = get_plan_from_seed(str(s))
+        RAGPlanManager.add_new_plan(plan)
+        time.sleep(5)
 
     # Perform the 100 experiment seeds
     with open(SEED_PATH, "r") as f:
@@ -104,12 +103,12 @@ def run_planning_experiment():
             if check_seed_needed(PLAN_FOLDER, s):
                 run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s)
                 gc.collect()
-                print(f'Finished experiment with seed {s}')
-                plan = get_plan_from_seed(s)
-                RAGPlanManager.add_new_plan(plan)
-                time.sleep(5)
             else:
                 print(f'Seed {s} was already evaluated')
+            plan = get_plan_from_seed(s)
+            RAGPlanManager.add_new_plan(plan)
+            time.sleep(5)
+            print(f'Finished experiment with seed {s}')
     else:
         print("Experiment \'Dynamic plans\' is already finished")
 
