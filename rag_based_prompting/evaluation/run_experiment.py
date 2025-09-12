@@ -83,6 +83,8 @@ def run_planning_experiment():
         "--planning_mode", "actions",
         "--dual_arm", "--rag_plans"
     ]
+    # Setup the Planning database
+    RAGPlanManager()
 
     # Create the 3 foundational plans
     for s in PLAN_SEEDS:
