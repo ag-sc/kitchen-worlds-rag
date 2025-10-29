@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -5,6 +6,8 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 from matplotlib.colors import BoundaryNorm
+
+from rag_based_prompting.evaluation.run_experiment import SEED_PATH
 
 # Column Mapping
 rag_ax = {
@@ -75,6 +78,64 @@ def create_and_save_heatmap(p_values, correlations, metrics, rag_labels):
     plt.show()
 
 
+def plot_sr_from_plan_amount():
+    with open(SEED_PATH, "r") as f:
+        seeds = [int(line.strip()) for line in f]
+
+    file = f'{Path(__file__).parent / ".." / "eval_scenarios" / "plans" / "experiment_summary.csv"}'
+    df = pd.read_csv(file)
+    res_map = {}
+    plan_amount = 3
+    for s in seeds:
+        ct_sr = extract_decimal(df.loc[df["seed"] == s, "cont_succ_rate"].iloc[0])
+        # cm_sr = extract_decimal(df.loc[df["seed"] == s, "completed_succ_rate"].iloc[0])
+        t_sr = extract_decimal(df.loc[df["seed"] == s, "true_succ_rate"].iloc[0])
+        # res_map[plan_amount] = [ct_sr, cm_sr, t_sr]
+        res_map[plan_amount] = [ct_sr, t_sr]
+        plan_amount += 1
+
+    x = sorted(res_map.keys())  # X-axis: sorted amounts
+    # Prepare y-values for each line
+    y_lines = [[], []]  # One list per line
+    for amt in x:
+        vals = res_map[amt]
+        for i in range(2):
+            y_lines[i].append(vals[i])
+
+    # Plot each line
+    plt.figure(figsize=(10, 6))
+    lbls = ['Continuous SR', 'True SR']
+    for i, y in enumerate(y_lines):
+        plt.plot(x, y, marker='o', label=lbls[i])
+
+    # Set axis limits
+    plt.xlim(3, 103)
+    plt.ylim(0, 1)
+
+    # Labels, title, legend
+    plt.xlabel("Amount of plans")
+    plt.ylabel("Success rate")
+    plt.legend()
+    plt.grid(True)
+
+    plt.tight_layout()
+    plt.savefig("plan_amount_influence.png", dpi=300)  # save as PNG, high resolution
+    plt.show()
+
+
+def extract_decimal(sr: str) -> float:
+    # Extract the leading decimal number: "0.20" from "0.20 (1 / 13)"
+    match = re.search(r"(\d+\.\d+)", sr)
+    if match:
+        return float(match.group(1))
+    else:
+        raise ValueError(f"No decimal number found in: {sr}")
+
+
 if __name__ == '__main__':
+    # Create correlation diagram
     p_values, correlations, metrics, rag_labels = preprocess_correlation_data()
     create_and_save_heatmap(p_values, correlations, metrics, rag_labels)
+
+    # Create plan influence diagram
+    plot_sr_from_plan_amount()
