@@ -7,6 +7,7 @@ from tqdm import tqdm
 
 from run_experiment import EXP_PATH, RAG_COLUMNS, PLAN_FOLDER, PLAN_SEEDS
 
+SUMMARY_FILE = Path(__file__).parent / ".." / "eval_scenarios" / "summary.csv"
 SUMMARY_COLUMNS = ['seed', 'cont_succ_rate', 'completed_succ_rate', 'true_succ_rate', 'plan_length', 'plan_time',
                    'effective_time', 'wasted_time']
 COLUMNS = ['exp_name', 'no_seeds', 'avg_consr', 'std_consr', 'avg_comsr', 'std_comsr', 'avg_tsr', 'std_tsr', 'total_pl',
@@ -60,7 +61,7 @@ def evaluate_experiment_summaries():
                           f"Evaluating all {len(experiment_metadata)} experiment summaries..."):
         new_row = summarise_specific_experiment(name, row['subfolder'])
         df_eval = pd.concat([df_eval, new_row], ignore_index=True)
-    df_eval.to_csv(f'{Path(__file__).parent / ".." / "eval_scenarios" / "summary.csv"}', index=False)
+    df_eval.to_csv(SUMMARY_FILE, index=False)
 
 
 def summarise_specific_experiment(exp_name: str, folder: str) -> pd.DataFrame:

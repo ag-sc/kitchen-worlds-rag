@@ -7,7 +7,7 @@ import seaborn as sns
 from matplotlib.colors import BoundaryNorm
 
 from rag_based_prompting.evaluation.evaluate_experiments import get_exp_meta_with_plans, \
-    split_success_rate_string_decimal
+    split_success_rate_string_decimal, SUMMARY_FILE
 from rag_based_prompting.evaluation.run_experiment import SEED_PATH
 
 # Column Mapping
@@ -19,13 +19,13 @@ rag_ax = {
     'plans': 'Plans'
 }
 avg_metr_ax = {
-    'avg_cont_sr': 'ConSR',
-    'avg_completed_sr': 'ComSR',
-    'avg_true_sr': 'TSR',
-    'avg_plan_length': 'PL',
-    'avg_plan_time': 'TPT',
-    'avg_effective_time': 'EPT',
-    'avg_wasted_time': 'IPT',
+    'avg_consr': 'ConSR',
+    'avg_comsr': 'ComSR',
+    'avg_tsr': 'TSR',
+    'avg_pl': 'PL',
+    'avg_tpt': 'TPT',
+    'avg_ept': 'EPT',
+    'avg_ipt': 'IPT',
 }
 metr_ax = {
     'cont_succ_rate': 'Continuous Success Rate',
@@ -165,6 +165,32 @@ def create_boxplots():
         plt.close()
 
 
+def create_performance_table():
+    def fmt(avg, std, precision=2):
+        return f"{avg:.{precision}f} ($\\pm$ {std:.{precision}f})"
+
+    df = pd.read_csv(SUMMARY_FILE)
+    cols = [
+        ('avg_consr', 'std_consr'),
+        ('avg_comsr', 'std_comsr'),
+        ('avg_tsr', 'std_tsr'),
+        ('avg_pl', 'std_pl'),
+        ('avg_tpt', 'std_tpt'),
+        ('avg_ept', 'std_ept'),
+        ('avg_ipt', 'std_ipt')
+    ]
+
+    table_rows = []
+    for _, row in df.iterrows():
+        formatted_values = [fmt(row[avg], row[std]) for avg, std in cols]
+        # Escape underscores in experiment names
+        exp_name = row['exp_name'].replace('_', '\\_')
+        table_rows.append(f"\\texttt{{{exp_name}}} & " + " & ".join(formatted_values) + " \\\\")
+
+    latex_table_content = "\n".join(table_rows)
+    print(latex_table_content)
+
+
 if __name__ == '__main__':
     # Create correlation diagram
     p_values, correlations, metrics, rag_labels = preprocess_correlation_data()
@@ -175,3 +201,6 @@ if __name__ == '__main__':
 
     # Create boxplots
     create_boxplots()
+
+    # Create latex table for the performance values
+    create_performance_table()
