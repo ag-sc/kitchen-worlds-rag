@@ -1,4 +1,3 @@
-import re
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -7,7 +6,9 @@ import pandas as pd
 import seaborn as sns
 from matplotlib.colors import BoundaryNorm
 
-from rag_based_prompting.evaluation.run_experiment import SEED_PATH, EXP_PATH
+from rag_based_prompting.evaluation.evaluate_experiments import get_exp_meta_with_plans, \
+    split_success_rate_string_decimal
+from rag_based_prompting.evaluation.run_experiment import SEED_PATH
 
 # Column Mapping
 rag_ax = {
@@ -99,9 +100,9 @@ def plot_sr_from_plan_amount():
     res_map = {}
     plan_amount = 3
     for s in seeds:
-        ct_sr = extract_decimal(df.loc[df["seed"] == s, "cont_succ_rate"].iloc[0])
+        ct_sr = split_success_rate_string_decimal(df.loc[df["seed"] == s, "cont_succ_rate"].iloc[0])
         # cm_sr = extract_decimal(df.loc[df["seed"] == s, "completed_succ_rate"].iloc[0])
-        t_sr = extract_decimal(df.loc[df["seed"] == s, "true_succ_rate"].iloc[0])
+        t_sr = split_success_rate_string_decimal(df.loc[df["seed"] == s, "true_succ_rate"].iloc[0])
         # res_map[plan_amount] = [ct_sr, cm_sr, t_sr]
         res_map[plan_amount] = [ct_sr, t_sr]
         plan_amount += 1
@@ -134,29 +135,8 @@ def plot_sr_from_plan_amount():
     plt.savefig("plots/plan_amount_influence.png", dpi=300)  # save as PNG, high resolution
     plt.show()
 
-
-def extract_decimal(sr: str) -> float:
-    # Extract the leading decimal number: "0.20" from "0.20 (1 / 13)"
-    match = re.search(r"(\d+\.\d+)", sr)
-    if match:
-        return float(match.group(1))
-    else:
-        raise ValueError(f"No decimal number found in: {sr}")
-
-
 def create_boxplots():
-    experiment_metadata = pd.read_csv(EXP_PATH, index_col="name")
-    plan_row = {
-        "exp_idx": 16,
-        "name": "Plans",
-        "recipes": 0.0,
-        "wikihow": 0.0,
-        "videos": 0.0,
-        "locations": 0.0,
-        "subfolder": "plans"
-    }
-    experiment_metadata = pd.concat([experiment_metadata, pd.DataFrame([plan_row])], ignore_index=True)
-
+    experiment_metadata = get_exp_meta_with_plans()
     df_combined = []
     for name, row in experiment_metadata.iterrows():
         exp_summary = Path(__file__).parent / ".." / "eval_scenarios" / row["subfolder"] / "experiment_summary.csv"
@@ -164,7 +144,7 @@ def create_boxplots():
         exp_df["experiment"] = row["subfolder"]
 
         for col in METRICS_BOXPLOT[0:3]:
-            exp_df[col] = exp_df[col].apply(extract_decimal)
+            exp_df[col] = exp_df[col].apply(split_success_rate_string_decimal)
 
         df_combined.append(exp_df)
     df_combined = pd.concat(df_combined, ignore_index=True)
@@ -187,11 +167,11 @@ def create_boxplots():
 
 if __name__ == '__main__':
     # Create correlation diagram
-    # p_values, correlations, metrics, rag_labels = preprocess_correlation_data()
-    # create_and_save_heatmap(p_values, correlations, metrics, rag_labels)
+    p_values, correlations, metrics, rag_labels = preprocess_correlation_data()
+    create_and_save_heatmap(p_values, correlations, metrics, rag_labels)
 
     # Create plan influence diagram
-    # plot_sr_from_plan_amount()
+    plot_sr_from_plan_amount()
 
-    # Create boxplot
+    # Create boxplots
     create_boxplots()
