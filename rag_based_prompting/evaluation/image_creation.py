@@ -28,13 +28,32 @@ avg_metr_ax = {
     'avg_ipt': 'IPT',
 }
 metr_ax = {
-    'cont_succ_rate': 'Continuous Success Rate',
-    'completed_succ_rate': 'Completed Success Rate',
-    'true_succ_rate': 'True Success Rate',
-    'plan_length': 'Plan Length',
-    'plan_time': 'Total Planning Time',
-    'effective_time': 'Effective Planning Time',
-    'wasted_time': 'Ineffective Planning Time',
+    'cont_succ_rate': 'ConSR',
+    'completed_succ_rate': 'ComSR',
+    'true_succ_rate': 'TSR',
+    'plan_length': 'PL',
+    'plan_time': 'TPT',
+    'effective_time': 'EPT',
+    'wasted_time': 'IPT',
+}
+boxplot_exp_map = {
+    'baseline': 'None',
+    'rec': 'R',
+    'wh': 'W',
+    'vids': 'V',
+    'locs': 'L',
+    'rec_wh': 'R+W',
+    'rec_vids': 'R+V',
+    'rec_locs': 'R+L',
+    'wh_vids': 'W+V',
+    'wh_locs': 'W+L',
+    'vids_locs': 'V+L',
+    'rec_wh_vids': 'R+W+V',
+    'rec_wh_locs': 'R+W+L',
+    'rec_vids_locs': 'R+V+L',
+    'wh_vids_locs': 'W+V+L',
+    'all': 'All',
+    'plans': 'Plans',
 }
 
 METRICS_BOXPLOT = ["cont_succ_rate", "completed_succ_rate", "true_succ_rate", "plan_length", "plan_time",
@@ -157,7 +176,8 @@ def create_boxplots():
         ]
         plt.boxplot(grouped_data)
 
-        plt.xticks(range(1, len(experiments) + 1), experiments, rotation=65)
+        labels = [boxplot_exp_map.get(exp, exp) for exp in experiments]
+        plt.xticks(range(1, len(experiments) + 1), labels, rotation=65)
         plt.ylabel(metr_ax[metric])
 
         plt.tight_layout()
@@ -193,14 +213,14 @@ def create_performance_table():
 
 if __name__ == '__main__':
     # Create correlation diagram
-    p_values, correlations, metrics, rag_labels = preprocess_correlation_data()
-    create_and_save_heatmap(p_values, correlations, metrics, rag_labels)
+    #p_values, correlations, metrics, rag_labels = preprocess_correlation_data()
+    #create_and_save_heatmap(p_values, correlations, metrics, rag_labels)
 
     # Create plan influence diagram
-    plot_sr_from_plan_amount()
+    #plot_sr_from_plan_amount()
 
     # Create boxplots
     create_boxplots()
 
     # Create latex table for the performance values
-    create_performance_table()
+    #create_performance_table()
