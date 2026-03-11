@@ -1,0 +1,592 @@
+[
+    {
+        "goal": [
+            "open([(10, 1)])"
+        ],
+        "goal_original": [
+            [
+                "open",
+                [
+                    10,
+                    1
+                ]
+            ]
+        ],
+        "plan": [],
+        "plan_skeleton": [],
+        "plan_len": 0,
+        "init": [],
+        "planning": 0,
+        "preimage": 0,
+        "last_node": "1_a_['open', 'fridge door']",
+        "status": "already",
+        "object_reducer": "object-related",
+        "agent_state": "agent_state_0.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    10,
+                    1
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 12.1071,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            1
+        ],
+        "goal_original": [
+            [
+                "picked",
+                1
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1
+            ],
+            "joint": [],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "2_a_['pick', 'chicken leg']",
+        "agent_state": "agent_state_1.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                1
+            ]
+        ]
+    },
+    {
+        "planning": 7.5683,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            1
+        ],
+        "goal_original": [
+            [
+                "picked",
+                1
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q624=(2.0, 6.25, 0.2, 3.142), q608=(1.508, 5.022, 1.199, 2.094), c480=t(4, 45)))",
+            "Action(name='pick', args=('left', 1, p13=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), g208=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0), q608=(1.508, 5.022, 1.199, 2.094), c312=t(7, 125)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "pick(1,)"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "handempty",
+                "left"
+            ],
+            [
+                "bconf",
+                "q608=(1.508, 5.022, 1.199, 2.094)"
+            ],
+            [
+                "atpose",
+                "1",
+                "p13=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)"
+            ],
+            [
+                "pose",
+                "1",
+                "p13=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "bconf",
+                "q624=(2.0, 6.25, 0.2, 3.142)"
+            ],
+            [
+                "kin",
+                "left",
+                "1",
+                "p13=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "g208=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)",
+                "q608=(1.508, 5.022, 1.199, 2.094)",
+                "c312=t(7, 125)"
+            ],
+            [
+                "btraj",
+                "c480=t(4, 45)"
+            ],
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "basemotion",
+                "q624=(2.0, 6.25, 0.2, 3.142)",
+                "c480=t(4, 45)",
+                "q608=(1.508, 5.022, 1.199, 2.094)"
+            ],
+            [
+                "atbconf",
+                "q624=(2.0, 6.25, 0.2, 3.142)"
+            ],
+            [
+                "graspable",
+                "1"
+            ],
+            [
+                "reach",
+                "left",
+                "1",
+                "p13=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "g208=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)",
+                "q608=(1.508, 5.022, 1.199, 2.094)"
+            ],
+            [
+                "grasp",
+                "1",
+                "g208=(-0.029, 0.146, -0.019, 1.571, -0.0, 0.0)"
+            ],
+            [
+                "canpick"
+            ],
+            [
+                "canmove"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [
+                1
+            ],
+            "joint": [
+                [
+                    10,
+                    1
+                ]
+            ],
+            "surface": [
+                [
+                    10,
+                    null,
+                    9
+                ]
+            ],
+            "space": []
+        },
+        "status": "solved",
+        "object_reducer": "custom_add=fridge#1::fridge_door",
+        "last_node": "2_a_['pick', 'chicken leg']",
+        "agent_state": "agent_state_1b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                1
+            ]
+        ]
+    },
+    {
+        "planning": 21.8319,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            1,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "3_a_['arrange', 'chicken leg', 'counter top on the right']",
+        "agent_state": "agent_state_2.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 24.5286,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            1,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "custom_add=braiserbody#1",
+        "last_node": "3_a_['arrange', 'chicken leg', 'counter top on the right']",
+        "agent_state": "agent_state_2b.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 24.8355,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            1,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                1,
+                5
+            ],
+            "joint": [],
+            "surface": [
+                5,
+                [
+                    3,
+                    null,
+                    35
+                ],
+                [
+                    3,
+                    null,
+                    4
+                ]
+            ],
+            "space": [
+                5
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "3_a_['arrange', 'chicken leg', 'counter top on the right']",
+        "agent_state": "agent_state_2c.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                1
+            ],
+            [
+                "stacked",
+                1,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "goal": [
+            "open([(3, 14)])"
+        ],
+        "goal_original": [
+            [
+                "open",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ],
+        "plan": [],
+        "plan_skeleton": [],
+        "plan_len": 0,
+        "init": [],
+        "planning": 0,
+        "preimage": 0,
+        "last_node": "4_a_['open', 'cabinet left door']",
+        "status": "already",
+        "object_reducer": "object-related",
+        "agent_state": "agent_state_3.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ]
+    },
+    {
+        "continuous_success_string": "0.15 (2 / 13)",
+        "task_progress_string": "0.31 (4 / 13)",
+        "total_problems_solved_string": "0.5 (1 / 2)",
+        "total_plan_len": 2,
+        "total_planning_time": 90.87,
+        "effective_planning_time": 7.5683,
+        "wasted_planning_time": 83.3031,
+        "task_success": 0,
+        "num_solved_problems": 2,
+        "num_success": 1,
+        "num_problems_solved_continuously": 2,
+        "num_completed_problems": 4,
+        "total_num_problems": 13,
+        "continuous_success_rate": 0.15384615384615385,
+        "task_progress": 0.3076923076923077,
+        "total_problems_solved": 0.5,
+        "whole_goal_sequence": [
+            [
+                [
+                    "open",
+                    [
+                        10,
+                        1
+                    ]
+                ]
+            ],
+            [
+                [
+                    "picked",
+                    1
+                ]
+            ],
+            [
+                [
+                    "open",
+                    [
+                        3,
+                        14
+                    ]
+                ]
+            ],
+            [
+                [
+                    "pick",
+                    12
+                ]
+            ],
+            [
+                [
+                    "arrange",
+                    12,
+                    [
+                        3,
+                        null,
+                        35
+                    ]
+                ]
+            ],
+            [
+                [
+                    "open",
+                    [
+                        3,
+                        10
+                    ]
+                ]
+            ],
+            [
+                [
+                    "pick",
+                    13
+                ]
+            ],
+            [
+                [
+                    "arrange",
+                    13,
+                    [
+                        3,
+                        null,
+                        35
+                    ]
+                ]
+            ],
+            [
+                [
+                    "pick",
+                    5
+                ]
+            ],
+            [
+                [
+                    "arrange",
+                    5,
+                    [
+                        3,
+                        null,
+                        4
+                    ]
+                ]
+            ],
+            [
+                [
+                    "pick",
+                    4
+                ]
+            ],
+            [
+                [
+                    "arrange",
+                    4,
+                    5
+                ]
+            ],
+            [
+                [
+                    "turn-on",
+                    [
+                        6,
+                        7
+                    ]
+                ]
+            ]
+        ],
+        "subgoal_plan_len": [
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0
+        ],
+        "continuous_plan_len": 6,
+        "continuous_planning_time": 7.5683,
+        "continuous_subgoal_plan_len": [
+            2
+        ],
+        "ungrounded_subgoals": [],
+        "reprompt_after_subgoals": [],
+        "num_reprompts": 0,
+        "failed_nodes": {
+            "3_a_['arrange', 'chicken leg', 'counter top on the right']": 3
+        }
+    }
+]

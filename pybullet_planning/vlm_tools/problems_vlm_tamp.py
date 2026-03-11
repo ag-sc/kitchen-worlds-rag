@@ -110,3 +110,12 @@ def test_kitchen_chicken_soup(args, **kwargs):
         return get_problem_dict_from_open_goal(world, objects, args, temp_dir=temp_dir, **vlm_agent_kwargs)
 
     return test_nvidia_kitchen_domain(args, loader_fn, initial_xy=(2, 6.25), **kwargs)
+
+
+def test_kitchen_dishwasher(args, **kwargs):
+    def loader_fn(world, temp_dir=DEFAULT_TEMP_DIR, **world_builder_args):
+        vlm_agent_kwargs, randomize_joint_positions = _get_vlm_agent_kwargs(args, world_builder_args)
+        objects, movables = load_kitchen_dishwasher_problem(world)
+        return get_problem_dict_from_open_goal(world, objects, args, temp_dir=temp_dir, **vlm_agent_kwargs)
+
+    return test_nvidia_kitchen_domain(args, loader_fn, initial_xy=(2, 6.25), **kwargs)

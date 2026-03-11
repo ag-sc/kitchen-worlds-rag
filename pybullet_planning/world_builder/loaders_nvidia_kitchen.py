@@ -530,7 +530,7 @@ def load_cooking_mechanism(world):
     load_braiser_bottom(world)
     load_stove_knobs(world)
     define_seasoning(world)
-    # load_dishwasher(world)
+    load_dishwasher(world)
 
 
 def load_braiser_bottom(world):
@@ -605,9 +605,9 @@ def get_objects_for_open_kitchen(world, difficulty, verbose=False):
                     'braiserbody', 'braiserlid', 'braiser_bottom',
                     'indigo_tmp', 'hitman_countertop',
                     'sektion', 'chewie_door_left_joint', 'chewie_door_right_joint',
-                    'salt-shaker', 'pepper-shaker',
+                    'salt-shaker', 'pepper-shaker', 'fork', 'indigo_drawer_top', 'indigo_drawer_top_joint',
                     'front_left_stove', 'front_right_stove', 'knob_joint_2', 'knob_joint_3',
-                    'joint_faucet_0', 'basin_bottom']  ## 'fork', 'indigo_drawer_top', 'indigo_drawer_top_joint',
+                    'joint_faucet_0', 'basin_bottom']
     if difficulty in [20]:
         for k in ['sektion', 'chewie_door_left_joint', 'chewie_door_right_joint',
                   'indigo_drawer_top', 'indigo_drawer_top_joint',
@@ -740,6 +740,54 @@ def load_open_problem_kitchen(world, reduce_objects=False, difficulty=1, open_do
             world.name_to_object('hitman_countertop').place_obj(obj)
         knob = world.name_to_object('knob_joint_2')
         world.open_joint(knob.body, joint=knob.joint, extent=1, verbose=True)
+
+    return objects, movables
+
+def load_kitchen_dishwasher_problem(world, open_doors_for=[]):
+    spaces = {
+        'counter': {
+            'sektion': [],
+            'indigo_drawer_top': [],
+        },
+        'dishwasher': {
+            'upper_shelf': []
+        }
+    }
+
+    surfaces = {
+        'counter': {
+            'front_left_stove': [],
+            'front_right_stove': ['BraiserLid'],
+            'hitman_countertop': [],
+            'indigo_tmp': ['BraiserBody'],
+        },
+        'Basin': {
+            'faucet_platform': ['Faucet'],
+            'basin_bottom': []
+        },
+        'dishwasher': {                   # add dishwasher surfaces
+            "surface_plate_left": ['Plate']
+        }
+    }
+
+    custom_supports = {
+        'cabbage': 'shelf_bottom',
+        'fork': 'indigo_drawer_top'
+    }
+
+    load_full_kitchen(world, surfaces=surfaces, spaces=spaces, load_cabbage=True)
+    movables, movable_to_doors = load_nvidia_kitchen_movables(world, open_doors_for=open_doors_for, custom_supports=custom_supports)
+
+    load_cooking_mechanism(world)
+    load_basin_faucet(world)
+    prevent_funny_placements(world)
+
+    world.set_learned_pose_list_gen(learned_nvidia_pickled_pose_list_gen)
+    world.set_learned_bconf_list_gen(learned_nvidia_pickled_bconf_list_gen)
+    world.set_learned_position_list_gen(learned_nvidia_pickled_position_list_gen)
+
+    objects = get_objects_for_open_kitchen(world, 0)
+    #dishwasher_door = initialize_dishwasher(world)
 
     return objects, movables
 

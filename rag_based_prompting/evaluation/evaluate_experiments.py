@@ -5,24 +5,25 @@ import pandas as pd
 from scipy.stats import spearmanr
 from tqdm import tqdm
 
-from run_experiment import EXP_PATH, RAG_COLUMNS, PLAN_FOLDER, PLAN_SEEDS
+from run_experiment import EXP_PATH, RAG_COLUMNS, PLAN_FOLDER, PLAN_SEEDS, EXP_FOLDER_CHICKEN_SOUP, \
+    EXP_FOLDER_DISHWASHER
 
-SUMMARY_FILE = Path(__file__).parent / ".." / "eval_scenarios" / "summary.csv"
 SUMMARY_COLUMNS = ['seed', 'cont_succ_rate', 'completed_succ_rate', 'true_succ_rate', 'plan_length', 'plan_time',
                    'effective_time', 'wasted_time']
 COLUMNS = ['exp_name', 'no_seeds', 'avg_consr', 'std_consr', 'avg_comsr', 'std_comsr', 'avg_tsr', 'std_tsr', 'total_pl',
            'avg_pl', 'std_pl', 'total_tpt', 'avg_tpt', 'std_tpt', 'total_ept', 'avg_ept', 'std_ept', 'total_ipt',
            'avg_ipt', 'std_ipt']
 PLAN_COLUMN = ['plans']
+EVALUATE_CHICKEN = True
 
 
-def summarise_all_experiments():
+def summarise_all_experiments(experiment_path: Path):
     experiment_metadata = get_exp_meta_with_plans()
     for name, row in tqdm(experiment_metadata.iterrows(), f"Summarising all {len(experiment_metadata)} experiments..."):
         df_exp_summary = pd.DataFrame(columns=SUMMARY_COLUMNS)
-        parent_folder = Path(__file__).parent / ".." / "eval_scenarios" / row["subfolder"]
+        parent_folder = experiment_path / row["subfolder"]
         # Skip the initial seeds for the planning experiment
-        if name.lower() == "plans":
+        if name.lower() == PLAN_FOLDER:
             matching_folder = [
                 f for f in parent_folder.iterdir()
                 if all(str(s) not in f.name for s in PLAN_SEEDS)
@@ -54,18 +55,18 @@ def summarise_all_experiments():
                 print(f"Warning: {exp_folder} has {len(res_csv)} matching csv files")
 
 
-def evaluate_experiment_summaries():
+def evaluate_experiment_summaries(exp_path: Path):
     experiment_metadata = get_exp_meta_with_plans()
     df_eval = pd.DataFrame(columns=COLUMNS)
     for name, row in tqdm(experiment_metadata.iterrows(),
                           f"Evaluating all {len(experiment_metadata)} experiment summaries..."):
-        new_row = summarise_specific_experiment(name, row['subfolder'])
+        new_row = summarise_specific_experiment(exp_path, name, row['subfolder'])
         df_eval = pd.concat([df_eval, new_row], ignore_index=True)
-    df_eval.to_csv(SUMMARY_FILE, index=False)
+    df_eval.to_csv(exp_path / "summary.csv", index=False)
 
 
-def summarise_specific_experiment(exp_name: str, folder: str) -> pd.DataFrame:
-    summary_csv = Path(__file__).parent / ".." / "eval_scenarios" / folder / "experiment_summary.csv"
+def summarise_specific_experiment(exp_path: Path, exp_name: str, folder: str) -> pd.DataFrame:
+    summary_csv = exp_path / folder / "experiment_summary.csv"
     df = pd.read_csv(summary_csv, index_col=SUMMARY_COLUMNS[0])
     for col in SUMMARY_COLUMNS[1:4]:
         df[col] = df[col].apply(split_success_rate_string_decimal)
@@ -126,14 +127,15 @@ def get_exp_meta_with_plans():
     experiment_metadata.loc[plan_row["name"]] = plan_row
     return experiment_metadata
 
-def prepare_correlations_evaluation():
+
+def prepare_correlations_evaluation(exp_path: Path):
     df_corr = pd.DataFrame(
         columns=[COLUMNS[0], COLUMNS[2], COLUMNS[4], COLUMNS[6], COLUMNS[9], COLUMNS[12], COLUMNS[15],
                  COLUMNS[18]] + RAG_COLUMNS + PLAN_COLUMN)
     experiment_metadata = pd.read_csv(EXP_PATH, index_col="name")
     for name, row in tqdm(experiment_metadata.iterrows(),
                           f"Evaluating the correlations across all {len(experiment_metadata)} experiments..."):
-        summary_csv = Path(__file__).parent / ".." / "eval_scenarios" / row["subfolder"] / "experiment_summary.csv"
+        summary_csv = exp_path / row["subfolder"] / "experiment_summary.csv"
         df = pd.read_csv(summary_csv, index_col=SUMMARY_COLUMNS[0])
         for seed, exp_row in df.iterrows():
             count, total = split_success_rate_string_ratio(exp_row[SUMMARY_COLUMNS[1]])
@@ -158,17 +160,16 @@ def prepare_correlations_evaluation():
                 PLAN_COLUMN[0]: 0.0
             }
             df_corr = pd.concat([df_corr, pd.DataFrame([new_row])], ignore_index=True)
-            df_corr.to_csv(f'{Path(__file__).parent / ".." / "eval_scenarios" / "correlation_data.csv"}', index=True,
-                           index_label="no")
-    add_plans_to_correlation_preparation()
+            df_corr.to_csv(f'{exp_path / "correlation_data.csv"}', index=True, index_label="no")
+    add_plans_to_correlation_preparation(exp_path)
 
 
-def evaluate_correlations():
+def evaluate_correlations(exp_path: Path):
     res_columns = ["metric"] + [column + suffix for column in RAG_COLUMNS + PLAN_COLUMN for suffix in ["_r", "_p"]]
     metric_columns = [COLUMNS[2], COLUMNS[4], COLUMNS[6], COLUMNS[9], COLUMNS[12], COLUMNS[15], COLUMNS[18]]
     df_corr_res = pd.DataFrame(columns=res_columns)
 
-    df_corr = pd.read_csv(f'{Path(__file__).parent / ".." / "eval_scenarios" / "correlation_data.csv"}', index_col="no")
+    df_corr = pd.read_csv(f'{exp_path / "correlation_data.csv"}', index_col="no")
     for m_col in metric_columns:
         new_row = {"metric": m_col}
         for r_col in RAG_COLUMNS + PLAN_COLUMN:
@@ -180,14 +181,14 @@ def evaluate_correlations():
             new_row[r_col + "_r"] = corr
             new_row[r_col + "_p"] = p_val
         df_corr_res = pd.concat([df_corr_res, pd.DataFrame([new_row])], ignore_index=True)
-    df_corr_res.to_csv(f'{Path(__file__).parent / ".." / "eval_scenarios" / "correlation_results.csv"}', index=False)
+    df_corr_res.to_csv(f'{exp_path / "correlation_results.csv"}', index=False)
 
 
-def add_plans_to_correlation_preparation():
+def add_plans_to_correlation_preparation(exp_path: Path):
     # Add to correlation data
-    corr_data_file = f'{Path(__file__).parent / ".." / "eval_scenarios" / "correlation_data.csv"}'
+    corr_data_file = f'{exp_path / "correlation_data.csv"}'
     df_corr = pd.read_csv(corr_data_file, index_col='no')
-    summary_csv = Path(__file__).parent / ".." / "eval_scenarios" / PLAN_FOLDER / "experiment_summary.csv"
+    summary_csv = exp_path / PLAN_FOLDER / "experiment_summary.csv"
     df = pd.read_csv(summary_csv, index_col=SUMMARY_COLUMNS[0])
     for seed, exp_row in df.iterrows():
         if seed in PLAN_SEEDS:
@@ -219,11 +220,18 @@ def add_plans_to_correlation_preparation():
 
 
 if __name__ == "__main__":
-    summarise_all_experiments()
-    print('\nFinished summarising all seeds in each experiment setup')
-    evaluate_experiment_summaries()
-    print('\nFinished calculating the complete summary over all seeds in an experiment')
-    prepare_correlations_evaluation()
-    print('\nFinished preparing the data for the correlation evaluation')
-    evaluate_correlations()
-    print('\nFinished evaluating the correlations between metrics')
+    if EVALUATE_CHICKEN:
+        path = EXP_FOLDER_CHICKEN_SOUP
+        goal = "make chicken soup"
+    else:
+        path = EXP_FOLDER_DISHWASHER
+        goal = "load dishwasher"
+
+    summarise_all_experiments(path)
+    print(f'\nFinished summarising all seeds in each experiment setup for the \'{goal}\' experiment')
+    evaluate_experiment_summaries(path)
+    print(f'\nFinished calculating the complete summary over all seeds for the \'{goal}\' experiment')
+    prepare_correlations_evaluation(path)
+    print(f'\nFinished preparing the data for the correlation evaluation for the \'{goal}\' experiment')
+    evaluate_correlations(path)
+    print(f'\nFinished evaluating the correlations between metrics for the \'{goal}\' experiment')

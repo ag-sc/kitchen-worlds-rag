@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLM + Planning History</title>
+    <!--link rel="stylesheet" href="log/style.css">
+    <script src="log/scripts.js"></script--> 
+    <style>
+    
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    vertical-align: top;
+    text-align: left;
+    /*width: 50%;*/
+    overflow-x: auto; /* Add horizontal scroll for overflow */
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.left-column {
+    width: 33%;
+    font-size: 12px;
+}
+
+.right-column {
+    width: 67%;
+    font-size: 12px;
+}
+
+.hidden-text {
+    display: none;
+    white-space: pre-wrap; /* Wraps the text and preserves white spaces and formatting */
+    overflow-x: auto; /* Enable horizontal scrolling for overflow */
+    font-size: 12px;
+}
+
+button {
+    font-size: 14px !important;
+    margin: 4px 0px;
+    display: inline-block;
+}
+
+.button-started {
+
+}
+
+.button-solved {
+    color: #27ae60 !important;
+}
+
+.button-failed {
+    color: #c0392b !important;
+}
+
+.button-already {
+    color: #3498db !important;
+}
+
+.button-ungrounded {
+    color: #f1c40f !important;
+}
+
+.message {
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.user1 {
+    background-color: #dbedf9;
+    margin-right: 15%;
+    color: #333;
+}
+
+.user2 {
+    background-color: #fae5d2;
+    margin-left: 15%;
+    color: #333;
+}
+
+.user3 {
+    background-color: #dbf7e7;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: #333;
+}
+
+.merged {
+    background-color: #dde0e2;
+}
+
+.username {
+    font-weight: bold;
+}
+
+img {
+    max-width: 100%;
+}
+
+.full_column {
+    width: 100% !important;
+}
+
+    </style>
+    <script>
+    
+function toggleText(number) {
+    var text = document.getElementById("text-" + number);
+    text.style.display = (text.style.display === "none" || text.style.display === "") ? "inline" : "none";
+}
+
+function loadAndToggleText(number, filePath) {
+    toggleImagw(number);
+
+    var textElement = document.getElementById("text-" + number);
+
+    // Fetch the content from the file
+    fetch(filePath)
+        .then(response => response.text())
+        .then(data => {
+            textElement.innerText = data; // Use innerText to preserve formatting
+            toggleText(number); // Use the existing toggle function
+        })
+        .catch(error => console.error('Error fetching file:', error));
+}
+
+function loadAndToggleContent(number, filePath, imgPath) {
+    var elem = document.getElementById("content-" + number);
+
+    // Clear previous content
+    elem.innerHTML = '';
+
+    // // Create and append the image element
+    // var img = new Image();
+    // img.src = planTreePath;
+    // elem.appendChild(img);
+
+    // Create and append the image element
+    var img2 = new Image();
+    img2.src = imgPath;
+    elem.appendChild(img2);
+
+    var br = document.createElement("br");
+    elem.appendChild(br);
+
+    // Fetch and display the text content
+    fetch(filePath)
+        .then(response => response.text())
+        .then(data => {
+            var textNode = document.createElement("span");
+            textNode.innerText = data;
+            elem.appendChild(textNode);
+            toggleText(number); // Use the existing toggle function
+        })
+        .catch(error => console.error('Error fetching file:', error, filePath, planTreePath, imgPath));
+
+    elem.style.display = (elem.style.display === "none" || elem.style.display === "") ? "inline" : "none";
+}
+
+    </script>
+</head>
+<body>
+    <p>vids/250902_173942_seed_774211</p><p>None</p><br>
+<table style="font-size: 10pt; ">
+<tr><th style="background-color: #dde0e2;">idx</th>
+<th style="background-color: #dde0e2;">goal</th>
+<th style="background-color: #dde0e2;">task_idx</th>
+<th style="background-color: #dde0e2;">status</th>
+<th style="background-color: #dde0e2;">plan_len</th>
+<th style="background-color: #dde0e2;">planning_time</th>
+<th style="background-color: #dde0e2;">planning_objects</th>
+<th style="background-color: #dde0e2;">object_reducer</th>
+<th style="background-color: #dde0e2;">planning_node</th>
+<th style="background-color: #dde0e2;">agent_state</th></tr>
+<tr>
+<td><span style="color: blue">1</span></td>
+<td><span style="color: blue">['open([(10, 1)])'] -> [('graspedhandle', (10, 1))]</span></td>
+<td><span style="color: blue">1</span></td>
+<td><span style="color: blue">already</span></td>
+<td><span style="color: blue">0</span></td>
+<td><span style="color: blue">0</span></td>
+<td><span style="color: blue"></span></td>
+<td><span style="color: blue">object-related</span></td>
+<td><span style="color: blue">1_a_['open', 'fridge door']</span></td>
+<td><span style="color: blue"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">2</span></td>
+<td><span style="color: red">['pick', 1] -> [('picked', 1)]</span></td>
+<td><span style="color: red">2</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">15.094</span></td>
+<td><span style="color: red">1 (graspable: 1)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">2_a_['pick', 'chicken leg']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">3</span></td>
+<td><span style="color: red">['pick', 1] -> [('picked', 1)]</span></td>
+<td><span style="color: red">2</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">16.0115</span></td>
+<td><span style="color: red">1 (graspable: 1)</span></td>
+<td><span style="color: red">heuristic-movables</span></td>
+<td><span style="color: red">2_a_['pick', 'chicken leg']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">4</span></td>
+<td><span style="color: red">['pick', 1] -> [('picked', 1)]</span></td>
+<td><span style="color: red">2</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">15.6034</span></td>
+<td><span style="color: red">4 (graspable: 1, joint: 3)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">2_a_['pick', 'chicken leg']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">5</span></td>
+<td><span style="color: red">['arrange', 1, (3, None, 35)] -> [('stacked', 1, (3, None, 35)), ('placed', 1)]</span></td>
+<td><span style="color: red">3</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">23.4788</span></td>
+<td><span style="color: red">2 (graspable: 1, surface: 1)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">3_a_['arrange', 'chicken leg', 'counter top on the right']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">6</span></td>
+<td><span style="color: red">['arrange', 1, (3, None, 35)] -> [('stacked', 1, (3, None, 35)), ('placed', 1)]</span></td>
+<td><span style="color: red">3</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">23.0217</span></td>
+<td><span style="color: red">2 (graspable: 1, surface: 1)</span></td>
+<td><span style="color: red">heuristic-movables</span></td>
+<td><span style="color: red">3_a_['arrange', 'chicken leg', 'counter top on the right']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">7</span></td>
+<td><span style="color: red">['arrange', 1, (3, None, 35)] -> [('stacked', 1, (3, None, 35)), ('placed', 1)]</span></td>
+<td><span style="color: red">3</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">24.0692</span></td>
+<td><span style="color: red">5 (graspable: 1, joint: 3, surface: 1)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">3_a_['arrange', 'chicken leg', 'counter top on the right']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: blue">8</span></td>
+<td><span style="color: blue">['open([(3, 14)])'] -> [('graspedhandle', (3, 14))]</span></td>
+<td><span style="color: blue">4</span></td>
+<td><span style="color: blue">already</span></td>
+<td><span style="color: blue">0</span></td>
+<td><span style="color: blue">0</span></td>
+<td><span style="color: blue"></span></td>
+<td><span style="color: blue">object-related</span></td>
+<td><span style="color: blue">4_a_['open', 'cabinet left door']</span></td>
+<td><span style="color: blue"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: green">9</span></td>
+<td><span style="color: green">['pick', 12] -> [('picked', 12)]</span></td>
+<td><span style="color: green">5</span></td>
+<td><span style="color: green">solved</span></td>
+<td><span style="color: green">2</span></td>
+<td><span style="color: green">8.6999</span></td>
+<td><span style="color: green">2 (graspable: 1, space: 1)</span></td>
+<td><span style="color: green">object-related</span></td>
+<td><span style="color: green">5_a_['pick', 'salt shaker']</span></td>
+<td><span style="color: green"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: green">10</span></td>
+<td><span style="color: green">['arrange', 12, (3, None, 35)] -> [('placed', 12), ('stacked', 12, (3, None, 35))]</span></td>
+<td><span style="color: green">6</span></td>
+<td><span style="color: green">solved</span></td>
+<td><span style="color: green">2</span></td>
+<td><span style="color: green">13.048</span></td>
+<td><span style="color: green">2 (graspable: 1, surface: 1)</span></td>
+<td><span style="color: green">object-related</span></td>
+<td><span style="color: green">6_a_['arrange', 'salt shaker', 'counter top on the right']</span></td>
+<td><span style="color: green"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: blue">11</span></td>
+<td><span style="color: blue">['open([(3, 10)])'] -> [('graspedhandle', (3, 10))]</span></td>
+<td><span style="color: blue">7</span></td>
+<td><span style="color: blue">already</span></td>
+<td><span style="color: blue">0</span></td>
+<td><span style="color: blue">0</span></td>
+<td><span style="color: blue"></span></td>
+<td><span style="color: blue">object-related</span></td>
+<td><span style="color: blue">7_a_['open', 'cabinet right door']</span></td>
+<td><span style="color: blue"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: green">12</span></td>
+<td><span style="color: green">['pick', 13] -> [('picked', 13)]</span></td>
+<td><span style="color: green">8</span></td>
+<td><span style="color: green">solved</span></td>
+<td><span style="color: green">2</span></td>
+<td><span style="color: green">17.8202</span></td>
+<td><span style="color: green">2 (graspable: 1, space: 1)</span></td>
+<td><span style="color: green">object-related</span></td>
+<td><span style="color: green">8_a_['pick', 'pepper shaker']</span></td>
+<td><span style="color: green"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: green">13</span></td>
+<td><span style="color: green">['arrange', 13, (3, None, 35)] -> [('placed', 13), ('stacked', 13, (3, None, 35))]</span></td>
+<td><span style="color: green">9</span></td>
+<td><span style="color: green">solved</span></td>
+<td><span style="color: green">2</span></td>
+<td><span style="color: green">14.1617</span></td>
+<td><span style="color: green">2 (graspable: 1, surface: 1)</span></td>
+<td><span style="color: green">object-related</span></td>
+<td><span style="color: green">9_a_['arrange', 'pepper shaker', 'counter top on the right']</span></td>
+<td><span style="color: green"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">14</span></td>
+<td><span style="color: red">['turn-on', (6, 7)] -> [('graspedhandle', (6, 7))]</span></td>
+<td><span style="color: red">10</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">80.1816</span></td>
+<td><span style="color: red">1 (joint: 1)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">10_a_['turn-on', 'stove knob on the left']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">15</span></td>
+<td><span style="color: red">['turn-on', (6, 7)] -> [('graspedhandle', (6, 7))]</span></td>
+<td><span style="color: red">10</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">77.2877</span></td>
+<td><span style="color: red">1 (joint: 1)</span></td>
+<td><span style="color: red">heuristic-movables</span></td>
+<td><span style="color: red">10_a_['turn-on', 'stove knob on the left']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">16</span></td>
+<td><span style="color: red">['turn-on', (6, 7)] -> [('graspedhandle', (6, 7))]</span></td>
+<td><span style="color: red">10</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">79.8683</span></td>
+<td><span style="color: red">4 (joint: 4)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">10_a_['turn-on', 'stove knob on the left']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">17</span></td>
+<td><span style="color: red">['pick', 5] -> [('picked', 5)]</span></td>
+<td><span style="color: red">11</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">15.1302</span></td>
+<td><span style="color: red">3 (graspable: 1, surface: 1, space: 1)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">11_a_['pick', 'pot body']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">18</span></td>
+<td><span style="color: red">['pick', 5] -> [('picked', 5)]</span></td>
+<td><span style="color: red">11</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">14.8106</span></td>
+<td><span style="color: red">3 (graspable: 1, surface: 1, space: 1)</span></td>
+<td><span style="color: red">heuristic-movables</span></td>
+<td><span style="color: red">11_a_['pick', 'pot body']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">19</span></td>
+<td><span style="color: red">['pick', 5] -> [('picked', 5)]</span></td>
+<td><span style="color: red">11</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">15.4733</span></td>
+<td><span style="color: red">6 (graspable: 1, joint: 3, surface: 1, space: 1)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">11_a_['pick', 'pot body']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">20</span></td>
+<td><span style="color: red">['arrange', 5, (3, None, 4)] -> [('stacked', 5, (3, None, 4)), ('placed', 5)]</span></td>
+<td><span style="color: red">12</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">0.1819</span></td>
+<td><span style="color: red">5 (graspable: 1, surface: 3, space: 1)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">12_a_['arrange', 'pot body', 'stove on the left']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">21</span></td>
+<td><span style="color: red">['arrange', 5, (3, None, 4)] -> [('stacked', 5, (3, None, 4)), ('placed', 5)]</span></td>
+<td><span style="color: red">12</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">0.2234</span></td>
+<td><span style="color: red">5 (graspable: 1, surface: 3, space: 1)</span></td>
+<td><span style="color: red">heuristic-movables</span></td>
+<td><span style="color: red">12_a_['arrange', 'pot body', 'stove on the left']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">22</span></td>
+<td><span style="color: red">['arrange', 5, (3, None, 4)] -> [('stacked', 5, (3, None, 4)), ('placed', 5)]</span></td>
+<td><span style="color: red">12</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">0.3486</span></td>
+<td><span style="color: red">8 (graspable: 1, joint: 3, surface: 3, space: 1)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">12_a_['arrange', 'pot body', 'stove on the left']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">23</span></td>
+<td><span style="color: red">['pick', 4] -> [('picked', 4)]</span></td>
+<td><span style="color: red">13</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">18.1081</span></td>
+<td><span style="color: red">1 (graspable: 1)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">13_a_['pick', 'pot lid']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">24</span></td>
+<td><span style="color: red">['pick', 4] -> [('picked', 4)]</span></td>
+<td><span style="color: red">13</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">17.7348</span></td>
+<td><span style="color: red">1 (graspable: 1)</span></td>
+<td><span style="color: red">heuristic-movables</span></td>
+<td><span style="color: red">13_a_['pick', 'pot lid']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">25</span></td>
+<td><span style="color: red">['pick', 4] -> [('picked', 4)]</span></td>
+<td><span style="color: red">13</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">17.0605</span></td>
+<td><span style="color: red">4 (graspable: 1, joint: 3)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">13_a_['pick', 'pot lid']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">26</span></td>
+<td><span style="color: red">['arrange', 4, 5] -> [('stacked', 4, 5), ('placed', 4)]</span></td>
+<td><span style="color: red">14</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">30.5542</span></td>
+<td><span style="color: red">4 (graspable: 2, surface: 1, space: 1)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">14_a_['arrange', 'pot lid', 'pot body']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">27</span></td>
+<td><span style="color: red">['arrange', 4, 5] -> [('stacked', 4, 5), ('placed', 4)]</span></td>
+<td><span style="color: red">14</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">26.3277</span></td>
+<td><span style="color: red">4 (graspable: 2, surface: 1, space: 1)</span></td>
+<td><span style="color: red">heuristic-movables</span></td>
+<td><span style="color: red">14_a_['arrange', 'pot lid', 'pot body']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">28</span></td>
+<td><span style="color: red">['arrange', 4, 5] -> [('stacked', 4, 5), ('placed', 4)]</span></td>
+<td><span style="color: red">14</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">31.4788</span></td>
+<td><span style="color: red">7 (graspable: 2, joint: 3, surface: 1, space: 1)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">14_a_['arrange', 'pot lid', 'pot body']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">29</span></td>
+<td><span style="color: red">['turn-on', (9, 3)] -> [('graspedhandle', (9, 3))]</span></td>
+<td><span style="color: red">15</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">48.2663</span></td>
+<td><span style="color: red">1 (joint: 1)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">15_a_['turn-on', 'faucet handle']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">30</span></td>
+<td><span style="color: red">['turn-on', (9, 3)] -> [('graspedhandle', (9, 3))]</span></td>
+<td><span style="color: red">15</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">47.9849</span></td>
+<td><span style="color: red">1 (joint: 1)</span></td>
+<td><span style="color: red">heuristic-movables</span></td>
+<td><span style="color: red">15_a_['turn-on', 'faucet handle']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">31</span></td>
+<td><span style="color: red">['turn-on', (9, 3)] -> [('graspedhandle', (9, 3))]</span></td>
+<td><span style="color: red">15</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">50.923</span></td>
+<td><span style="color: red">4 (joint: 4)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">15_a_['turn-on', 'faucet handle']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: red">32</span></td>
+<td><span style="color: red">['turn-on', (9, 3)] -> [('graspedhandle', (9, 3))]</span></td>
+<td><span style="color: red">15</span></td>
+<td><span style="color: red">failed</span></td>
+<td><span style="color: red">0</span></td>
+<td><span style="color: red">48.1285</span></td>
+<td><span style="color: red">4 (joint: 4)</span></td>
+<td><span style="color: red">object-related</span></td>
+<td><span style="color: red">15_a_['turn-on', 'faucet handle']</span></td>
+<td><span style="color: red"></span></td>
+</tr>
+
+<tr>
+<td><span style="color: black"></span></td>
+<td><span style="color: black">Continuous Success<br>0.12 (1 / 8)</span></td>
+<td><span style="color: black">Task Progress<br>1.75 (14 / 8)</span></td>
+<td><span style="color: black">Planning Success<br>0.33 (4 / 12)</span></td>
+<td><span style="color: black">8</span></td>
+<td><span style="color: black">791.08</span></td>
+<td><span style="color: black">53.73 (effective time)</span></td>
+<td><span style="color: black">737.35 (wasted time)</span></td>
+<td><span style="color: black"></span></td>
+<td><span style="color: black"></span></td>
+</tr>
+
+</table>
+
+    <table>
+        
+        <tr>
+            <td colspan="2" class="merged">Round 1</td>
+        </tr>
+
+        <tr>
+            <td class="left-column">
+                <div class="message user1">
+                    <p class="username">Prompt:</p>
+                    <p>Respond with detailed but simple instructions in English. Each line must consists of only one action, where the mentioned objects must be items from the following list: ['chicken leg', 'cabinet right door', 'cabinet left door', 'cabinet', 'stove on the left', 'stove on the right', 'counter top on the left', 'counter top on the right', 'pot lid', 'pot body', 'pot bottom', 'stove knob on the right', 'stove knob on the left', 'kitchen sink', 'faucet handle', 'fridge', 'fridge door', 'fridge shelf', 'salt shaker', 'pepper shaker'].<br>
+<br>
+    Currently, you can see the following objects: ``the pot lid is on the stove on the left,<br>
+the pot body is on the counter top on the right,<br>
+the chicken leg is on the fridge shelf,<br>
+the salt shaker is in the cabinet,<br>
+the pepper shaker is in the cabinet,<br>
+cabinet right door is partially open,<br>
+cabinet left door is partially open,<br>
+fridge door is partially open,<br>
+stove knob on the right is turned off,<br>
+stove knob on the left is turned off,<br>
+faucet handle is turned off''<br>
+Use the following contexts for creating your action sequence:<br>
+How to Make Chicken Soup<br>
+2.7 Add ¼ cup (30 g) of finely diced, cooked chicken to the soup and stir well until it’s fully incorporated. Afterward, take the soup off the heat. You can omit the diced chicken if you prefer. The soup will still have a strong chicken flavor.<br>
+2.6 Ladle the soup into a blender. Add mint leaves, lemon zest and olive oil.<br>
+2.7 Hold down the lid to prevent it from blowing off. Season to taste.<br>
+2.8 If you like, drizzle some olive oil and add a mint leaf on top of the soup.<br>
+2.9 <br>
+3. Chicken broth cleansing soup<br>
+3.1 Add the onion and ginger slices.<br>
+3.2 <br>
+3.3 Reduce the heat to medium. Simmer for 15 minutes or until the chicken breast is soft and well cooked.<br>
+3.4 Slice it into small pieces. Add the pieces back to the broth.<br>
+</p>
+                </div>
+
+                <div class="message user2">
+                    <p class="username">Answer:</p>
+                    <p>Open fridge door.<br>
+Take chicken leg from fridge shelf.<br>
+Place chicken leg on counter top on the right.<br>
+Open cabinet left door.<br>
+Take salt shaker from cabinet.<br>
+Place salt shaker on counter top on the right.<br>
+Open cabinet right door.<br>
+Take pepper shaker from cabinet.<br>
+Place pepper shaker on counter top on the right.<br>
+Turn stove knob on the left to turn it on.<br>
+Place pot body from counter top on the right on stove on the left.<br>
+Place pot lid on pot body.<br>
+Turn faucet handle to turn it on.</p>
+                </div>
+
+                <div class="message user1">
+                    <p class="username">Prompt:</p>
+                    <p>Actions: Open fridge door.<br>
+Take chicken leg from fridge shelf.<br>
+Place chicken leg on counter top on the right.<br>
+Open cabinet left door.<br>
+Take salt shaker from cabinet.<br>
+Place salt shaker on counter top on the right.<br>
+Open cabinet right door.<br>
+Take pepper shaker from cabinet.<br>
+Place pepper shaker on counter top on the right.<br>
+Turn stove knob on the left to turn it on.<br>
+Place pot body from counter top on the right on stove on the left.<br>
+Place pot lid on pot body.<br>
+Turn faucet handle to turn it on.<br>
+Primitives: <br>
+actions = <br>
+[<br>
+'pick(&lt;obj&gt;)': it contains one argument. The robot must have an empty hand to pick up an object.<br>
+'place(&lt;obj&gt;, &lt;surface&gt;)': it contains two arguments.<br>
+'sprinkle(&lt;obj&gt;, &lt;container&gt;)': it contains two arguments. There must be no object placed on top of the container.<br>
+'stir(&lt;container&gt;, &lt;obj&gt;)': it contains two arguments. There must be no object placed on top of the container.<br>
+'chop(&lt;obj&gt;, &lt;utensil&gt;)': it contains two arguments.<br>
+'open(&lt;joint&gt;)': it contains one argument.<br>
+'close(&lt;joint&gt;)': it contains one argument.<br>
+'nudge(&lt;door&gt;)': it contains one argument. This action is applied to open a door even wider.<br>
+'turn-on(&lt;knob&gt;)': turning on a stove knob, it contains one argument.<br>
+'turn-off(&lt;knob&gt;)': turning off a stove knob, it contains one argument.<br>
+'turn-on(&lt;handle&gt;)': turning on a faucet handle, it contains one argument.<br>
+'turn-off(&lt;handle&gt;)': turning off a faucet handle, it contains one argument.<br>
+], <br>
+<br>
+<br>
+    The primitive actions include argument types. Please use these objects in the respective types: {  '&lt;appliance&gt;': [],<br>
+   '&lt;button&gt;': [],<br>
+   '&lt;condiment&gt;': ['salt shaker', 'pepper shaker'],<br>
+   '&lt;door&gt;': ['cabinet right door', 'cabinet left door', 'fridge door'],<br>
+   '&lt;drawer&gt;': [],<br>
+   '&lt;food&gt;': ['chicken leg'],<br>
+   '&lt;joint&gt;': [  'cabinet right door',<br>
+                 'cabinet left door',<br>
+                 'stove knob on the right',<br>
+                 'stove knob on the left',<br>
+                 'faucet handle',<br>
+                 'fridge door'],<br>
+   '&lt;knob&gt;': [  'stove knob on the right',<br>
+                'stove knob on the left',<br>
+                'faucet handle'],<br>
+   '&lt;movable&gt;': [  'chicken leg',<br>
+                   'pot lid',<br>
+                   'pot body',<br>
+                   'salt shaker',<br>
+                   'pepper shaker'],<br>
+   '&lt;region&gt;': ['pot body'],<br>
+   '&lt;space&gt;': ['cabinet', 'pot body'],<br>
+   '&lt;surface&gt;': [  'stove on the left',<br>
+                   'stove on the right',<br>
+                   'counter top on the left',<br>
+                   'counter top on the right',<br>
+                   'pot body',<br>
+                   'pot bottom',<br>
+                   'kitchen sink',<br>
+                   'fridge shelf'],<br>
+   '&lt;utensil&gt;': []}<br>
+    Note that:<br>
+<br>
+    1. The arguments shouldn't include robot parts, e.g., 'arm', 'gripper'.<br>
+    2. If a new object not mentioned in the set of objects is used as arguments, please name it with the same as the object that constitutes it the most and exists in the given list of objects.<br>
+    3. If one action cannot be translated into the above set, skip that action.<br>
+<br>
+    Return the actions in a sequential list and give no explanation. Don't repeat the primitive actions and available objects.</p>
+                </div>
+
+                <div class="message user2">
+                    <p class="username">Answer:</p>
+                    <p>1. open(fridge door)<br>
+2. pick(chicken leg)<br>
+3. place(chicken leg, counter top on the right)<br>
+4. open(cabinet left door)<br>
+5. pick(salt shaker)<br>
+6. place(salt shaker, counter top on the right)<br>
+7. open(cabinet right door)<br>
+8. pick(pepper shaker)<br>
+9. place(pepper shaker, counter top on the right)<br>
+10. turn-on(stove knob on the left)<br>
+11. pick(pot body)<br>
+12. place(pot body, stove on the left)<br>
+13. pick(pot lid)<br>
+14. place(pot lid, pot body)<br>
+15. turn-on(faucet handle)</p>
+                </div>
+
+                <div class="message user3">
+                    <p class="username">Post-processed:</p>
+                    <p>['open', 'fridge door']<br>['pick', 'chicken leg']<br>['arrange', 'chicken leg', 'counter top on the right']<br>['open', 'cabinet left door']<br>['pick', 'salt shaker']<br>['arrange', 'salt shaker', 'counter top on the right']<br>['open', 'cabinet right door']<br>['pick', 'pepper shaker']<br>['arrange', 'pepper shaker', 'counter top on the right']<br>['turn-on', 'stove knob on the left']<br>['pick', 'pot body']<br>['arrange', 'pot body', 'stove on the left']<br>['pick', 'pot lid']<br>['arrange', 'pot lid', 'pot body']<br>['turn-on', 'faucet handle']</p>
+                </div>
+
+            </td>
+            <td class="right-column">
+                <img src="media/planning_tree.png"/><br>
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_0.txt', 'media/observation_0.png')" class="button-already">
+                1_a_['open', 'fridge door'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_1.txt', 'media/observation_0.png')" class="button-failed">
+                2_a_['pick', 'chicken leg'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_2.txt', 'media/observation_1.png')" class="button-failed">
+                2_a_['pick', 'chicken leg'];heuristic-movables</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_3.txt', 'media/observation_2.png')" class="button-failed">
+                2_a_['pick', 'chicken leg'];all-joints</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_4.txt', 'media/observation_3.png')" class="button-failed">
+                3_a_['arrange', 'chicken leg', 'counter top on the right'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_5.txt', 'media/observation_4.png')" class="button-failed">
+                3_a_['arrange', 'chicken leg', 'counter top on the right'];heuristic-movables</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_6.txt', 'media/observation_5.png')" class="button-failed">
+                3_a_['arrange', 'chicken leg', 'counter top on the right'];all-joints</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_7.txt', 'media/observation_5.png')" class="button-already">
+                4_a_['open', 'cabinet left door'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_8.txt', 'media/observation_6.png')" class="button-solved">
+                5_a_['pick', 'salt shaker'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_9.txt', 'media/observation_7.png')" class="button-solved">
+                6_a_['arrange', 'salt shaker', 'counter top on the right'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_10.txt', 'media/observation_7.png')" class="button-already">
+                7_a_['open', 'cabinet right door'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_11.txt', 'media/observation_8.png')" class="button-solved">
+                8_a_['pick', 'pepper shaker'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_12.txt', 'media/observation_9.png')" class="button-solved">
+                9_a_['arrange', 'pepper shaker', 'counter top on the right'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_13.txt', 'media/observation_10.png')" class="button-failed">
+                10_a_['turn-on', 'stove knob on the left'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_14.txt', 'media/observation_11.png')" class="button-failed">
+                10_a_['turn-on', 'stove knob on the left'];heuristic-movables</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_15.txt', 'media/observation_12.png')" class="button-failed">
+                10_a_['turn-on', 'stove knob on the left'];all-joints</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_16.txt', 'media/observation_13.png')" class="button-failed">
+                11_a_['pick', 'pot body'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_17.txt', 'media/observation_14.png')" class="button-failed">
+                11_a_['pick', 'pot body'];heuristic-movables</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_18.txt', 'media/observation_15.png')" class="button-failed">
+                11_a_['pick', 'pot body'];all-joints</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_19.txt', 'media/observation_16.png')" class="button-failed">
+                12_a_['arrange', 'pot body', 'stove on the left'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_20.txt', 'media/observation_17.png')" class="button-failed">
+                12_a_['arrange', 'pot body', 'stove on the left'];heuristic-movables</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_21.txt', 'media/observation_18.png')" class="button-failed">
+                12_a_['arrange', 'pot body', 'stove on the left'];all-joints</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_22.txt', 'media/observation_19.png')" class="button-failed">
+                13_a_['pick', 'pot lid'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_23.txt', 'media/observation_20.png')" class="button-failed">
+                13_a_['pick', 'pot lid'];heuristic-movables</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_24.txt', 'media/observation_21.png')" class="button-failed">
+                13_a_['pick', 'pot lid'];all-joints</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_25.txt', 'media/observation_22.png')" class="button-failed">
+                14_a_['arrange', 'pot lid', 'pot body'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_26.txt', 'media/observation_23.png')" class="button-failed">
+                14_a_['arrange', 'pot lid', 'pot body'];heuristic-movables</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_27.txt', 'media/observation_24.png')" class="button-failed">
+                14_a_['arrange', 'pot lid', 'pot body'];all-joints</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_28.txt', 'media/observation_25.png')" class="button-failed">
+                15_a_['turn-on', 'faucet handle'];object-related</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_29.txt', 'media/observation_26.png')" class="button-failed">
+                15_a_['turn-on', 'faucet handle'];heuristic-movables</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_30.txt', 'media/observation_27.png')" class="button-failed">
+                15_a_['turn-on', 'faucet handle'];all-joints</button>&nbsp;
+
+                <button onclick="loadAndToggleContent('0', 'content/log_0_31.txt', 'media/observation_28.png')" class="button-failed">
+                15_a_['turn-on', 'faucet handle'];object-related</button>&nbsp;
+
+                <br><span id="content-0" class="hidden-text"></span><br>
+
+            </td>
+        </tr>
+
+    </table>
+
+</body>
+</html>

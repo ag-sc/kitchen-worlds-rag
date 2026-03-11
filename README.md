@@ -60,23 +60,23 @@ conda activate kitchen
 Please cite the original *kitchen-world* environment by using the following papers in your research:
 
 ```text 
-@inproceedings{yang2024guiding,
-    title     = {{Guiding Long-Horizon Task and Motion Planning with Vision Language Models}},
-    author    = {Yang, Zhutian and Garrett, Caelan and Fox, Dieter and Lozano-P{\'e}rez, Tom{\'a}s and Kaelbling, Leslie Pack},
-    booktitle = {ICRA},
-    year      = {2025},
-    organization  = {IEEE}
+@inproceedings{Yang2023SequenceBased,
+  title = {Sequence-{{Based Plan Feasibility Prediction}} for {{Efficient Task}} and {{Motion Planning}}},
+  booktitle = {Proc. of {{Robotics}}: {{Science}} and {{Systems}} ({{RSS}})},
+  author = {Yang, Zhutian and Garrett, Caelan and {Lozano-P{\'e}rez}, Tom{\'a}s and Kaelbling, Leslie and Fox, Dieter},
+  year = 2023,
+  address = {Daegu, Republic of Korea},
+  doi = {10.15607/RSS.2023.XIX.061}
 }
 
-@inproceedings{yang2023piginet, 
-    author    = {Zhutian Yang AND Caelan R Garrett AND Tomas Lozano-Perez AND Leslie Kaelbling AND Dieter Fox}, 
-    title     = {{Sequence-Based Plan Feasibility Prediction for Efficient Task and Motion Planning}}, 
-    booktitle = {Proceedings of Robotics: Science and Systems}, 
-    year      = {2023}, 
-    address   = {Daegu, Republic of Korea}, 
-    month     = {July}, 
-    doi       = {10.15607/RSS.2023.XIX.061} 
-} 
+@inproceedings{Yang2025Guiding,
+  title = {Guiding {{Long-Horizon Task}} and {{Motion Planning}} with {{Vision Language Models}}},
+  booktitle = {Proc. of the {{IEEE International Conference}} on {{Robotics}} and {{Automation}} ({{ICRA}})},
+  author = {Yang, Zhutian and Garrett, Caelan and Fox, Dieter and {Lozano-P{\'e}rez}, Tom{\'a}s and Kaelbling, Leslie Pack},
+  year = 2025,
+  address = {Atlanta, USA}
+}
+
 ```
 
 If you use this version of the repository and its RAG-based features, please cite the following research:

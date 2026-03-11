@@ -7,8 +7,8 @@ import seaborn as sns
 from matplotlib.colors import BoundaryNorm
 
 from rag_based_prompting.evaluation.evaluate_experiments import get_exp_meta_with_plans, \
-    split_success_rate_string_decimal, SUMMARY_FILE
-from rag_based_prompting.evaluation.run_experiment import SEED_PATH
+    split_success_rate_string_decimal
+from rag_based_prompting.evaluation.run_experiment import EXP_FOLDER_CHICKEN_SOUP, EXP_FOLDER_DISHWASHER, PLAN_FOLDER
 
 # Column Mapping
 rag_ax = {
@@ -59,10 +59,12 @@ boxplot_exp_map = {
 METRICS_BOXPLOT = ["cont_succ_rate", "completed_succ_rate", "true_succ_rate", "plan_length", "plan_time",
                    "effective_time", "wasted_time"]
 
+EVALUATE_CHICKEN = True
 
-def preprocess_correlation_data():
+
+def process_and_visualise_correlation_data(experiment_path: Path):
     # Data pre-processing
-    file = f'{Path(__file__).parent / ".." / "eval_scenarios" / "correlation_results.csv"}'
+    file = f'{experiment_path / "correlation_results.csv"}'
     df = pd.read_csv(file)
 
     # Extract metrics (row labels)
@@ -80,10 +82,10 @@ def preprocess_correlation_data():
     # Transpose so metrics are on x-axis and sources on y-axis
     correlations = correlations.T
     p_values = p_values.T
-    return p_values, correlations, metrics, rag_labels
+    create_and_save_heatmap(p_values, correlations, metrics, rag_labels, experiment_path)
 
 
-def create_and_save_heatmap(p_values, correlations, metrics, rag_labels):
+def create_and_save_heatmap(p_values, correlations, metrics, rag_labels, exp_path):
     # Mask for significance (only paint when p > 0.05)
     mask = p_values > 0.05
     # Prepare a colormap: 3 reds for negative, 3 greens for positive
@@ -106,15 +108,15 @@ def create_and_save_heatmap(p_values, correlations, metrics, rag_labels):
                 ax.add_patch(plt.Rectangle((j, i), 1, 1, fill=True, color='lightgray', edgecolor='gray', lw=0.5))
 
     plt.tight_layout()
-    plt.savefig("plots/correlation_heatmap.png", dpi=300)  # save as PNG, high resolution
+    plt.savefig(f"{exp_path}/plots/correlation_heatmap.png", dpi=300)  # save as PNG, high resolution
     plt.show()
 
 
-def plot_sr_from_plan_amount():
-    with open(SEED_PATH, "r") as f:
+def plot_sr_from_plan_amount(experiment_path: Path):
+    with open(experiment_path / "seeds.txt", "r") as f:
         seeds = [int(line.strip()) for line in f]
 
-    file = f'{Path(__file__).parent / ".." / "eval_scenarios" / "plans" / "experiment_summary.csv"}'
+    file = f'{experiment_path / PLAN_FOLDER / "experiment_summary.csv"}'
     df = pd.read_csv(file)
     res_map = {}
     plan_amount = 3
@@ -151,14 +153,15 @@ def plot_sr_from_plan_amount():
     plt.grid(True)
 
     plt.tight_layout()
-    plt.savefig("plots/plan_amount_influence.png", dpi=300)  # save as PNG, high resolution
+    plt.savefig(f"{experiment_path}/plots/plan_amount_influence.png", dpi=300)  # save as PNG, high resolution
     plt.show()
 
-def create_boxplots():
+
+def create_boxplots(experiment_path: Path):
     experiment_metadata = get_exp_meta_with_plans()
     df_combined = []
     for name, row in experiment_metadata.iterrows():
-        exp_summary = Path(__file__).parent / ".." / "eval_scenarios" / row["subfolder"] / "experiment_summary.csv"
+        exp_summary = experiment_path / row["subfolder"] / "experiment_summary.csv"
         exp_df = pd.read_csv(exp_summary)
         exp_df["experiment"] = row["subfolder"]
 
@@ -181,15 +184,15 @@ def create_boxplots():
         plt.ylabel(metr_ax[metric])
 
         plt.tight_layout()
-        plt.savefig(f"plots/boxplot_{metric}.png", dpi=300)
+        plt.savefig(f"{experiment_path}/plots/boxplot_{metric}.png", dpi=300)
         plt.close()
 
 
-def create_performance_table():
+def create_performance_table(experiment_path: Path):
     def fmt(avg, std, precision=2):
         return f"{avg:.{precision}f} ($\\pm$ {std:.{precision}f})"
 
-    df = pd.read_csv(SUMMARY_FILE)
+    df = pd.read_csv(experiment_path / "summary.csv")
     cols = [
         ('avg_consr', 'std_consr'),
         ('avg_comsr', 'std_comsr'),
@@ -212,15 +215,23 @@ def create_performance_table():
 
 
 if __name__ == '__main__':
+    if EVALUATE_CHICKEN:
+        path = EXP_FOLDER_CHICKEN_SOUP
+    else:
+        path = EXP_FOLDER_DISHWASHER
+
+    # Create the 'plots' folder
+    plot_dir = path / "plots"
+    plot_dir.mkdir(parents=True, exist_ok=True)
+
     # Create correlation diagram
-    #p_values, correlations, metrics, rag_labels = preprocess_correlation_data()
-    #create_and_save_heatmap(p_values, correlations, metrics, rag_labels)
+    process_and_visualise_correlation_data(path)
 
     # Create plan influence diagram
-    #plot_sr_from_plan_amount()
+    plot_sr_from_plan_amount(path)
 
     # Create boxplots
-    create_boxplots()
+    create_boxplots(path)
 
     # Create latex table for the performance values
-    #create_performance_table()
+    # create_performance_table(path)
