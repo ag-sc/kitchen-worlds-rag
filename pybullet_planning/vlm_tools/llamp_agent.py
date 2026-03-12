@@ -177,7 +177,12 @@ class LLAMPAgent(PDDLStreamAgent):
         assert len(self.world.cameras) > 0, "Please use world.set_camera_points() or world.add_camera() to add"
         obs_path = self.llamp_api.log_obs_image(self.world.cameras)
         object_reducer_name = self._get_object_reducer_name()
-        subgoal = self.goal_sequence[0] ## self.pddlstream_problem.goal[1]
+        if len(self.goal_sequence) > 0:
+            subgoal = self.goal_sequence[0]
+        elif len(self.pddlstream_problem.goal) > 1:
+            subgoal = self.pddlstream_problem.goal[1]
+        else:
+            subgoal = None
         self.llamp_api.log_subgoal(subgoal, obs_path, STARTED, suffix=f";{object_reducer_name}",
                                    trial_index=self.object_reducer_state)
         self.llamp_api.output_html(self._get_progress_table())
