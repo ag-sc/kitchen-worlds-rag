@@ -56,7 +56,7 @@ def run_all_experiments(goal: str, start_idx: int, exp_folder: Path, no_seeds: i
             "--rag_wikihow", str(row[RAG_COLUMNS[1]]),
             "--rag_cutting_vids", str(row[RAG_COLUMNS[2]]),
             "--rag_cskg_locations", str(row[RAG_COLUMNS[3]]),
-            "--exp_dir", exp_folder,
+            "--exp_dir", str(exp_folder),
             "--exp_subdir", folder,
             "--planning_mode", "actions",
             "--dual_arm"
@@ -84,7 +84,7 @@ def run_planning_experiment(goal: str, exp_folder: Path, no_seeds: int):
         "--rag_wikihow", "0.0",
         "--rag_cutting_vids", "0.0",
         "--rag_cskg_locations", "0.0",
-        "--exp_dir", exp_folder,
+        "--exp_dir", str(exp_folder),
         "--exp_subdir", PLAN_FOLDER,
         "--planning_mode", "actions",
         "--dual_arm", "--rag_plans"
