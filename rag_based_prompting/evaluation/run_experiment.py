@@ -56,6 +56,7 @@ def run_all_experiments(goal: str, start_idx: int, exp_folder: Path, no_seeds: i
             "--rag_wikihow", str(row[RAG_COLUMNS[1]]),
             "--rag_cutting_vids", str(row[RAG_COLUMNS[2]]),
             "--rag_cskg_locations", str(row[RAG_COLUMNS[3]]),
+            "--exp_dir", exp_folder,
             "--exp_subdir", folder,
             "--planning_mode", "actions",
             "--dual_arm"
@@ -83,6 +84,7 @@ def run_planning_experiment(goal: str, exp_folder: Path, no_seeds: int):
         "--rag_wikihow", "0.0",
         "--rag_cutting_vids", "0.0",
         "--rag_cskg_locations", "0.0",
+        "--exp_dir", exp_folder,
         "--exp_subdir", PLAN_FOLDER,
         "--planning_mode", "actions",
         "--dual_arm", "--rag_plans"
@@ -106,7 +108,7 @@ def run_planning_experiment(goal: str, exp_folder: Path, no_seeds: int):
     with open(exp_folder / "seeds.txt", "r") as f:
         seeds = [int(line.strip()) for line in f]
     if check_experiment_needed(PLAN_FOLDER, exp_folder, no_seeds):
-        for s in tqdm(seeds, "Running the experiment \'Dynamic plans\' with all seeds for \'{goal}\'"):
+        for s in tqdm(seeds, f"Running the experiment \'Dynamic plans\' with all seeds for \'{goal}\'"):
             if check_seed_needed(PLAN_FOLDER, s, exp_folder):
                 run_vlm_tamp_with_argparse(get_agent_parser_given_config=update_parser, seed=s,
                                            problem_name=get_environment_from_goal(goal))
@@ -118,7 +120,7 @@ def run_planning_experiment(goal: str, exp_folder: Path, no_seeds: int):
             time.sleep(5)
             print(f'Finished experiment with seed {s}')
     else:
-        print("Experiment \'Dynamic plans\' is already finished for \'{goal}\'")
+        print(f"Experiment \'Dynamic plans\' is already finished for \'{goal}\'")
 
 
 def get_environment_from_goal(goal: str) -> str:

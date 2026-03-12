@@ -11,7 +11,7 @@ MAX_RETRIES=5
 RETRY_COUNT=0
 
 while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
-  echo "Running experiment with IDX=$IDX (Attempt $((RETRY_COUNT+1))/$MAX_RETRIES)..."
+  echo "Running make_chicken_soup experiment with IDX=$IDX (Attempt $((RETRY_COUNT+1))/$MAX_RETRIES)..."
   
   python -m rag_based_prompting.evaluation.run_experiment --exp_start_idx "$IDX" --chicken_exp --plan_exp
   

@@ -358,7 +358,7 @@ def get_plan_skeleton(plan, indices={}, include_joint=True, include_movable=Fals
             skeleton = ACTION_ABV[a[0]]
         else:
             ABV = {ACTION_NAMES[k]: v for k, v in ACTION_ABV.items()}
-            skeleton = ABV[a[0]]
+            skeleton = ABV.get(a[0], '?')
         aa = []
         for e in a:
             aa.append(indices[e] if e in indices else e)

@@ -664,7 +664,7 @@ class LLAMPAgent(PDDLStreamAgent):
         if isinstance(action_args, str):
             print(f'ERROR: action_args is not a list but a single string: {action_args}')
             action_args = list(action_args)
-        skeleton = [[action_name, arm] + action_args]
+        skeleton = [[action_name, arm] + list(action_args)]
 
         if action_name in pseudo_pull_actions:
             init = self.pddlstream_problem.init
