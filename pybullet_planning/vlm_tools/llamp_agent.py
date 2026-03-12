@@ -165,7 +165,8 @@ class LLAMPAgent(PDDLStreamAgent):
         ## move the txt_file.txt to log directory
         if self.llamp_api is not None:
             if self.llamp_api.planning_mode in ACTIONS_GROUP:
-                self.time_log[-1]['goal'] = self.goal_sequence[0]
+                if self.time_log and self.goal_sequence:
+                    self.time_log[-1]['goal'] = self.goal_sequence[0]
             status = UNGROUNDED if result is not None and isinstance(result, str) and result == UNGROUNDED else None
             self._replan_postprocess(smaller_world=smaller_world, status=status)
 
@@ -177,7 +178,7 @@ class LLAMPAgent(PDDLStreamAgent):
         assert len(self.world.cameras) > 0, "Please use world.set_camera_points() or world.add_camera() to add"
         obs_path = self.llamp_api.log_obs_image(self.world.cameras)
         object_reducer_name = self._get_object_reducer_name()
-        if len(self.goal_sequence) > 0:
+        if self.goal_sequence:
             subgoal = self.goal_sequence[0]
         elif len(self.pddlstream_problem.goal) > 1:
             subgoal = self.pddlstream_problem.goal[1]
@@ -207,7 +208,7 @@ class LLAMPAgent(PDDLStreamAgent):
     def _replan_postprocess(self, goal=None, status=None, smaller_world=None):
         """ after each planning run, log the planning result """
         title = '[llamp_agent._replan_postprocess]\t'
-        if goal is None:
+        if goal is None and self.goal_sequence:
             goal = self.goal_sequence[0]  ## self.pddlstream_problem.goal[1]
         if status is None:
             status = FAILED if self.plan is None else SOLVED
