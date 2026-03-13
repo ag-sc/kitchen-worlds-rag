@@ -210,6 +210,8 @@ class LLAMPAgent(PDDLStreamAgent):
         title = '[llamp_agent._replan_postprocess]\t'
         if goal is None and self.goal_sequence:
             goal = self.goal_sequence[0]  ## self.pddlstream_problem.goal[1]
+        if len(goal) == 1:
+            goal = self.goal_sequence
         if status is None:
             status = FAILED if self.plan is None else SOLVED
         assert status in ALL_LLAMP_AGENT_STATUS
@@ -637,7 +639,7 @@ class LLAMPAgent(PDDLStreamAgent):
                 action_name = 'grasp_pull_ungrasp_handle_with_link'
             if 'movable' in categories:
                 action_name = 'pick'
-        operator = self.env_execution.domain.operators[action_name]
+        operator = self.env_execution.domain.operators.get(action_name, "pick")
 
         effects = []
         for l in operator.effects.literals:
