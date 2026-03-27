@@ -1,0 +1,3635 @@
+[
+    {
+        "planning": 9.2431,
+        "preimage": 0,
+        "goal": [
+            "open",
+            [
+                3,
+                14
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q256=(2.0, 6.25, 0.2, 3.142), q72=(1.945, 7.364, 0.449, 2.34), c424=t(4, 28)))",
+            "Action(name='grasp_pull_ungrasp_handle', args=('left', (3, 14), pstn9=0.0, pstn15=-1.575, hg448=(-0.108, 0.0, 0.0, 1.571, -0.0, 1.571), q72=(1.945, 7.364, 0.449, 2.34), q632=(1.35, 5.678, 0.449, 0.765), c872=t(4, 30), aq248=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), aq160=(0.908, 0.055, 1.17, -0.156, 3.375, -0.038, 1.742), c608=t(7, 78)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "grasp_pull_ungrasp_handle((3, 14))"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "canpull",
+                "left"
+            ],
+            [
+                "ataconf",
+                "left",
+                "aq248=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)"
+            ],
+            [
+                "btraj",
+                "c424=t(4, 28)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c608=t(7, 78)",
+                "4",
+                "p8=(0.7, 8.985, 0.953, 0.0, -0.0, 1.571)",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(11, 1)",
+                "pstn10=0.0",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "pose",
+                "5",
+                "p7=(0.7, 8.985, 0.923, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(6, 5)",
+                "pstn11=0.0",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c608=t(7, 78)",
+                "5",
+                "p7=(0.7, 8.985, 0.923, 0.0, -0.0, 1.571)",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c608=t(7, 78)",
+                "12",
+                "p10=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(3, 48)",
+                "pstn7=0.0",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "pose",
+                "14",
+                "p11=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "unattachedjoint",
+                "(3, 14)"
+            ],
+            [
+                "atposition",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c608=t(7, 78)",
+                "14",
+                "p11=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c608=t(7, 78)",
+                "4",
+                "p8=(0.7, 8.985, 0.953, 0.0, -0.0, 1.571)",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "issampledposition",
+                "(3, 14)",
+                "pstn9=0.0",
+                "pstn15=-1.575"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(3, 10)",
+                "pstn8=0.0",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c608=t(7, 78)",
+                "5",
+                "p7=(0.7, 8.985, 0.923, 0.0, -0.0, 1.571)",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "bconf",
+                "q632=(1.35, 5.678, 0.449, 0.765)"
+            ],
+            [
+                "position",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "atraj",
+                "c872=t(4, 30)"
+            ],
+            [
+                "isopenedposition",
+                "(3, 14)",
+                "pstn15=-1.575"
+            ],
+            [
+                "basemotion",
+                "q256=(2.0, 6.25, 0.2, 3.142)",
+                "c424=t(4, 28)",
+                "q72=(1.945, 7.364, 0.449, 2.34)"
+            ],
+            [
+                "cangrasphandle"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(6, 7)",
+                "pstn12=0.0",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "pose",
+                "12",
+                "p10=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)"
+            ],
+            [
+                "atbconf",
+                "q256=(2.0, 6.25, 0.2, 3.142)"
+            ],
+            [
+                "bconf",
+                "q256=(2.0, 6.25, 0.2, 3.142)"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "atraj",
+                "c608=t(7, 78)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(3, 14)",
+                "pstn9=0.0",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "position",
+                "(3, 48)",
+                "pstn7=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(3, 48)",
+                "pstn7=0.0",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(3, 10)",
+                "pstn8=0.0",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(11, 1)",
+                "pstn10=0.0",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(10, 3)",
+                "pstn13=0.0",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "pose",
+                "15",
+                "p12=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(3, 14)",
+                "pstn9=0.0",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "handlegrasp",
+                "(3, 14)",
+                "hg448=(-0.108, 0.0, 0.0, 1.571, -0.0, 1.571)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(10, 3)",
+                "pstn13=0.0",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "isclosedposition",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "canmove"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(6, 7)",
+                "pstn12=0.0",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "kinpulloneaction",
+                "left",
+                "(3, 14)",
+                "pstn9=0.0",
+                "pstn15=-1.575",
+                "hg448=(-0.108, 0.0, 0.0, 1.571, -0.0, 1.571)",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "c872=t(4, 30)",
+                "aq160=(0.908, 0.055, 1.17, -0.156, 3.375, -0.038, 1.742)",
+                "c608=t(7, 78)"
+            ],
+            [
+                "joint",
+                "(3, 14)"
+            ],
+            [
+                "position",
+                "(10, 3)",
+                "pstn13=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c608=t(7, 78)",
+                "14",
+                "p11=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "aconf",
+                "left",
+                "aq160=(0.908, 0.055, 1.17, -0.156, 3.375, -0.038, 1.742)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(3, None, 48)",
+                "lp1=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "position",
+                "(6, 5)",
+                "pstn11=0.0"
+            ],
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "handempty",
+                "left"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(3, None, 48)",
+                "lp1=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "position",
+                "(6, 7)",
+                "pstn12=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c608=t(7, 78)",
+                "12",
+                "p10=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "position",
+                "(11, 1)",
+                "pstn10=0.0"
+            ],
+            [
+                "bconf",
+                "q72=(1.945, 7.364, 0.449, 2.34)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c608=t(7, 78)",
+                "15",
+                "p12=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "pose",
+                "4",
+                "p8=(0.7, 8.985, 0.953, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "position",
+                "(3, 14)",
+                "pstn15=-1.575"
+            ],
+            [
+                "position",
+                "(3, 10)",
+                "pstn8=0.0"
+            ],
+            [
+                "pose",
+                "(3, None, 48)",
+                "lp1=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c608=t(7, 78)",
+                "15",
+                "p12=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)",
+                "q72=(1.945, 7.364, 0.449, 2.34)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c608=t(7, 78)",
+                "(6, 5)",
+                "pstn11=0.0",
+                "q632=(1.35, 5.678, 0.449, 0.765)",
+                "(3, 14)",
+                "pstn9=0.0"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "solved",
+        "object_reducer": "object-related",
+        "last_node": "1_a_['open', 'cabinet left door']",
+        "agent_state": "agent_state_0.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 21.4416,
+        "preimage": 0,
+        "goal": [
+            "open",
+            [
+                3,
+                48
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    48
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    3,
+                    48
+                ]
+            ],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    48
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "2_a_['open', 'top drawer']",
+        "agent_state": "agent_state_1.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    48
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 22.1324,
+        "preimage": 0,
+        "goal": [
+            "open",
+            [
+                3,
+                48
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    48
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    3,
+                    48
+                ]
+            ],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    48
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "2_a_['open', 'top drawer']",
+        "agent_state": "agent_state_1b.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    48
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 22.3413,
+        "preimage": 0,
+        "goal": [
+            "open",
+            [
+                3,
+                48
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    48
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    11,
+                    1
+                ],
+                [
+                    3,
+                    48
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    48
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "2_a_['open', 'top drawer']",
+        "agent_state": "agent_state_1c.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    48
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 0.4154,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            16
+        ],
+        "goal_original": [
+            [
+                "picked",
+                16
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                16
+            ],
+            "joint": [],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    48
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "3_a_['pick', 'fork']",
+        "agent_state": "agent_state_2.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                16
+            ]
+        ]
+    },
+    {
+        "planning": 0.4057,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            16
+        ],
+        "goal_original": [
+            [
+                "picked",
+                16
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                16
+            ],
+            "joint": [],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    48
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "3_a_['pick', 'fork']",
+        "agent_state": "agent_state_2b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                16
+            ]
+        ]
+    },
+    {
+        "planning": 6.599,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            16
+        ],
+        "goal_original": [
+            [
+                "picked",
+                16
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                16
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    11,
+                    1
+                ],
+                [
+                    3,
+                    48
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    48
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "3_a_['pick', 'fork']",
+        "agent_state": "agent_state_2c.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                16
+            ]
+        ]
+    },
+    {
+        "planning": 14.4347,
+        "preimage": 0,
+        "goal": [
+            "open",
+            [
+                11,
+                1
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    11,
+                    1
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    11,
+                    1
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "4_a_['open', 'fridge door']",
+        "agent_state": "agent_state_3.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    11,
+                    1
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 14.3664,
+        "preimage": 0,
+        "goal": [
+            "open",
+            [
+                11,
+                1
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    11,
+                    1
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    11,
+                    1
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "4_a_['open', 'fridge door']",
+        "agent_state": "agent_state_3b.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    11,
+                    1
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 13.964,
+        "preimage": 0,
+        "goal": [
+            "open",
+            [
+                11,
+                1
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    11,
+                    1
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    11,
+                    1
+                ],
+                [
+                    3,
+                    48
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "4_a_['open', 'fridge door']",
+        "agent_state": "agent_state_3c.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    11,
+                    1
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 14.7746,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            12
+        ],
+        "goal_original": [
+            [
+                "picked",
+                12
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [],
+            "surface": [],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "5_a_['pick', 'chicken leg']",
+        "agent_state": "agent_state_4.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                12
+            ]
+        ]
+    },
+    {
+        "planning": 13.1599,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            12
+        ],
+        "goal_original": [
+            [
+                "picked",
+                12
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    11,
+                    1
+                ]
+            ],
+            "surface": [
+                [
+                    11,
+                    null,
+                    9
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "custom_add=fridge#1::fridge_door",
+        "last_node": "5_a_['pick', 'chicken leg']",
+        "agent_state": "agent_state_4b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                12
+            ]
+        ]
+    },
+    {
+        "planning": 14.9356,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            12
+        ],
+        "goal_original": [
+            [
+                "picked",
+                12
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    11,
+                    1
+                ]
+            ],
+            "surface": [
+                [
+                    11,
+                    null,
+                    9
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "5_a_['pick', 'chicken leg']",
+        "agent_state": "agent_state_4c.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                12
+            ]
+        ]
+    },
+    {
+        "planning": 0.3594,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            12,
+            [
+                3,
+                null,
+                27
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    27
+                ]
+            ],
+            [
+                "placed",
+                12
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "6_a_['arrange', 'chicken leg', 'counter top on the left']",
+        "agent_state": "agent_state_5.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    27
+                ]
+            ],
+            [
+                "placed",
+                12
+            ]
+        ]
+    },
+    {
+        "planning": 0.0737,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            12,
+            [
+                3,
+                null,
+                27
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    27
+                ]
+            ],
+            [
+                "placed",
+                12
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "6_a_['arrange', 'chicken leg', 'counter top on the left']",
+        "agent_state": "agent_state_5b.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    27
+                ]
+            ],
+            [
+                "placed",
+                12
+            ]
+        ]
+    },
+    {
+        "planning": 1.7604,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            12,
+            [
+                3,
+                null,
+                27
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    27
+                ]
+            ],
+            [
+                "placed",
+                12
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                12
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    11,
+                    1
+                ],
+                [
+                    3,
+                    48
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    27
+                ]
+            ],
+            "space": []
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "6_a_['arrange', 'chicken leg', 'counter top on the left']",
+        "agent_state": "agent_state_5c.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                12,
+                [
+                    3,
+                    null,
+                    27
+                ]
+            ],
+            [
+                "placed",
+                12
+            ]
+        ]
+    },
+    {
+        "planning": 17.1589,
+        "preimage": 0,
+        "goal": [
+            "open",
+            [
+                3,
+                10
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    10
+                ]
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q160=(1.35, 5.678, 0.449, 0.765), q296=(1.632, 6.748, 0.874, 1.37), c24=t(4, 38)))",
+            "Action(name='grasp_pull_ungrasp_handle', args=('left', (3, 10), pstn691=0.0, pstn698=1.764, hg632=(-0.108, 0.0, 0.0, 1.571, -0.0, 1.571), q296=(1.632, 6.748, 0.874, 1.37), q736=(1.486, 8.572, 0.874, 3.134), c64=t(4, 30), aq552=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), aq88=(0.919, 0.629, 2.229, -0.139, 2.972, -1.147, 0.775), c216=t(7, 71)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "grasp_pull_ungrasp_handle((3, 10))"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(10, 3)",
+                "pstn696=0.0",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "position",
+                "(10, 3)",
+                "pstn696=0.0"
+            ],
+            [
+                "pose",
+                "15",
+                "p177=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c216=t(7, 71)",
+                "12",
+                "p175=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(11, 1)",
+                "pstn693=0.0",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "pose",
+                "14",
+                "p176=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "issampledposition",
+                "(3, 10)",
+                "pstn691=0.0",
+                "pstn698=1.764"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c216=t(7, 71)",
+                "12",
+                "p175=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "basemotion",
+                "q160=(1.35, 5.678, 0.449, 0.765)",
+                "c24=t(4, 38)",
+                "q296=(1.632, 6.748, 0.874, 1.37)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c216=t(7, 71)",
+                "5",
+                "p172=(0.7, 8.985, 0.923, 0.0, -0.0, 1.571)",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "atraj",
+                "c64=t(4, 30)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c216=t(7, 71)",
+                "14",
+                "p176=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(6, 5)",
+                "pstn694=0.0",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(3, 48)",
+                "pstn690=0.0",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "atraj",
+                "c216=t(7, 71)"
+            ],
+            [
+                "atbconf",
+                "q160=(1.35, 5.678, 0.449, 0.765)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c216=t(7, 71)",
+                "4",
+                "p173=(0.7, 8.985, 0.953, 0.0, -0.0, 1.571)",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(11, 1)",
+                "pstn693=0.0",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "position",
+                "(3, 48)",
+                "pstn690=0.0"
+            ],
+            [
+                "position",
+                "(6, 7)",
+                "pstn695=0.0"
+            ],
+            [
+                "position",
+                "(11, 1)",
+                "pstn693=0.0"
+            ],
+            [
+                "bconf",
+                "q160=(1.35, 5.678, 0.449, 0.765)"
+            ],
+            [
+                "isopenedposition",
+                "(3, 10)",
+                "pstn698=1.764"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(6, 5)",
+                "pstn694=0.0",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cangrasphandle"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(6, 7)",
+                "pstn695=0.0",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "unattachedjoint",
+                "(3, 10)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(3, None, 48)",
+                "lp17=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(3, 10)",
+                "pstn691=0.0",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(3, 48)",
+                "pstn690=0.0",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "bconf",
+                "q736=(1.486, 8.572, 0.874, 3.134)"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "handempty",
+                "left"
+            ],
+            [
+                "ataconf",
+                "left",
+                "aq552=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)"
+            ],
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "atposition",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(6, 7)",
+                "pstn695=0.0",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(3, None, 48)",
+                "lp17=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "aconf",
+                "left",
+                "aq88=(0.919, 0.629, 2.229, -0.139, 2.972, -1.147, 0.775)"
+            ],
+            [
+                "position",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c216=t(7, 71)",
+                "4",
+                "p173=(0.7, 8.985, 0.953, 0.0, -0.0, 1.571)",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c216=t(7, 71)",
+                "14",
+                "p176=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(3, 14)",
+                "pstn692=-1.575",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "canmove"
+            ],
+            [
+                "position",
+                "(3, 14)",
+                "pstn692=-1.575"
+            ],
+            [
+                "pose",
+                "5",
+                "p172=(0.7, 8.985, 0.923, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(3, 10)",
+                "pstn691=0.0",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c216=t(7, 71)",
+                "15",
+                "p177=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "canpull",
+                "left"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(10, 3)",
+                "pstn696=0.0",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "bconf",
+                "q296=(1.632, 6.748, 0.874, 1.37)"
+            ],
+            [
+                "kinpulloneaction",
+                "left",
+                "(3, 10)",
+                "pstn691=0.0",
+                "pstn698=1.764",
+                "hg632=(-0.108, 0.0, 0.0, 1.571, -0.0, 1.571)",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "c64=t(4, 30)",
+                "aq88=(0.919, 0.629, 2.229, -0.139, 2.972, -1.147, 0.775)",
+                "c216=t(7, 71)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c216=t(7, 71)",
+                "(3, 14)",
+                "pstn692=-1.575",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c216=t(7, 71)",
+                "15",
+                "p177=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)",
+                "q736=(1.486, 8.572, 0.874, 3.134)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c216=t(7, 71)",
+                "5",
+                "p172=(0.7, 8.985, 0.923, 0.0, -0.0, 1.571)",
+                "q296=(1.632, 6.748, 0.874, 1.37)",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "pose",
+                "(3, None, 48)",
+                "lp17=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)"
+            ],
+            [
+                "position",
+                "(6, 5)",
+                "pstn694=0.0"
+            ],
+            [
+                "joint",
+                "(3, 10)"
+            ],
+            [
+                "position",
+                "(3, 10)",
+                "pstn698=1.764"
+            ],
+            [
+                "isclosedposition",
+                "(3, 10)",
+                "pstn691=0.0"
+            ],
+            [
+                "pose",
+                "4",
+                "p173=(0.7, 8.985, 0.953, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "handlegrasp",
+                "(3, 10)",
+                "hg632=(-0.108, 0.0, 0.0, 1.571, -0.0, 1.571)"
+            ],
+            [
+                "pose",
+                "12",
+                "p175=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)"
+            ],
+            [
+                "btraj",
+                "c24=t(4, 38)"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    3,
+                    10
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "solved",
+        "object_reducer": "object-related",
+        "last_node": "7_a_['open', 'cabinet right door']",
+        "agent_state": "agent_state_6.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    10
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 8.4928,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            14
+        ],
+        "goal_original": [
+            [
+                "picked",
+                14
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                14
+            ],
+            "joint": [],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "8_a_['pick', 'salt shaker']",
+        "agent_state": "agent_state_7.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                14
+            ]
+        ]
+    },
+    {
+        "planning": 8.1749,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            14
+        ],
+        "goal_original": [
+            [
+                "picked",
+                14
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                14
+            ],
+            "joint": [],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "8_a_['pick', 'salt shaker']",
+        "agent_state": "agent_state_7b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                14
+            ]
+        ]
+    },
+    {
+        "planning": 14.8452,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            14
+        ],
+        "goal_original": [
+            [
+                "picked",
+                14
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                14
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    11,
+                    1
+                ],
+                [
+                    3,
+                    48
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "8_a_['pick', 'salt shaker']",
+        "agent_state": "agent_state_7c.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                14
+            ]
+        ]
+    },
+    {
+        "planning": 8.0244,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            15
+        ],
+        "goal_original": [
+            [
+                "picked",
+                15
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                15
+            ],
+            "joint": [],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "9_a_['pick', 'pepper shaker']",
+        "agent_state": "agent_state_8.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                15
+            ]
+        ]
+    },
+    {
+        "planning": 8.0134,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            15
+        ],
+        "goal_original": [
+            [
+                "picked",
+                15
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                15
+            ],
+            "joint": [],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "9_a_['pick', 'pepper shaker']",
+        "agent_state": "agent_state_8b.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                15
+            ]
+        ]
+    },
+    {
+        "planning": 15.2762,
+        "preimage": 0,
+        "goal": [
+            "pick",
+            15
+        ],
+        "goal_original": [
+            [
+                "picked",
+                15
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                15
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    11,
+                    1
+                ],
+                [
+                    3,
+                    48
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "9_a_['pick', 'pepper shaker']",
+        "agent_state": "agent_state_8c.pkl",
+        "actual_goal": [
+            [
+                "picked",
+                15
+            ]
+        ]
+    },
+    {
+        "planning": 13.166,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            14,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                14,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                14
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                14
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "10_a_['arrange', 'salt shaker', 'counter top on the right']",
+        "agent_state": "agent_state_9.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                14,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                14
+            ]
+        ]
+    },
+    {
+        "planning": 13.2419,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            14,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                14,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                14
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                14
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "10_a_['arrange', 'salt shaker', 'counter top on the right']",
+        "agent_state": "agent_state_9b.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                14,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                14
+            ]
+        ]
+    },
+    {
+        "planning": 29.2499,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            14,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "stacked",
+                14,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                14
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                14
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    11,
+                    1
+                ],
+                [
+                    3,
+                    48
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "10_a_['arrange', 'salt shaker', 'counter top on the right']",
+        "agent_state": "agent_state_9c.pkl",
+        "actual_goal": [
+            [
+                "stacked",
+                14,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            [
+                "placed",
+                14
+            ]
+        ]
+    },
+    {
+        "planning": 13.68,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            15,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                15
+            ],
+            [
+                "stacked",
+                15,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                15
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "11_a_['arrange', 'pepper shaker', 'counter top on the right']",
+        "agent_state": "agent_state_10.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                15
+            ],
+            [
+                "stacked",
+                15,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 13.1501,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            15,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                15
+            ],
+            [
+                "stacked",
+                15,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                15
+            ],
+            "joint": [],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "heuristic-movables",
+        "last_node": "11_a_['arrange', 'pepper shaker', 'counter top on the right']",
+        "agent_state": "agent_state_10b.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                15
+            ],
+            [
+                "stacked",
+                15,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 29.5943,
+        "preimage": 0,
+        "goal": [
+            "arrange",
+            15,
+            [
+                3,
+                null,
+                35
+            ]
+        ],
+        "goal_original": [
+            [
+                "placed",
+                15
+            ],
+            [
+                "stacked",
+                15,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ],
+        "plan": "FAILED",
+        "plan_skeleton": "FAILED",
+        "plan_len": 0,
+        "init": [],
+        "objects_by_category": {
+            "graspable": [
+                15
+            ],
+            "joint": [
+                [
+                    3,
+                    10
+                ],
+                [
+                    11,
+                    1
+                ],
+                [
+                    3,
+                    48
+                ],
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ],
+            "space": [
+                [
+                    3,
+                    null,
+                    0
+                ]
+            ]
+        },
+        "status": "failed",
+        "object_reducer": "object-related",
+        "last_node": "11_a_['arrange', 'pepper shaker', 'counter top on the right']",
+        "agent_state": "agent_state_10c.pkl",
+        "actual_goal": [
+            [
+                "placed",
+                15
+            ],
+            [
+                "stacked",
+                15,
+                [
+                    3,
+                    null,
+                    35
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 13.1828,
+        "preimage": 0,
+        "goal": [
+            "close",
+            [
+                3,
+                10
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    10
+                ]
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q728=(1.486, 8.572, 0.874, 3.134), q120=(1.688, 8.337, 0.026, -2.872), c816=t(4, 20)))",
+            "Action(name='grasp_pull_ungrasp_handle', args=('left', (3, 10), pstn820=1.764, pstn829=0.0, hg792=(-0.108, 0.0, -0.084, 1.571, -0.0, 1.571), q120=(1.688, 8.337, 0.026, -2.872), q872=(1.362, 6.595, 0.026, 1.647), c896=t(4, 30), aq256=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), aq72=(0.179, -0.484, 2.021, -0.13, 2.582, -1.454, 1.998), c184=t(7, 48)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "grasp_pull_ungrasp_handle((3, 10))"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c184=t(7, 48)",
+                "5",
+                "p333=(0.7, 8.985, 0.923, 0.0, -0.0, 1.571)",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c184=t(7, 48)",
+                "15",
+                "p338=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "position",
+                "(3, 48)",
+                "pstn819=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(6, 7)",
+                "pstn824=0.0",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(10, 3)",
+                "pstn825=0.0",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(11, 1)",
+                "pstn822=0.0",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "issampledposition",
+                "(3, 10)",
+                "pstn820=1.764",
+                "pstn829=0.0"
+            ],
+            [
+                "unattachedjoint",
+                "(3, 10)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c184=t(7, 48)",
+                "4",
+                "p334=(0.7, 8.985, 0.953, 0.0, -0.0, 1.571)",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "pose",
+                "12",
+                "p336=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(3, 48)",
+                "pstn819=0.0",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "isopenedposition",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c184=t(7, 48)",
+                "14",
+                "p337=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "position",
+                "(10, 3)",
+                "pstn825=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(3, None, 48)",
+                "lp30=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c184=t(7, 48)",
+                "5",
+                "p333=(0.7, 8.985, 0.923, 0.0, -0.0, 1.571)",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(10, 3)",
+                "pstn825=0.0",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "bconf",
+                "q728=(1.486, 8.572, 0.874, 3.134)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c184=t(7, 48)",
+                "12",
+                "p336=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "atbconf",
+                "q728=(1.486, 8.572, 0.874, 3.134)"
+            ],
+            [
+                "cangrasphandle"
+            ],
+            [
+                "position",
+                "(6, 5)",
+                "pstn823=0.0"
+            ],
+            [
+                "basemotion",
+                "q728=(1.486, 8.572, 0.874, 3.134)",
+                "c816=t(4, 20)",
+                "q120=(1.688, 8.337, 0.026, -2.872)"
+            ],
+            [
+                "position",
+                "(3, 10)",
+                "pstn829=0.0"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "handempty",
+                "left"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c184=t(7, 48)",
+                "14",
+                "p337=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "bconf",
+                "q120=(1.688, 8.337, 0.026, -2.872)"
+            ],
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "pose",
+                "15",
+                "p338=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "btraj",
+                "c816=t(4, 20)"
+            ],
+            [
+                "joint",
+                "(3, 10)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(3, 14)",
+                "pstn821=-1.575",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(6, 5)",
+                "pstn823=0.0",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "canmove"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c184=t(7, 48)",
+                "15",
+                "p338=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c184=t(7, 48)",
+                "12",
+                "p336=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "pose",
+                "14",
+                "p337=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "pose",
+                "5",
+                "p333=(0.7, 8.985, 0.923, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(3, None, 48)",
+                "lp30=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "handlegrasp",
+                "(3, 10)",
+                "hg792=(-0.108, 0.0, -0.084, 1.571, -0.0, 1.571)"
+            ],
+            [
+                "bconf",
+                "q872=(1.362, 6.595, 0.026, 1.647)"
+            ],
+            [
+                "atraj",
+                "c184=t(7, 48)"
+            ],
+            [
+                "isclosedposition",
+                "(3, 10)",
+                "pstn829=0.0"
+            ],
+            [
+                "position",
+                "(11, 1)",
+                "pstn822=0.0"
+            ],
+            [
+                "canpull",
+                "left"
+            ],
+            [
+                "atposition",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(6, 7)",
+                "pstn824=0.0",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(11, 1)",
+                "pstn822=0.0",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "position",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "position",
+                "(3, 14)",
+                "pstn821=-1.575"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(3, 10)",
+                "pstn820=1.764",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "position",
+                "(6, 7)",
+                "pstn824=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(3, 14)",
+                "pstn821=-1.575",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "atraj",
+                "c896=t(4, 30)"
+            ],
+            [
+                "pose",
+                "4",
+                "p334=(0.7, 8.985, 0.953, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(6, 5)",
+                "pstn823=0.0",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "aconf",
+                "left",
+                "aq72=(0.179, -0.484, 2.021, -0.13, 2.582, -1.454, 1.998)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c184=t(7, 48)",
+                "4",
+                "p334=(0.7, 8.985, 0.953, 0.0, -0.0, 1.571)",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(3, 10)",
+                "pstn820=1.764",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "ataconf",
+                "left",
+                "aq256=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c184=t(7, 48)",
+                "(3, 48)",
+                "pstn819=0.0",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "(3, 10)",
+                "pstn820=1.764"
+            ],
+            [
+                "pose",
+                "(3, None, 48)",
+                "lp30=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)"
+            ],
+            [
+                "kinpulloneaction",
+                "left",
+                "(3, 10)",
+                "pstn820=1.764",
+                "pstn829=0.0",
+                "hg792=(-0.108, 0.0, -0.084, 1.571, -0.0, 1.571)",
+                "q120=(1.688, 8.337, 0.026, -2.872)",
+                "q872=(1.362, 6.595, 0.026, 1.647)",
+                "c896=t(4, 30)",
+                "aq72=(0.179, -0.484, 2.021, -0.13, 2.582, -1.454, 1.998)",
+                "c184=t(7, 48)"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    3,
+                    10
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "solved",
+        "object_reducer": "object-related",
+        "last_node": "12_a_['close', 'cabinet right door']",
+        "agent_state": "agent_state_11.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    10
+                ]
+            ]
+        ]
+    },
+    {
+        "planning": 16.5479,
+        "preimage": 0,
+        "goal": [
+            "close",
+            [
+                3,
+                14
+            ]
+        ],
+        "goal_original": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ],
+        "plan": [
+            "Action(name='move_base', args=(q160=(1.362, 6.595, 0.026, 1.647), q552=(1.201, 5.809, 0.911, 0.766), c280=t(4, 50)))",
+            "Action(name='grasp_pull_ungrasp_handle', args=('left', (3, 14), pstn892=-1.575, pstn900=0.0, hg656=(-0.108, 0.0, 0.084, 1.571, -0.0, 1.571), q552=(1.201, 5.809, 0.911, 0.766), q240=(1.815, 7.215, 0.911, 2.341), c112=t(4, 30), aq928=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), aq600=(0.737, 0.559, 1.91, -0.213, 4.003, -0.681, 0.408), c264=t(7, 90)))"
+        ],
+        "plan_skeleton": [
+            "move_base()",
+            "grasp_pull_ungrasp_handle((3, 14))"
+        ],
+        "plan_len": 2,
+        "init": [
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c264=t(7, 90)",
+                "14",
+                "p414=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "joint",
+                "(3, 14)"
+            ],
+            [
+                "atbconf",
+                "q160=(1.362, 6.595, 0.026, 1.647)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c264=t(7, 90)",
+                "12",
+                "p413=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(6, 5)",
+                "pstn894=0.0",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(11, 1)",
+                "pstn893=0.0",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "controllable",
+                "left"
+            ],
+            [
+                "atposition",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "position",
+                "(6, 5)",
+                "pstn894=0.0"
+            ],
+            [
+                "pose",
+                "12",
+                "p413=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)"
+            ],
+            [
+                "kinpulloneaction",
+                "left",
+                "(3, 14)",
+                "pstn892=-1.575",
+                "pstn900=0.0",
+                "hg656=(-0.108, 0.0, 0.084, 1.571, -0.0, 1.571)",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "c112=t(4, 30)",
+                "aq600=(0.737, 0.559, 1.91, -0.213, 4.003, -0.681, 0.408)",
+                "c264=t(7, 90)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(3, 48)",
+                "pstn890=0.0",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(3, 10)",
+                "pstn891=0.0",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "position",
+                "(3, 14)",
+                "pstn900=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(3, 10)",
+                "pstn891=0.0",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "canpull",
+                "left"
+            ],
+            [
+                "position",
+                "(11, 1)",
+                "pstn893=0.0"
+            ],
+            [
+                "atraj",
+                "c112=t(4, 30)"
+            ],
+            [
+                "position",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c264=t(7, 90)",
+                "4",
+                "p411=(0.7, 8.985, 0.953, 0.0, -0.0, 1.571)",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(3, 14)",
+                "pstn892=-1.575",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "basemotion",
+                "q160=(1.362, 6.595, 0.026, 1.647)",
+                "c280=t(4, 50)",
+                "q552=(1.201, 5.809, 0.911, 0.766)"
+            ],
+            [
+                "handlegrasp",
+                "(3, 14)",
+                "hg656=(-0.108, 0.0, 0.084, 1.571, -0.0, 1.571)"
+            ],
+            [
+                "pose",
+                "5",
+                "p410=(0.7, 8.985, 0.923, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "issampledposition",
+                "(3, 14)",
+                "pstn892=-1.575",
+                "pstn900=0.0"
+            ],
+            [
+                "atraj",
+                "c264=t(7, 90)"
+            ],
+            [
+                "btraj",
+                "c280=t(4, 50)"
+            ],
+            [
+                "cangrasphandle"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(6, 7)",
+                "pstn895=0.0",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(3, 14)",
+                "pstn892=-1.575",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "canmovebase"
+            ],
+            [
+                "position",
+                "(3, 10)",
+                "pstn891=0.0"
+            ],
+            [
+                "isclosedposition",
+                "(3, 14)",
+                "pstn900=0.0"
+            ],
+            [
+                "pose",
+                "15",
+                "p415=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c264=t(7, 90)",
+                "15",
+                "p415=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "unattachedjoint",
+                "(3, 14)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(6, 5)",
+                "pstn894=0.0",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "position",
+                "(10, 3)",
+                "pstn896=0.0"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c264=t(7, 90)",
+                "15",
+                "p415=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(10, 3)",
+                "pstn896=0.0",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(3, None, 48)",
+                "lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "canmove"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(3, 48)",
+                "pstn890=0.0",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c264=t(7, 90)",
+                "5",
+                "p410=(0.7, 8.985, 0.923, 0.0, -0.0, 1.571)",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "pose",
+                "14",
+                "p414=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)"
+            ],
+            [
+                "position",
+                "(6, 7)",
+                "pstn895=0.0"
+            ],
+            [
+                "pose",
+                "4",
+                "p411=(0.7, 8.985, 0.953, 0.0, -0.0, 1.571)"
+            ],
+            [
+                "bconf",
+                "q552=(1.201, 5.809, 0.911, 0.766)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(10, 3)",
+                "pstn896=0.0",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "pose",
+                "(3, None, 48)",
+                "lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c264=t(7, 90)",
+                "5",
+                "p410=(0.7, 8.985, 0.923, 0.0, -0.0, 1.571)",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "isopenedposition",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(3, None, 48)",
+                "lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c264=t(7, 90)",
+                "4",
+                "p411=(0.7, 8.985, 0.953, 0.0, -0.0, 1.571)",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "ataconf",
+                "left",
+                "aq928=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)"
+            ],
+            [
+                "bconf",
+                "q240=(1.815, 7.215, 0.911, 2.341)"
+            ],
+            [
+                "position",
+                "(3, 48)",
+                "pstn890=0.0"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(6, 7)",
+                "pstn895=0.0",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c264=t(7, 90)",
+                "12",
+                "p413=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)",
+                "q552=(1.201, 5.809, 0.911, 0.766)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "cfreetrajposeatbconfatjointposition",
+                "c264=t(7, 90)",
+                "14",
+                "p414=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "bconf",
+                "q160=(1.362, 6.595, 0.026, 1.647)"
+            ],
+            [
+                "cfreetrajpositionatbconfatjointposition",
+                "c264=t(7, 90)",
+                "(11, 1)",
+                "pstn893=0.0",
+                "q240=(1.815, 7.215, 0.911, 2.341)",
+                "(3, 14)",
+                "pstn892=-1.575"
+            ],
+            [
+                "aconf",
+                "left",
+                "aq600=(0.737, 0.559, 1.91, -0.213, 4.003, -0.681, 0.408)"
+            ],
+            [
+                "handempty",
+                "left"
+            ]
+        ],
+        "objects_by_category": {
+            "graspable": [],
+            "joint": [
+                [
+                    3,
+                    14
+                ]
+            ],
+            "surface": [],
+            "space": []
+        },
+        "status": "solved",
+        "object_reducer": "object-related",
+        "last_node": "13_a_['close', 'cabinet left door']",
+        "agent_state": "agent_state_12.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    14
+                ]
+            ]
+        ]
+    },
+    {
+        "goal": [
+            "close([(3, 48)])"
+        ],
+        "goal_original": [
+            [
+                "close",
+                [
+                    3,
+                    48
+                ]
+            ]
+        ],
+        "plan": [],
+        "plan_skeleton": [],
+        "plan_len": 0,
+        "init": [],
+        "planning": 0,
+        "preimage": 0,
+        "last_node": "14_a_['close', 'top drawer']",
+        "status": "already",
+        "object_reducer": "object-related",
+        "agent_state": "agent_state_13.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    3,
+                    48
+                ]
+            ]
+        ]
+    },
+    {
+        "goal": [
+            "close([(11, 1)])"
+        ],
+        "goal_original": [
+            [
+                "close",
+                [
+                    11,
+                    1
+                ]
+            ]
+        ],
+        "plan": [],
+        "plan_skeleton": [],
+        "plan_len": 0,
+        "init": [],
+        "planning": 0,
+        "preimage": 0,
+        "last_node": "15_a_['close', 'fridge door']",
+        "status": "already",
+        "object_reducer": "object-related",
+        "agent_state": "agent_state_14.pkl",
+        "actual_goal": [
+            [
+                "graspedhandle",
+                [
+                    11,
+                    1
+                ]
+            ]
+        ]
+    },
+    {
+        "continuous_success_string": "0.2 (1 / 5)",
+        "task_progress_string": "3.0 (15 / 5)",
+        "total_problems_solved_string": "0.31 (4 / 13)",
+        "total_plan_len": 8,
+        "total_planning_time": 392.21,
+        "effective_planning_time": 56.1327,
+        "wasted_planning_time": 336.07319999999993,
+        "task_success": 0,
+        "num_solved_problems": 13,
+        "num_success": 4,
+        "num_problems_solved_continuously": 1,
+        "num_completed_problems": 15,
+        "total_num_problems": 5,
+        "continuous_success_rate": 0.2,
+        "task_progress": 3.0,
+        "total_problems_solved": 0.3076923076923077,
+        "whole_goal_sequence": [
+            [
+                [
+                    "graspedhandle",
+                    [
+                        3,
+                        14
+                    ]
+                ]
+            ],
+            [
+                [
+                    "graspedhandle",
+                    [
+                        3,
+                        10
+                    ]
+                ]
+            ],
+            [
+                [
+                    "graspedhandle",
+                    [
+                        3,
+                        14
+                    ]
+                ]
+            ],
+            [
+                [
+                    "close",
+                    [
+                        3,
+                        48
+                    ]
+                ]
+            ],
+            [
+                [
+                    "close",
+                    [
+                        11,
+                        1
+                    ]
+                ]
+            ]
+        ],
+        "subgoal_plan_len": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            2,
+            0,
+            0
+        ],
+        "continuous_plan_len": 4,
+        "continuous_planning_time": 9.2431,
+        "continuous_subgoal_plan_len": [
+            2,
+            2,
+            2,
+            2
+        ],
+        "ungrounded_subgoals": [],
+        "reprompt_after_subgoals": [],
+        "num_reprompts": 0,
+        "failed_nodes": {
+            "2_a_['open', 'top drawer']": 3,
+            "3_a_['pick', 'fork']": 3,
+            "4_a_['open', 'fridge door']": 3,
+            "5_a_['pick', 'chicken leg']": 3,
+            "6_a_['arrange', 'chicken leg', 'counter top on the left']": 3,
+            "8_a_['pick', 'salt shaker']": 3,
+            "9_a_['pick', 'pepper shaker']": 3,
+            "10_a_['arrange', 'salt shaker', 'counter top on the right']": 3,
+            "11_a_['arrange', 'pepper shaker', 'counter top on the right']": 3
+        }
+    }
+]
