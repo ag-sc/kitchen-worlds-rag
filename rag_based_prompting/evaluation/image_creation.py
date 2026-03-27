@@ -182,6 +182,7 @@ def create_boxplots(experiment_path: Path):
         labels = [boxplot_exp_map.get(exp, exp) for exp in experiments]
         plt.xticks(range(1, len(experiments) + 1), labels, rotation=65)
         plt.ylabel(metr_ax[metric])
+        plt.grid()
 
         plt.tight_layout()
         plt.savefig(f"{experiment_path}/plots/boxplot_{metric}.png", dpi=300)
