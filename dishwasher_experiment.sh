@@ -7,8 +7,9 @@ if [ -z "$1" ]; then
 fi
 
 IDX=$1
-MAX_RETRIES=5
+MAX_RETRIES=15
 RETRY_COUNT=0
+ERROR_LOG="error_log.txt"
 
 while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
   echo "Running load_dishwasher experiment with IDX=$IDX (Attempt $((RETRY_COUNT+1))/$MAX_RETRIES)..."
@@ -21,11 +22,18 @@ while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
     echo "Experiment completed successfully!"
     exit 0
   else
-    echo "Experiment failed with exit code $EXIT_CODE. Retrying..."
+    ERROR_MSG="Attempt $((RETRY_COUNT+1)) failed with exit code $EXIT_CODE."
+    echo "$ERROR_MSG Retrying..."
+    
+    # Append error message to external txt file
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $ERROR_MSG" >> "$ERROR_LOG"
+    
     RETRY_COUNT=$((RETRY_COUNT+1))
     sleep 2  # Optional: wait a bit before retrying
   fi
 done
 
-echo "Experiment failed after $MAX_RETRIES attempts."
+FINAL_ERROR_MSG="Experiment failed after $MAX_RETRIES attempts."
+echo "$FINAL_ERROR_MSG"
+echo "$(date '+%Y-%m-%d %H:%M:%S') - $FINAL_ERROR_MSG" >> "$ERROR_LOG"
 exit 1

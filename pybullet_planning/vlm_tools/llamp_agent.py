@@ -210,8 +210,8 @@ class LLAMPAgent(PDDLStreamAgent):
         title = '[llamp_agent._replan_postprocess]\t'
         if goal is None and self.goal_sequence:
             goal = self.goal_sequence[0]  ## self.pddlstream_problem.goal[1]
-        if len(goal) == 1:
-            goal = self.goal_sequence
+            if len(goal) == 1:
+                goal = self.goal_sequence
         if status is None:
             status = FAILED if self.plan is None else SOLVED
         assert status in ALL_LLAMP_AGENT_STATUS
@@ -639,7 +639,11 @@ class LLAMPAgent(PDDLStreamAgent):
                 action_name = 'grasp_pull_ungrasp_handle_with_link'
             if 'movable' in categories:
                 action_name = 'pick'
-        operator = self.env_execution.domain.operators.get(action_name, "pick")
+        operator = self.env_execution.domain.operators.get(action_name)
+        if operator is None:
+                operator = self.env_execution.domain.operators.get("pick")
+
+        #operator = self.env_execution.domain.operators.get(action_name, "pick")
 
         effects = []
         for l in operator.effects.literals:
@@ -666,7 +670,10 @@ class LLAMPAgent(PDDLStreamAgent):
         action_args = subgoal[1:]
         if isinstance(action_args, str):
             print(f'ERROR: action_args is not a list but a single string: {action_args}')
-            action_args = list(action_args)
+            if action_args == 'tart':
+                action_args = 'start'
+            else:
+                action_args = list(action_args)
         skeleton = [[action_name, arm] + list(action_args)]
 
         if action_name in pseudo_pull_actions:

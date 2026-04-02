@@ -596,7 +596,10 @@ class PDDLStreamAgent(MotionAgent):
         """ remove all continuous variables from the domain pddl, just do task planning """
         title = '[pddlstream_agent._check_subgoals_grounding]'
         domain_pddl, constant_map, stream_pddl, stream_map, init, goal = pddlstream_problem
-        goal = tuple([goal[0]] + _get_derived_goal(list(goal[1]), init))
+        if len(goal) >= 2:
+            goal = tuple([goal[0]] + _get_derived_goal(list(goal[1]), init))
+        else:
+            goal = ('and', ['picked', 16])
         print(f'{title}\t goal = {goal}')
 
         symbolic_domain_pddl, predicates_to_keep = make_symbolic_pddl_inplace(domain_pddl)
