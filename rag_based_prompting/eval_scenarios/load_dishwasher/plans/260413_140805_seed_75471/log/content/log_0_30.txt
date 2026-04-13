@@ -1,0 +1,1011 @@
+    _get_log_collisions smaller_world = {}
+    _get_log_collisions self.world = {}
+[llamp_agent.get_action_goal] action = ['close', (3, 10)]
+
+
+saving statistics
+
+
+[llamp_agent._get_current_whole_goal_sequence] previous_goals
+    0    [['graspedhandle', (3, 14)]]
+    1    [['graspedhandle', (3, 10)]]
+[llamp_agent._get_current_whole_goal_sequence] future_goals
+    2    [['close', (3, 10)]]
+    3    [['close', (3, 14)]]
+    4    [['close', (3, 48)]]
+    5    [['close', (11, 1)]]
+[llamp_agent.save_time_log]
++-------+------------------------------------------------------------------------------------+---------------+---------------+------------+-----------------+--------------------------------------------------+----------------------------------+---------------------------------------------------------------+---------------+
+| idx   | goal                                                                               | task_idx      | status        |   plan_len |   planning_time | planning_objects                                 | object_reducer                   | planning_node                                                 | agent_state   |
+|-------+------------------------------------------------------------------------------------+---------------+---------------+------------+-----------------+--------------------------------------------------+----------------------------------+---------------------------------------------------------------+---------------|
+| 1     | ['open', (3, 14)] -> [('graspedhandle', (3, 14))]                                  | 1             | solved        |          2 |         10.1367 | 1 (joint: 1)                                     | object-related                   | 1_a_['open', 'cabinet left door']                             |               |
+| 2     | ['open', (3, 48)] -> [('graspedhandle', (3, 48))]                                  | 2             | failed        |          0 |         23.0561 | 2 (joint: 1, space: 1)                           | object-related                   | 2_a_['open', 'top drawer']                                    |               |
+| 3     | ['open', (3, 48)] -> [('graspedhandle', (3, 48))]                                  | 2             | failed        |          0 |         23.2499 | 2 (joint: 1, space: 1)                           | heuristic-movables               | 2_a_['open', 'top drawer']                                    |               |
+| 4     | ['open', (3, 48)] -> [('graspedhandle', (3, 48))]                                  | 2             | failed        |          0 |         23.3681 | 5 (joint: 4, space: 1)                           | object-related                   | 2_a_['open', 'top drawer']                                    |               |
+| 5     | ['pick', 16] -> [('picked', 16)]                                                   | 3             | failed        |          0 |          0.4205 | 2 (graspable: 1, space: 1)                       | object-related                   | 3_a_['pick', 'fork']                                          |               |
+| 6     | ['pick', 16] -> [('picked', 16)]                                                   | 3             | failed        |          0 |          0.4484 | 2 (graspable: 1, space: 1)                       | heuristic-movables               | 3_a_['pick', 'fork']                                          |               |
+| 7     | ['pick', 16] -> [('picked', 16)]                                                   | 3             | failed        |          0 |          7.2376 | 6 (graspable: 1, joint: 4, space: 1)             | object-related                   | 3_a_['pick', 'fork']                                          |               |
+| 8     | ['open', (11, 1)] -> [('graspedhandle', (11, 1))]                                  | 4             | failed        |          0 |         14.2601 | 1 (joint: 1)                                     | object-related                   | 4_a_['open', 'fridge door']                                   |               |
+| 9     | ['open', (11, 1)] -> [('graspedhandle', (11, 1))]                                  | 4             | failed        |          0 |         14.4208 | 1 (joint: 1)                                     | heuristic-movables               | 4_a_['open', 'fridge door']                                   |               |
+| 10    | ['open', (11, 1)] -> [('graspedhandle', (11, 1))]                                  | 4             | failed        |          0 |         14.2044 | 4 (joint: 4)                                     | object-related                   | 4_a_['open', 'fridge door']                                   |               |
+| 11    | ['pick', 12] -> [('picked', 12)]                                                   | 5             | failed        |          0 |         15.181  | 1 (graspable: 1)                                 | object-related                   | 5_a_['pick', 'chicken leg']                                   |               |
+| 12    | ['pick', 12] -> [('picked', 12)]                                                   | 5             | failed        |          0 |         15.5298 | 3 (graspable: 1, joint: 1, surface: 1)           | custom_add=fridge#1::fridge_door | 5_a_['pick', 'chicken leg']                                   |               |
+| 13    | ['pick', 12] -> [('picked', 12)]                                                   | 5             | failed        |          0 |         16.6783 | 3 (graspable: 1, joint: 1, surface: 1)           | object-related                   | 5_a_['pick', 'chicken leg']                                   |               |
+| 14    | ['arrange', 12, (3, None, 27)] -> [('placed', 12), ('stacked', 12, (3, None, 27))] | 6             | failed        |          0 |          0.0823 | 2 (graspable: 1, surface: 1)                     | object-related                   | 6_a_['arrange', 'chicken leg', 'counter top on the left']     |               |
+| 15    | ['arrange', 12, (3, None, 27)] -> [('placed', 12), ('stacked', 12, (3, None, 27))] | 6             | failed        |          0 |          0.0879 | 2 (graspable: 1, surface: 1)                     | heuristic-movables               | 6_a_['arrange', 'chicken leg', 'counter top on the left']     |               |
+| 16    | ['arrange', 12, (3, None, 27)] -> [('placed', 12), ('stacked', 12, (3, None, 27))] | 6             | failed        |          0 |          1.8688 | 6 (graspable: 1, joint: 4, surface: 1)           | object-related                   | 6_a_['arrange', 'chicken leg', 'counter top on the left']     |               |
+| 17    | ['open', (3, 10)] -> [('graspedhandle', (3, 10))]                                  | 7             | solved        |          2 |         16.9549 | 1 (joint: 1)                                     | object-related                   | 7_a_['open', 'cabinet right door']                            |               |
+| 18    | ['pick', 14] -> [('picked', 14)]                                                   | 8             | failed        |          0 |          8.4239 | 2 (graspable: 1, space: 1)                       | object-related                   | 8_a_['pick', 'salt shaker']                                   |               |
+| 19    | ['pick', 14] -> [('picked', 14)]                                                   | 8             | failed        |          0 |          8.3672 | 2 (graspable: 1, space: 1)                       | heuristic-movables               | 8_a_['pick', 'salt shaker']                                   |               |
+| 20    | ['pick', 14] -> [('picked', 14)]                                                   | 8             | failed        |          0 |         15.8321 | 6 (graspable: 1, joint: 4, space: 1)             | object-related                   | 8_a_['pick', 'salt shaker']                                   |               |
+| 21    | ['pick', 15] -> [('picked', 15)]                                                   | 9             | failed        |          0 |          8.6064 | 2 (graspable: 1, space: 1)                       | object-related                   | 9_a_['pick', 'pepper shaker']                                 |               |
+| 22    | ['pick', 15] -> [('picked', 15)]                                                   | 9             | failed        |          0 |          8.5197 | 2 (graspable: 1, space: 1)                       | heuristic-movables               | 9_a_['pick', 'pepper shaker']                                 |               |
+| 23    | ['pick', 15] -> [('picked', 15)]                                                   | 9             | failed        |          0 |         18.1297 | 6 (graspable: 1, joint: 4, space: 1)             | object-related                   | 9_a_['pick', 'pepper shaker']                                 |               |
+| 24    | ['arrange', 14, (3, None, 35)] -> [('placed', 14), ('stacked', 14, (3, None, 35))] | 10            | failed        |          0 |         16.4759 | 3 (graspable: 1, surface: 1, space: 1)           | object-related                   | 10_a_['arrange', 'salt shaker', 'counter top on the right']   |               |
+| 25    | ['arrange', 14, (3, None, 35)] -> [('placed', 14), ('stacked', 14, (3, None, 35))] | 10            | failed        |          0 |         15.5004 | 3 (graspable: 1, surface: 1, space: 1)           | heuristic-movables               | 10_a_['arrange', 'salt shaker', 'counter top on the right']   |               |
+| 26    | ['arrange', 14, (3, None, 35)] -> [('placed', 14), ('stacked', 14, (3, None, 35))] | 10            | failed        |          0 |         30.7664 | 7 (graspable: 1, joint: 4, surface: 1, space: 1) | object-related                   | 10_a_['arrange', 'salt shaker', 'counter top on the right']   |               |
+| 27    | ['arrange', 15, (3, None, 35)] -> [('placed', 15), ('stacked', 15, (3, None, 35))] | 11            | failed        |          0 |         14.2587 | 3 (graspable: 1, surface: 1, space: 1)           | object-related                   | 11_a_['arrange', 'pepper shaker', 'counter top on the right'] |               |
+| 28    | ['arrange', 15, (3, None, 35)] -> [('placed', 15), ('stacked', 15, (3, None, 35))] | 11            | failed        |          0 |         14.1402 | 3 (graspable: 1, surface: 1, space: 1)           | heuristic-movables               | 11_a_['arrange', 'pepper shaker', 'counter top on the right'] |               |
+| 29    | ['arrange', 15, (3, None, 35)] -> [('placed', 15), ('stacked', 15, (3, None, 35))] | 11            | failed        |          0 |         32.465  | 7 (graspable: 1, joint: 4, surface: 1, space: 1) | object-related                   | 11_a_['arrange', 'pepper shaker', 'counter top on the right'] |               |
+| 31    | ['close', (3, 10)] -> [('graspedhandle', (3, 10))]                                 | 12            | failed        |          0 |         15.8246 | 1 (joint: 1)                                     | object-related                   | 12_a_['close', 'cabinet right door']                          |               |
+|       | 0.17 (1 / 6)                                                                       | 1.83 (11 / 6) | 0.17 (2 / 12) |          4 |        404.5    | 27.09 (effective time)                           | 377.4 (wasted time)              |                                                               |               |
++-------+------------------------------------------------------------------------------------+---------------+---------------+------------+-----------------+--------------------------------------------------+----------------------------------+---------------------------------------------------------------+---------------+
+[llamp_agent._get_current_whole_goal_sequence] previous_goals
+    0    [['graspedhandle', (3, 14)]]
+    1    [['graspedhandle', (3, 10)]]
+[llamp_agent._get_current_whole_goal_sequence] future_goals
+    2    [['close', (3, 10)]]
+    3    [['close', (3, 14)]]
+    4    [['close', (3, 48)]]
+    5    [['close', (11, 1)]]
+filter_dynamic_facts     found grasps []
+filter_dynamic_facts     found grasps []
+pddlstream_agent.save_agent_state at /homes/jtoeberg/kitchen-worlds-rag/rag_based_prompting/eval_scenarios/load_dishwasher/plans/260413_140805_seed_75471/states/agent_state_11b.pkl
+----------------------------------------------------------------------------------------------------
+                                                   [llamp_agent._update_pddlstream_problem] problem_count = 11                                                    
+----------------------------------------------------------------------------------------------------
+    [llamp_agent._update_pddlstream_problem] world.collisions = {}
+    [llamp_agent._update_pddlstream_problem] self.world.collisions = {}
+
+================ summarize_supporting_surfaces ================
+    surface    [counter#1::front_left_stove, counter#1::front_right_stove, counter#1::hitman_countertop, counter#1::indigo_tmp, braiserbody#1, braiserbody#1::braiser_bottom, basin#1::basin_bottom, fridge#1::shelf_top]
+    supporter    []
+--------------- 
+    fridge#1::shelf_top    [chicken-leg]
+    basin#1::basin_bottom    []
+    counter#1::front_left_stove    []
+    braiserbody#1    [braiserlid#1]
+================================================================
+
+
+================ summarize_supported_movables ================
+    movable    [braiserlid#1, braiserbody#1, chicken-leg, salt-shaker, pepper-shaker, fork]
+--------------- 
+    braiserlid#1    braiserbody#1
+    braiserbody#1    counter#1::indigo_tmp
+    chicken-leg    fridge#1::shelf_top
+    salt-shaker    counter#1::sektion
+    pepper-shaker    counter#1::sektion
+    fork    counter#1::indigo_drawer_top
+================================================================
+object_reducers.reduce_by_objects_heuristic_movables     goals [['close', (3, 10)]] not recognized for region, see object_reducers.py
+[llamp_agent.get_action_goal] action = ['close', (3, 10)]
+[llamp_agent._update_obstacles_in_stream_map]     using obstacles [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+
+--------------------------------------------------
+ problem_count = 11 
+--------------------------------------------------
+
+--------------------------------------------------------------------------------
+PART I: world objects | joint(1), door(1) | obstacles(15) = [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+--------------------------------------------------------------------------------
+0      |  PR2Robot: pr2robot      |  categories: ['pr2robot']    |  Pose: (0.0, 0.0, 0.0, 0.0, -0.0, 0.0)
+3      |  Object: counter#1      |  categories: ['counter'] | asset: None    |  Pose: (0.5, 7.6, 1.394, 0.0, -0.0, 0.0)
+(3, 10)      |  Door: counter#1::chewie_door_right_joint      |  categories: ['door'] | asset: None    |  Handle: chewie_door_right_handle    |  JointLimit: (0.0, 2.34)    |  Pose: 1.585
+----------------
+2      |  Floor: living_room      |  categories: ['floor'] | asset: box    |  Pose: (2.3, 4.7, -0.002, 0.0, -0.0, 0.0)     (excluded from planning)
+7      |  Object: dishwasher#1      |  categories: ['dishwasher'] | asset: Dishwasher/2085    |  Pose: (0.7, 6.4, 0.366, 0.0, -0.0, 3.142)     (excluded from planning)
+(7, 1)      |  Drawer: dishwasher#1::dishwasher_door      |  categories: ['drawer'] | asset: Dishwasher/2085    |  Handle: handle_link    |  JointLimit: (0.0, 0.49)    |  Pose: 0.0     (excluded from planning)
+(7, None, 2)      |  Surface: dishwasher#1::surface_plate_left      |  categories: ['surface'] | asset: Dishwasher/2085    |  Pose: (0.772, 6.357, 0.279, 1.571, -0.0, 1.571)     (excluded from planning)
+(7, None, 5)      |  Space: dishwasher#1::upper_shelf      |  categories: ['space'] | asset: Dishwasher/2085    |  Pose: (0.772, 6.357, 0.279, 1.571, -0.0, 1.571)     (excluded from planning)
+8      |  Object: squareplate      |  categories: ['plate'] | asset: Plate/SquarePlate    |  Pose: (0.487, 6.23, 0.416, -0.0, -0.0, 0.746)     (excluded from planning)
+9      |  Object: basin#1      |  categories: ['basin'] | asset: Basin/102379    |  Pose: (0.5, 5.6, 0.364, 0.0, -0.0, 3.142)     (excluded from planning)
+(9, None, 2)      |  Surface: basin#1::faucet_platform      |  categories: [] | asset: Basin/102379    |  Pose: (0.265, 5.593, 0.859, 1.571, -0.0, 1.571)     (excluded from planning)
+(9, None, 3)      |  Surface: basin#1::basin_bottom      |  categories: ['surface'] | asset: Basin/102379    |  Pose: (0.537, 5.6, 0.785, 1.571, -0.0, 1.571)     (excluded from planning)
+1      |  Movable: cabbage      |  categories: ['movable'] | asset: Food/VeggieCabbage    |  Pose: (0.85, 7.362, 0.874, 0.0, -0.0, 0.0)     (excluded from planning)
+11      |  Object: fridge#1      |  categories: ['fridge'] | asset: Fridge/10144    |  Pose: (0.5, 4.9, 1.006, 0.0, -0.0, 3.142)     (excluded from planning)
+(11, 1)      |  Door: fridge#1::fridge_door      |  categories: ['door'] | asset: Fridge/10144    |  Handle: fridge_door_handle    |  JointLimit: (0.0, 2.967)    |  Pose: 0.0     (excluded from planning)
+(11, None, 8)      |  Surface: fridge#1::shelf_bottom      |  categories: ['surface'] | asset: Fridge/10144    |  Pose: (0.5, 4.9, 1.006, 1.571, -0.0, 1.571)     (excluded from planning)
+(11, None, 9)      |  Surface: fridge#1::shelf_top      |  categories: ['surface'] | asset: Fridge/10144    |  Pose: (0.5, 4.9, 1.006, 1.571, -0.0, 1.571)     (excluded from planning)
+13      |  Movable: cabbage#1      |  categories: ['food'] | asset: Food/VeggieCabbage    |  Pose: (0.668, 4.862, 0.83, 0.0, -0.0, 1.687)     (excluded from planning)
+10      |  Object: faucet#1      |  categories: ['faucet'] | asset: Faucet/104    |  Pose: (0.265, 5.593, 1.012, 0.0, -0.0, 3.142)     (excluded from planning)
+(10, 3)      |  Knob: faucet#1::joint_faucet_0      |  categories: ['knob', 'joint'] | asset: Faucet/104    |  Handle: link_0    |  JointLimit: (0.0, 1.571)    |  Pose: 0.0     (excluded from planning)
+(10, 5)      |  Knob: faucet#1::joint_faucet_1      |  categories: ['knob', 'joint'] | asset: Faucet/104    |  Handle: link_1    |  JointLimit: (-0.0, 1.571)    |  Pose: 0.0     (excluded from planning)
+(3, 14)      |  Door: counter#1::chewie_door_left_joint      |  categories: ['door'] | asset: None    |  Handle: chewie_door_left_handle    |  JointLimit: (-2.34, 0.0)    |  Pose: -1.64     (excluded from planning)
+(3, 48)      |  Drawer: counter#1::indigo_drawer_top_joint      |  categories: ['drawer'] | asset: None    |  Handle: indigo_drawer_handle_top    |  JointLimit: (0.0, 0.411)    |  Pose: 0.0     (excluded from planning)
+(3, None, 0)      |  Space: counter#1::sektion      |  categories: ['space'] | asset: None    |  Pose: (0.5, 7.6, 1.394, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 4)      |  Surface: counter#1::front_left_stove      |  categories: ['surface'] | asset: None    |  Pose: (0.567, 7.872, 0.773, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 5)      |  Surface: counter#1::front_right_stove      |  categories: ['surface'] | asset: None    |  Pose: (0.567, 8.18, 0.773, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 27)      |  Surface: counter#1::hitman_countertop      |  categories: ['surface'] | asset: None    |  Pose: (0.459, 6.779, 0.809, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 35)      |  Surface: counter#1::indigo_tmp      |  categories: ['surface'] | asset: None    |  Pose: (0.603, 8.452, 0.829, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 48)      |  Space: counter#1::indigo_drawer_top      |  categories: ['space'] | asset: None    |  Pose: (0.594, 8.843, 0.722, 0.0, -0.0, 0.0)     (excluded from planning)
+4      |  Object: braiserlid#1      |  categories: ['braiserlid', 'movable'] | asset: BraiserLid/100015    |  Pose: (0.7, 8.919, 0.953, 0.0, -0.0, 1.571)     (excluded from planning)
+5      |  Object: braiserbody#1      |  categories: ['braiserbody', 'surface', 'region', 'space', 'movable'] | asset: BraiserBody/100015    |  Pose: (0.7, 8.919, 0.923, 0.0, -0.0, 1.571)     (excluded from planning)
+(5, None, 1)      |  Surface: braiserbody#1::braiser_bottom      |  categories: ['surface'] | asset: BraiserBody/100015    |  Pose: (0.7, 8.919, 0.923, 1.571, -0.0, -0.0)     (excluded from planning)
+6      |  Object: oven#1      |  categories: ['oven'] | asset: Oven/01909    |  Pose: (0.6, 8.0, 0.602, 0.0, -0.0, 3.142)     (excluded from planning)
+(6, 5)      |  Knob: oven#1::knob_joint_2      |  categories: ['knob', 'joint'] | asset: Oven/01909    |  Handle: knob_link_2    |  JointLimit: (-0.0, 1.047)    |  Pose: 0.0     (excluded from planning)
+(6, 7)      |  Knob: oven#1::knob_joint_3      |  categories: ['knob', 'joint'] | asset: Oven/01909    |  Handle: knob_link_3    |  JointLimit: (-0.0, 1.047)    |  Pose: 0.0     (excluded from planning)
+12      |  Movable: chicken-leg      |  categories: ['food'] | asset: MeatTurkeyLeg/0001    |  Pose: (0.654, 4.846, 1.384, 0.0, 0.0, -0.366)     (excluded from planning)
+14      |  Movable: salt-shaker      |  categories: ['condiment', 'sprinkler'] | asset: Salter/3934    |  Pose: (0.771, 7.071, 1.152, 0.0, -0.0, 3.142)     (excluded from planning)
+15      |  Movable: pepper-shaker      |  categories: ['condiment', 'sprinkler'] | asset: Salter/5861    |  Pose: (0.764, 7.303, 1.164, 0.0, -0.0, 3.142)     (excluded from planning)
+16      |  Movable: fork      |  categories: ['utensil'] | asset: KitchenFork/10495    |  Pose: (0.735, 8.831, 0.689, 0.0, -0.0, 2.447)     (excluded from planning)
+------------------------- 
+PART II: WORLD ATTACHMENTS -------------------------
+{  cabbage: ObjAttachment(counter#1::hitman_countertop, cabbage),
+   braiserlid#1: ObjAttachment(braiserbody#1, braiserlid#1),
+   braiserbody#1: ObjAttachment(counter#1::indigo_tmp, braiserbody#1),
+   squareplate: ObjAttachment(dishwasher#1::surface_plate_left, squareplate),
+   faucet#1: ObjAttachment(basin#1::faucet_platform, faucet#1),
+   chicken-leg: ObjAttachment(fridge#1::shelf_top, chicken-leg),
+   cabbage#1: ObjAttachment(fridge#1::shelf_bottom, cabbage#1),
+   salt-shaker: ObjAttachment(counter#1::sektion, salt-shaker),
+   pepper-shaker: ObjAttachment(counter#1::sektion, pepper-shaker),
+   fork: ObjAttachment(counter#1::indigo_drawer_top, fork)}
+------------------------------------------------------------
+----------------
+Facts updated (object_reducer = heuristic-movables) (54)
+  = [2] : ['=', ('pickcost',), 1], ['=', ('placecost',), 1]
+  aconf [2] : ['aconf', 'left', aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)], ['aconf', 'right', aq608=(-0.677, -0.343, -1.2, -1.467, -1.242, -1.954, -2.223)]
+  arm [2] : ['arm', 'left'], ['arm', 'right']
+  ataconf [2] : ['ataconf', 'left', aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)], ['ataconf', 'right', aq608=(-0.677, -0.343, -1.2, -1.467, -1.242, -1.954, -2.223)]
+  atbconf [1] : ['atbconf', q512=(1.329, 8.665, 0.823, -3.065)]
+  atpose [6] : ['atpose', '(3, none, 48)|counter#1::indigo_drawer_top', lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)], ['atpose', '12|chicken-leg', p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)], ['atpose', '14|salt-shaker', p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)], ['atpose', '15|pepper-shaker', p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)], ['atpose', '4|braiserlid#1', p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571)], ['atpose', '5|braiserbody#1', p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571)]
+  atposition [7] : ['atposition', '(10, 3)|faucet#1::joint_faucet_0', pstn866=0.0], ['atposition', '(11, 1)|fridge#1::fridge_door', pstn863=0.0], ['atposition', '(3, 10)|counter#1::chewie_door_right_joint', pstn861=1.585], ['atposition', '(3, 14)|counter#1::chewie_door_left_joint', pstn862=-1.64], ['atposition', '(3, 48)|counter#1::indigo_drawer_top_joint', pstn860=0.0], ['atposition', '(6, 5)|oven#1::knob_joint_2', pstn864=0.0], ['atposition', '(6, 7)|oven#1::knob_joint_3', pstn865=0.0]
+  atrelpose [1] : ['atrelpose', '16|fork', rp31=(0.141, -0.012, -0.033, 0.0, -0.0, 2.447), '(3, none, 48)|counter#1::indigo_drawer_top']
+  bconf [1] : ['bconf', q512=(1.329, 8.665, 0.823, -3.065)]
+  cangrasphandle [1] : ['cangrasphandle']
+  canmove [1] : ['canmove']
+  canmovebase [1] : ['canmovebase']
+  canpick [1] : ['canpick']
+  canpull [2] : ['canpull', 'left'], ['canpull', 'right']
+  canungrasp [1] : ['canungrasp']
+  controllable [2] : ['controllable', 'left'], ['controllable', 'right']
+  door [1] : ['door', '(3, 10)|counter#1::chewie_door_right_joint']
+  handempty [2] : ['handempty', 'left'], ['handempty', 'right']
+  isjointto [1] : ['isjointto', '(3, 10)|counter#1::chewie_door_right_joint', '3|counter#1']
+  isopenedposition [1] : ['isopenedposition', '(3, 10)|counter#1::chewie_door_right_joint', pstn861=1.585]
+  joint [1] : ['joint', '(3, 10)|counter#1::chewie_door_right_joint']
+  pose [6] : ['pose', '(3, none, 48)|counter#1::indigo_drawer_top', lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)], ['pose', '12|chicken-leg', p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)], ['pose', '14|salt-shaker', p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)], ['pose', '15|pepper-shaker', p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)], ['pose', '4|braiserlid#1', p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571)], ['pose', '5|braiserbody#1', p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571)]
+  position [7] : ['position', '(10, 3)|faucet#1::joint_faucet_0', pstn866=0.0], ['position', '(11, 1)|fridge#1::fridge_door', pstn863=0.0], ['position', '(3, 10)|counter#1::chewie_door_right_joint', pstn861=1.585], ['position', '(3, 14)|counter#1::chewie_door_left_joint', pstn862=-1.64], ['position', '(3, 48)|counter#1::indigo_drawer_top_joint', pstn860=0.0], ['position', '(6, 5)|oven#1::knob_joint_2', pstn864=0.0], ['position', '(6, 7)|oven#1::knob_joint_3', pstn865=0.0]
+  relpose [1] : ['relpose', '16|fork', rp31=(0.141, -0.012, -0.033, 0.0, -0.0, 2.447), '(3, none, 48)|counter#1::indigo_drawer_top']
+  unattachedjoint [1] : ['unattachedjoint', '(3, 10)|counter#1::chewie_door_right_joint']
+----------------
+Goal (1): (and
+   ('graspedhandle', '(3, 10)|counter#1::chewie_door_right_joint'),
+)
+
+--------------------------------------------------
+Robot: pr2robot | Objects: [3, (3, 10)]
+Movable: [pr2robot] | Fixed: [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] | Floor: [2]
+--------------------------------------------------
+
+
+    _get_log_collisions smaller_world = {}
+    _get_log_collisions self.world = {}
+[llamp_agent.get_action_goal] action = ['close', (3, 10)]
+
+
+saving statistics
+
+
+[llamp_agent._get_current_whole_goal_sequence] previous_goals
+    0    [['graspedhandle', (3, 14)]]
+    1    [['graspedhandle', (3, 10)]]
+[llamp_agent._get_current_whole_goal_sequence] future_goals
+    2    [['close', (3, 10)]]
+    3    [['close', (3, 14)]]
+    4    [['close', (3, 48)]]
+    5    [['close', (11, 1)]]
+[llamp_agent.save_time_log]
++-------+------------------------------------------------------------------------------------+---------------+---------------+------------+-----------------+--------------------------------------------------+----------------------------------+---------------------------------------------------------------+---------------+
+| idx   | goal                                                                               | task_idx      | status        |   plan_len |   planning_time | planning_objects                                 | object_reducer                   | planning_node                                                 | agent_state   |
+|-------+------------------------------------------------------------------------------------+---------------+---------------+------------+-----------------+--------------------------------------------------+----------------------------------+---------------------------------------------------------------+---------------|
+| 1     | ['open', (3, 14)] -> [('graspedhandle', (3, 14))]                                  | 1             | solved        |          2 |         10.1367 | 1 (joint: 1)                                     | object-related                   | 1_a_['open', 'cabinet left door']                             |               |
+| 2     | ['open', (3, 48)] -> [('graspedhandle', (3, 48))]                                  | 2             | failed        |          0 |         23.0561 | 2 (joint: 1, space: 1)                           | object-related                   | 2_a_['open', 'top drawer']                                    |               |
+| 3     | ['open', (3, 48)] -> [('graspedhandle', (3, 48))]                                  | 2             | failed        |          0 |         23.2499 | 2 (joint: 1, space: 1)                           | heuristic-movables               | 2_a_['open', 'top drawer']                                    |               |
+| 4     | ['open', (3, 48)] -> [('graspedhandle', (3, 48))]                                  | 2             | failed        |          0 |         23.3681 | 5 (joint: 4, space: 1)                           | object-related                   | 2_a_['open', 'top drawer']                                    |               |
+| 5     | ['pick', 16] -> [('picked', 16)]                                                   | 3             | failed        |          0 |          0.4205 | 2 (graspable: 1, space: 1)                       | object-related                   | 3_a_['pick', 'fork']                                          |               |
+| 6     | ['pick', 16] -> [('picked', 16)]                                                   | 3             | failed        |          0 |          0.4484 | 2 (graspable: 1, space: 1)                       | heuristic-movables               | 3_a_['pick', 'fork']                                          |               |
+| 7     | ['pick', 16] -> [('picked', 16)]                                                   | 3             | failed        |          0 |          7.2376 | 6 (graspable: 1, joint: 4, space: 1)             | object-related                   | 3_a_['pick', 'fork']                                          |               |
+| 8     | ['open', (11, 1)] -> [('graspedhandle', (11, 1))]                                  | 4             | failed        |          0 |         14.2601 | 1 (joint: 1)                                     | object-related                   | 4_a_['open', 'fridge door']                                   |               |
+| 9     | ['open', (11, 1)] -> [('graspedhandle', (11, 1))]                                  | 4             | failed        |          0 |         14.4208 | 1 (joint: 1)                                     | heuristic-movables               | 4_a_['open', 'fridge door']                                   |               |
+| 10    | ['open', (11, 1)] -> [('graspedhandle', (11, 1))]                                  | 4             | failed        |          0 |         14.2044 | 4 (joint: 4)                                     | object-related                   | 4_a_['open', 'fridge door']                                   |               |
+| 11    | ['pick', 12] -> [('picked', 12)]                                                   | 5             | failed        |          0 |         15.181  | 1 (graspable: 1)                                 | object-related                   | 5_a_['pick', 'chicken leg']                                   |               |
+| 12    | ['pick', 12] -> [('picked', 12)]                                                   | 5             | failed        |          0 |         15.5298 | 3 (graspable: 1, joint: 1, surface: 1)           | custom_add=fridge#1::fridge_door | 5_a_['pick', 'chicken leg']                                   |               |
+| 13    | ['pick', 12] -> [('picked', 12)]                                                   | 5             | failed        |          0 |         16.6783 | 3 (graspable: 1, joint: 1, surface: 1)           | object-related                   | 5_a_['pick', 'chicken leg']                                   |               |
+| 14    | ['arrange', 12, (3, None, 27)] -> [('placed', 12), ('stacked', 12, (3, None, 27))] | 6             | failed        |          0 |          0.0823 | 2 (graspable: 1, surface: 1)                     | object-related                   | 6_a_['arrange', 'chicken leg', 'counter top on the left']     |               |
+| 15    | ['arrange', 12, (3, None, 27)] -> [('placed', 12), ('stacked', 12, (3, None, 27))] | 6             | failed        |          0 |          0.0879 | 2 (graspable: 1, surface: 1)                     | heuristic-movables               | 6_a_['arrange', 'chicken leg', 'counter top on the left']     |               |
+| 16    | ['arrange', 12, (3, None, 27)] -> [('placed', 12), ('stacked', 12, (3, None, 27))] | 6             | failed        |          0 |          1.8688 | 6 (graspable: 1, joint: 4, surface: 1)           | object-related                   | 6_a_['arrange', 'chicken leg', 'counter top on the left']     |               |
+| 17    | ['open', (3, 10)] -> [('graspedhandle', (3, 10))]                                  | 7             | solved        |          2 |         16.9549 | 1 (joint: 1)                                     | object-related                   | 7_a_['open', 'cabinet right door']                            |               |
+| 18    | ['pick', 14] -> [('picked', 14)]                                                   | 8             | failed        |          0 |          8.4239 | 2 (graspable: 1, space: 1)                       | object-related                   | 8_a_['pick', 'salt shaker']                                   |               |
+| 19    | ['pick', 14] -> [('picked', 14)]                                                   | 8             | failed        |          0 |          8.3672 | 2 (graspable: 1, space: 1)                       | heuristic-movables               | 8_a_['pick', 'salt shaker']                                   |               |
+| 20    | ['pick', 14] -> [('picked', 14)]                                                   | 8             | failed        |          0 |         15.8321 | 6 (graspable: 1, joint: 4, space: 1)             | object-related                   | 8_a_['pick', 'salt shaker']                                   |               |
+| 21    | ['pick', 15] -> [('picked', 15)]                                                   | 9             | failed        |          0 |          8.6064 | 2 (graspable: 1, space: 1)                       | object-related                   | 9_a_['pick', 'pepper shaker']                                 |               |
+| 22    | ['pick', 15] -> [('picked', 15)]                                                   | 9             | failed        |          0 |          8.5197 | 2 (graspable: 1, space: 1)                       | heuristic-movables               | 9_a_['pick', 'pepper shaker']                                 |               |
+| 23    | ['pick', 15] -> [('picked', 15)]                                                   | 9             | failed        |          0 |         18.1297 | 6 (graspable: 1, joint: 4, space: 1)             | object-related                   | 9_a_['pick', 'pepper shaker']                                 |               |
+| 24    | ['arrange', 14, (3, None, 35)] -> [('placed', 14), ('stacked', 14, (3, None, 35))] | 10            | failed        |          0 |         16.4759 | 3 (graspable: 1, surface: 1, space: 1)           | object-related                   | 10_a_['arrange', 'salt shaker', 'counter top on the right']   |               |
+| 25    | ['arrange', 14, (3, None, 35)] -> [('placed', 14), ('stacked', 14, (3, None, 35))] | 10            | failed        |          0 |         15.5004 | 3 (graspable: 1, surface: 1, space: 1)           | heuristic-movables               | 10_a_['arrange', 'salt shaker', 'counter top on the right']   |               |
+| 26    | ['arrange', 14, (3, None, 35)] -> [('placed', 14), ('stacked', 14, (3, None, 35))] | 10            | failed        |          0 |         30.7664 | 7 (graspable: 1, joint: 4, surface: 1, space: 1) | object-related                   | 10_a_['arrange', 'salt shaker', 'counter top on the right']   |               |
+| 27    | ['arrange', 15, (3, None, 35)] -> [('placed', 15), ('stacked', 15, (3, None, 35))] | 11            | failed        |          0 |         14.2587 | 3 (graspable: 1, surface: 1, space: 1)           | object-related                   | 11_a_['arrange', 'pepper shaker', 'counter top on the right'] |               |
+| 28    | ['arrange', 15, (3, None, 35)] -> [('placed', 15), ('stacked', 15, (3, None, 35))] | 11            | failed        |          0 |         14.1402 | 3 (graspable: 1, surface: 1, space: 1)           | heuristic-movables               | 11_a_['arrange', 'pepper shaker', 'counter top on the right'] |               |
+| 29    | ['arrange', 15, (3, None, 35)] -> [('placed', 15), ('stacked', 15, (3, None, 35))] | 11            | failed        |          0 |         32.465  | 7 (graspable: 1, joint: 4, surface: 1, space: 1) | object-related                   | 11_a_['arrange', 'pepper shaker', 'counter top on the right'] |               |
+| 31    | ['close', (3, 10)] -> [('graspedhandle', (3, 10))]                                 | 12            | failed        |          0 |         15.8246 | 1 (joint: 1)                                     | object-related                   | 12_a_['close', 'cabinet right door']                          |               |
+|       | 0.17 (1 / 6)                                                                       | 1.83 (11 / 6) | 0.17 (2 / 12) |          4 |        404.5    | 27.09 (effective time)                           | 377.4 (wasted time)              |                                                               |               |
++-------+------------------------------------------------------------------------------------+---------------+---------------+------------+-----------------+--------------------------------------------------+----------------------------------+---------------------------------------------------------------+---------------+
+[llamp_agent._get_current_whole_goal_sequence] previous_goals
+    0    [['graspedhandle', (3, 14)]]
+    1    [['graspedhandle', (3, 10)]]
+[llamp_agent._get_current_whole_goal_sequence] future_goals
+    2    [['close', (3, 10)]]
+    3    [['close', (3, 14)]]
+    4    [['close', (3, 48)]]
+    5    [['close', (11, 1)]]
+filter_dynamic_facts     found grasps []
+filter_dynamic_facts     found grasps []
+pddlstream_agent.save_agent_state at /homes/jtoeberg/kitchen-worlds-rag/rag_based_prompting/eval_scenarios/load_dishwasher/plans/260413_140805_seed_75471/states/agent_state_11b.pkl
+----------------------------------------------------------------------------------------------------
+                                                   [llamp_agent._update_pddlstream_problem] problem_count = 11                                                    
+----------------------------------------------------------------------------------------------------
+    [llamp_agent._update_pddlstream_problem] world.collisions = {}
+    [llamp_agent._update_pddlstream_problem] self.world.collisions = {}
+
+================ summarize_supporting_surfaces ================
+    surface    [counter#1::front_left_stove, counter#1::front_right_stove, counter#1::hitman_countertop, counter#1::indigo_tmp, braiserbody#1, braiserbody#1::braiser_bottom, basin#1::basin_bottom, fridge#1::shelf_top]
+    supporter    []
+--------------- 
+    fridge#1::shelf_top    [chicken-leg]
+    basin#1::basin_bottom    []
+    counter#1::front_left_stove    []
+    braiserbody#1    [braiserlid#1]
+================================================================
+
+
+================ summarize_supported_movables ================
+    movable    [braiserlid#1, braiserbody#1, chicken-leg, salt-shaker, pepper-shaker, fork]
+--------------- 
+    braiserlid#1    braiserbody#1
+    braiserbody#1    counter#1::indigo_tmp
+    chicken-leg    fridge#1::shelf_top
+    salt-shaker    counter#1::sektion
+    pepper-shaker    counter#1::sektion
+    fork    counter#1::indigo_drawer_top
+================================================================
+object_reducers.reduce_by_objects_heuristic_movables     goals [['close', (3, 10)]] not recognized for region, see object_reducers.py
+[llamp_agent.get_action_goal] action = ['close', (3, 10)]
+[llamp_agent._update_obstacles_in_stream_map]     using obstacles [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+
+--------------------------------------------------
+ problem_count = 11 
+--------------------------------------------------
+
+--------------------------------------------------------------------------------
+PART I: world objects | joint(1), door(1) | obstacles(15) = [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+--------------------------------------------------------------------------------
+0      |  PR2Robot: pr2robot      |  categories: ['pr2robot']    |  Pose: (0.0, 0.0, 0.0, 0.0, -0.0, 0.0)
+3      |  Object: counter#1      |  categories: ['counter'] | asset: None    |  Pose: (0.5, 7.6, 1.394, 0.0, -0.0, 0.0)
+(3, 10)      |  Door: counter#1::chewie_door_right_joint      |  categories: ['door'] | asset: None    |  Handle: chewie_door_right_handle    |  JointLimit: (0.0, 2.34)    |  Pose: 1.585
+----------------
+2      |  Floor: living_room      |  categories: ['floor'] | asset: box    |  Pose: (2.3, 4.7, -0.002, 0.0, -0.0, 0.0)     (excluded from planning)
+7      |  Object: dishwasher#1      |  categories: ['dishwasher'] | asset: Dishwasher/2085    |  Pose: (0.7, 6.4, 0.366, 0.0, -0.0, 3.142)     (excluded from planning)
+(7, 1)      |  Drawer: dishwasher#1::dishwasher_door      |  categories: ['drawer'] | asset: Dishwasher/2085    |  Handle: handle_link    |  JointLimit: (0.0, 0.49)    |  Pose: 0.0     (excluded from planning)
+(7, None, 2)      |  Surface: dishwasher#1::surface_plate_left      |  categories: ['surface'] | asset: Dishwasher/2085    |  Pose: (0.772, 6.357, 0.279, 1.571, -0.0, 1.571)     (excluded from planning)
+(7, None, 5)      |  Space: dishwasher#1::upper_shelf      |  categories: ['space'] | asset: Dishwasher/2085    |  Pose: (0.772, 6.357, 0.279, 1.571, -0.0, 1.571)     (excluded from planning)
+8      |  Object: squareplate      |  categories: ['plate'] | asset: Plate/SquarePlate    |  Pose: (0.487, 6.23, 0.416, -0.0, -0.0, 0.746)     (excluded from planning)
+9      |  Object: basin#1      |  categories: ['basin'] | asset: Basin/102379    |  Pose: (0.5, 5.6, 0.364, 0.0, -0.0, 3.142)     (excluded from planning)
+(9, None, 2)      |  Surface: basin#1::faucet_platform      |  categories: [] | asset: Basin/102379    |  Pose: (0.265, 5.593, 0.859, 1.571, -0.0, 1.571)     (excluded from planning)
+(9, None, 3)      |  Surface: basin#1::basin_bottom      |  categories: ['surface'] | asset: Basin/102379    |  Pose: (0.537, 5.6, 0.785, 1.571, -0.0, 1.571)     (excluded from planning)
+1      |  Movable: cabbage      |  categories: ['movable'] | asset: Food/VeggieCabbage    |  Pose: (0.85, 7.362, 0.874, 0.0, -0.0, 0.0)     (excluded from planning)
+11      |  Object: fridge#1      |  categories: ['fridge'] | asset: Fridge/10144    |  Pose: (0.5, 4.9, 1.006, 0.0, -0.0, 3.142)     (excluded from planning)
+(11, 1)      |  Door: fridge#1::fridge_door      |  categories: ['door'] | asset: Fridge/10144    |  Handle: fridge_door_handle    |  JointLimit: (0.0, 2.967)    |  Pose: 0.0     (excluded from planning)
+(11, None, 8)      |  Surface: fridge#1::shelf_bottom      |  categories: ['surface'] | asset: Fridge/10144    |  Pose: (0.5, 4.9, 1.006, 1.571, -0.0, 1.571)     (excluded from planning)
+(11, None, 9)      |  Surface: fridge#1::shelf_top      |  categories: ['surface'] | asset: Fridge/10144    |  Pose: (0.5, 4.9, 1.006, 1.571, -0.0, 1.571)     (excluded from planning)
+13      |  Movable: cabbage#1      |  categories: ['food'] | asset: Food/VeggieCabbage    |  Pose: (0.668, 4.862, 0.83, 0.0, -0.0, 1.687)     (excluded from planning)
+10      |  Object: faucet#1      |  categories: ['faucet'] | asset: Faucet/104    |  Pose: (0.265, 5.593, 1.012, 0.0, -0.0, 3.142)     (excluded from planning)
+(10, 3)      |  Knob: faucet#1::joint_faucet_0      |  categories: ['knob', 'joint'] | asset: Faucet/104    |  Handle: link_0    |  JointLimit: (0.0, 1.571)    |  Pose: 0.0     (excluded from planning)
+(10, 5)      |  Knob: faucet#1::joint_faucet_1      |  categories: ['knob', 'joint'] | asset: Faucet/104    |  Handle: link_1    |  JointLimit: (-0.0, 1.571)    |  Pose: 0.0     (excluded from planning)
+(3, 14)      |  Door: counter#1::chewie_door_left_joint      |  categories: ['door'] | asset: None    |  Handle: chewie_door_left_handle    |  JointLimit: (-2.34, 0.0)    |  Pose: -1.64     (excluded from planning)
+(3, 48)      |  Drawer: counter#1::indigo_drawer_top_joint      |  categories: ['drawer'] | asset: None    |  Handle: indigo_drawer_handle_top    |  JointLimit: (0.0, 0.411)    |  Pose: 0.0     (excluded from planning)
+(3, None, 0)      |  Space: counter#1::sektion      |  categories: ['space'] | asset: None    |  Pose: (0.5, 7.6, 1.394, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 4)      |  Surface: counter#1::front_left_stove      |  categories: ['surface'] | asset: None    |  Pose: (0.567, 7.872, 0.773, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 5)      |  Surface: counter#1::front_right_stove      |  categories: ['surface'] | asset: None    |  Pose: (0.567, 8.18, 0.773, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 27)      |  Surface: counter#1::hitman_countertop      |  categories: ['surface'] | asset: None    |  Pose: (0.459, 6.779, 0.809, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 35)      |  Surface: counter#1::indigo_tmp      |  categories: ['surface'] | asset: None    |  Pose: (0.603, 8.452, 0.829, 0.0, -0.0, 0.0)     (excluded from planning)
+(3, None, 48)      |  Space: counter#1::indigo_drawer_top      |  categories: ['space'] | asset: None    |  Pose: (0.594, 8.843, 0.722, 0.0, -0.0, 0.0)     (excluded from planning)
+4      |  Object: braiserlid#1      |  categories: ['braiserlid', 'movable'] | asset: BraiserLid/100015    |  Pose: (0.7, 8.919, 0.953, 0.0, -0.0, 1.571)     (excluded from planning)
+5      |  Object: braiserbody#1      |  categories: ['braiserbody', 'surface', 'region', 'space', 'movable'] | asset: BraiserBody/100015    |  Pose: (0.7, 8.919, 0.923, 0.0, -0.0, 1.571)     (excluded from planning)
+(5, None, 1)      |  Surface: braiserbody#1::braiser_bottom      |  categories: ['surface'] | asset: BraiserBody/100015    |  Pose: (0.7, 8.919, 0.923, 1.571, -0.0, -0.0)     (excluded from planning)
+6      |  Object: oven#1      |  categories: ['oven'] | asset: Oven/01909    |  Pose: (0.6, 8.0, 0.602, 0.0, -0.0, 3.142)     (excluded from planning)
+(6, 5)      |  Knob: oven#1::knob_joint_2      |  categories: ['knob', 'joint'] | asset: Oven/01909    |  Handle: knob_link_2    |  JointLimit: (-0.0, 1.047)    |  Pose: 0.0     (excluded from planning)
+(6, 7)      |  Knob: oven#1::knob_joint_3      |  categories: ['knob', 'joint'] | asset: Oven/01909    |  Handle: knob_link_3    |  JointLimit: (-0.0, 1.047)    |  Pose: 0.0     (excluded from planning)
+12      |  Movable: chicken-leg      |  categories: ['food'] | asset: MeatTurkeyLeg/0001    |  Pose: (0.654, 4.846, 1.384, 0.0, 0.0, -0.366)     (excluded from planning)
+14      |  Movable: salt-shaker      |  categories: ['condiment', 'sprinkler'] | asset: Salter/3934    |  Pose: (0.771, 7.071, 1.152, 0.0, -0.0, 3.142)     (excluded from planning)
+15      |  Movable: pepper-shaker      |  categories: ['condiment', 'sprinkler'] | asset: Salter/5861    |  Pose: (0.764, 7.303, 1.164, 0.0, -0.0, 3.142)     (excluded from planning)
+16      |  Movable: fork      |  categories: ['utensil'] | asset: KitchenFork/10495    |  Pose: (0.735, 8.831, 0.689, 0.0, -0.0, 2.447)     (excluded from planning)
+------------------------- 
+PART II: WORLD ATTACHMENTS -------------------------
+{  cabbage: ObjAttachment(counter#1::hitman_countertop, cabbage),
+   braiserlid#1: ObjAttachment(braiserbody#1, braiserlid#1),
+   braiserbody#1: ObjAttachment(counter#1::indigo_tmp, braiserbody#1),
+   squareplate: ObjAttachment(dishwasher#1::surface_plate_left, squareplate),
+   faucet#1: ObjAttachment(basin#1::faucet_platform, faucet#1),
+   chicken-leg: ObjAttachment(fridge#1::shelf_top, chicken-leg),
+   cabbage#1: ObjAttachment(fridge#1::shelf_bottom, cabbage#1),
+   salt-shaker: ObjAttachment(counter#1::sektion, salt-shaker),
+   pepper-shaker: ObjAttachment(counter#1::sektion, pepper-shaker),
+   fork: ObjAttachment(counter#1::indigo_drawer_top, fork)}
+------------------------------------------------------------
+----------------
+Facts updated (object_reducer = heuristic-movables) (54)
+  = [2] : ['=', ('pickcost',), 1], ['=', ('placecost',), 1]
+  aconf [2] : ['aconf', 'left', aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)], ['aconf', 'right', aq608=(-0.677, -0.343, -1.2, -1.467, -1.242, -1.954, -2.223)]
+  arm [2] : ['arm', 'left'], ['arm', 'right']
+  ataconf [2] : ['ataconf', 'left', aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)], ['ataconf', 'right', aq608=(-0.677, -0.343, -1.2, -1.467, -1.242, -1.954, -2.223)]
+  atbconf [1] : ['atbconf', q512=(1.329, 8.665, 0.823, -3.065)]
+  atpose [6] : ['atpose', '(3, none, 48)|counter#1::indigo_drawer_top', lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)], ['atpose', '12|chicken-leg', p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)], ['atpose', '14|salt-shaker', p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)], ['atpose', '15|pepper-shaker', p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)], ['atpose', '4|braiserlid#1', p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571)], ['atpose', '5|braiserbody#1', p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571)]
+  atposition [7] : ['atposition', '(10, 3)|faucet#1::joint_faucet_0', pstn866=0.0], ['atposition', '(11, 1)|fridge#1::fridge_door', pstn863=0.0], ['atposition', '(3, 10)|counter#1::chewie_door_right_joint', pstn861=1.585], ['atposition', '(3, 14)|counter#1::chewie_door_left_joint', pstn862=-1.64], ['atposition', '(3, 48)|counter#1::indigo_drawer_top_joint', pstn860=0.0], ['atposition', '(6, 5)|oven#1::knob_joint_2', pstn864=0.0], ['atposition', '(6, 7)|oven#1::knob_joint_3', pstn865=0.0]
+  atrelpose [1] : ['atrelpose', '16|fork', rp31=(0.141, -0.012, -0.033, 0.0, -0.0, 2.447), '(3, none, 48)|counter#1::indigo_drawer_top']
+  bconf [1] : ['bconf', q512=(1.329, 8.665, 0.823, -3.065)]
+  cangrasphandle [1] : ['cangrasphandle']
+  canmove [1] : ['canmove']
+  canmovebase [1] : ['canmovebase']
+  canpick [1] : ['canpick']
+  canpull [2] : ['canpull', 'left'], ['canpull', 'right']
+  canungrasp [1] : ['canungrasp']
+  controllable [2] : ['controllable', 'left'], ['controllable', 'right']
+  door [1] : ['door', '(3, 10)|counter#1::chewie_door_right_joint']
+  handempty [2] : ['handempty', 'left'], ['handempty', 'right']
+  isjointto [1] : ['isjointto', '(3, 10)|counter#1::chewie_door_right_joint', '3|counter#1']
+  isopenedposition [1] : ['isopenedposition', '(3, 10)|counter#1::chewie_door_right_joint', pstn861=1.585]
+  joint [1] : ['joint', '(3, 10)|counter#1::chewie_door_right_joint']
+  pose [6] : ['pose', '(3, none, 48)|counter#1::indigo_drawer_top', lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0)], ['pose', '12|chicken-leg', p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366)], ['pose', '14|salt-shaker', p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142)], ['pose', '15|pepper-shaker', p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142)], ['pose', '4|braiserlid#1', p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571)], ['pose', '5|braiserbody#1', p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571)]
+  position [7] : ['position', '(10, 3)|faucet#1::joint_faucet_0', pstn866=0.0], ['position', '(11, 1)|fridge#1::fridge_door', pstn863=0.0], ['position', '(3, 10)|counter#1::chewie_door_right_joint', pstn861=1.585], ['position', '(3, 14)|counter#1::chewie_door_left_joint', pstn862=-1.64], ['position', '(3, 48)|counter#1::indigo_drawer_top_joint', pstn860=0.0], ['position', '(6, 5)|oven#1::knob_joint_2', pstn864=0.0], ['position', '(6, 7)|oven#1::knob_joint_3', pstn865=0.0]
+  relpose [1] : ['relpose', '16|fork', rp31=(0.141, -0.012, -0.033, 0.0, -0.0, 2.447), '(3, none, 48)|counter#1::indigo_drawer_top']
+  unattachedjoint [1] : ['unattachedjoint', '(3, 10)|counter#1::chewie_door_right_joint']
+----------------
+Goal (1): (and
+   ('graspedhandle', '(3, 10)|counter#1::chewie_door_right_joint'),
+)
+
+--------------------------------------------------
+Robot: pr2robot | Objects: [3, (3, 10)]
+Movable: [pr2robot] | Fixed: [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] | Floor: [2]
+--------------------------------------------------
+
+[llamp_agent._get_current_whole_goal_sequence] previous_goals
+    0    [['graspedhandle', (3, 14)]]
+    1    [['graspedhandle', (3, 10)]]
+[llamp_agent._get_current_whole_goal_sequence] future_goals
+    2    [['close', (3, 10)]]
+    3    [['close', (3, 14)]]
+    4    [['close', (3, 48)]]
+    5    [['close', (11, 1)]]
+[pddlstream_agent._heuristic_modify_stream]     remove_stream_by_name(get-joint-position-open) because goal is to manipulate a joint that is open
+[pddlstream_agent._heuristic_modify_stream]      keeping stream get-joint-position-closed in domain
+[pddlstream_agent._check_subgoals_grounding]     goal = ('and', ['graspedhandle', (3, 10)])
+
+
+focused | | number of evaluations: 16
+
+
+Iteration: 1 | Complexity: 5 | Skeletons: 0 | Skeleton Queue: 0 | Disabled: 0 | Evaluations: 16 | Eager Calls: 0 | Cost: inf | Search Time: 0.000 | Sample Time: 0.000 | Total Time: 0.000
+
+
+log | number of evaluations 1: 16
+
+Exhausted optimistic:True
+Plan: 1 | Cost: 0 | Length: 1 | Runtime: 0.306 | Remaining: 9.694
+Actions: [grasp_pull_ungrasp_handle(v10, v8)]
+
+Plans: 1 | Total runtime: 0.307
+0/1) Stream plan (0, 0, 0.000): 
+Action plan (1, 0.000): 
+    grasp_pull_ungrasp_handle ( left, (3, 10)|counter#1::chewie_door_right_joint )
+
+
+
+focused.py | time.time() - start_time = 0.34 (timeout = 60)
+Summary: {complexity: 5, cost: 0.000, evaluations: 16, iterations: 1, length: 2, run_time: 0.337, sample_time: 0.000, search_time: 0.337, skeletons: 1, solutions: 1, solved: True, timeout: False}
+focused | sequencing time: 0.3361678123474121 | sampling time: 0
+[pddlstream_agent._check_subgoals_grounding]     symbolic plan = [Action(name='grasp_pull_ungrasp_handle', args=('left', (3, 10)))]
+
+--------------------------------------------------
+
+---------------------------------------- skeleton ----------------------------------------
+('grasp_pull_ungrasp_handle', 'left', (3, 10))
+------------------------------------------------------------------------------------------
+------------------------- PLANNER_KWARGS -------------------------
+{  'debug': False,
+   'domain_modifier': None,
+   'evaluation_time': 30,
+   'fc': <pigi_tools.feasibility_checkers.ChooseSkeleton object at 0x737d699a7040>,
+   'initial_complexity': 5,
+   'log_failures': False,
+   'max_complexity': 5,
+   'max_evaluation_plans': 10,
+   'max_iterations': 4,
+   'max_planner_time': 10,
+   'max_plans': 10,
+   'max_skeletons': 1,
+   'max_solutions': 1,
+   'max_time': inf,
+   'plan_dataset': [],
+   'search_sample_ratio': 0,
+   'stream_planning_timeout': 60,
+   'total_planning_timeout': 60,
+   'use_feedback': False,
+   'visualize': False,
+   'world': World(pr2robot)}
+------------------------------------------------------------
+
+
+focused | | number of evaluations: 54
+
+
+Iteration: 1 | Complexity: 5 | Skeletons: 0 | Skeleton Queue: 0 | Disabled: 0 | Evaluations: 54 | Eager Calls: 0 | Cost: inf | Search Time: 0.000 | Sample Time: 0.000 | Total Time: 0.000
+
+
+log | number of evaluations 1: 54
+
+Exhausted optimistic:True
+Plan: 1 | Cost: 1 | Length: 2 | Runtime: 0.304 | Remaining: 9.696
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 2 | Cost: 1 | Length: 2 | Runtime: 0.615 | Remaining: 9.385
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 3 | Cost: 1 | Length: 2 | Runtime: 0.923 | Remaining: 9.077
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 4 | Cost: 1 | Length: 2 | Runtime: 1.256 | Remaining: 8.744
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 5 | Cost: 1 | Length: 2 | Runtime: 1.567 | Remaining: 8.433
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 6 | Cost: 1 | Length: 2 | Runtime: 1.880 | Remaining: 8.120
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 7 | Cost: 1 | Length: 2 | Runtime: 2.205 | Remaining: 7.795
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 8 | Cost: 1 | Length: 2 | Runtime: 2.529 | Remaining: 7.471
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 9 | Cost: 1 | Length: 2 | Runtime: 2.850 | Remaining: 7.150
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 10 | Cost: 1 | Length: 2 | Runtime: 3.163 | Remaining: 6.837
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plans: 10 | Total runtime: 3.164
+
+
+Count Diverse Time: 3.439
+Count Diverse Plans: 10
+
+
+
+
+1/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+2/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+3/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+4/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+5/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+6/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+7/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+8/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+9/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+10/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+0/10) Stream plan (30, 30, 10.000): 
+   1 > sample-handle-grasp:((3, 10))->(#g0)
+   2 > get-joint-position-closed:((3, 10), pstn861=1.585)->(#p0)
+   3 > inverse-kinematics-pull:(left, (3, 10), pstn861=1.585, #p0, #g0)->(#q0, #q1, #a0, #a1, #b0)
+   4 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q1, (3, 10), pstn861=1.585)->()
+   5 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q1, (3, 10), pstn861=1.585)->()
+   6 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q0, (3, 10), pstn861=1.585)->()
+   7 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q0, (3, 10), pstn861=1.585)->()
+   8 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q1, (3, 10), pstn861=1.585)->()
+   9 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q0, (3, 10), pstn861=1.585)->()
+   10 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   11 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q0, (3, 10), pstn861=1.585)->()
+   12 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   13 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q1, (3, 10), pstn861=1.585)->()
+   14 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q1, (3, 10), pstn861=1.585)->()
+   15 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q0, (3, 10), pstn861=1.585)->()
+   16 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   17 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   18 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q1, (3, 10), pstn861=1.585)->()
+   19 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   20 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q0, (3, 10), pstn861=1.585)->()
+   21 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   22 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q0, (3, 10), pstn861=1.585)->()
+   23 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q0, (3, 10), pstn861=1.585)->()
+   24 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   25 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q1, (3, 10), pstn861=1.585)->()
+   26 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q1, (3, 10), pstn861=1.585)->()
+   27 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q0, (3, 10), pstn861=1.585)->()
+   28 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q1, (3, 10), pstn861=1.585)->()
+   29 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   30 > plan-base-motion:(q512=(1.329, 8.665, 0.823, -3.065), #q0)->(#t25)
+Action plan (2, 1.000): 
+    _
+    grasp_pull_ungrasp_handle ( left, (3, 10)|counter#1::chewie_door_right_joint, pstn861, #p0, #g0, #q0, #q1, #b0, aq136, #a0, #a1 )
+
+Plans: 1 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 2.63 sec
+
+1/10) Stream plan (30, 30, 10.000): 
+   1 > sample-handle-grasp:((3, 10))->(#g0)
+   2 > get-joint-position-closed:((3, 10), pstn861=1.585)->(#p0)
+   3 > inverse-kinematics-pull:(left, (3, 10), pstn861=1.585, #p0, #g0)->(#q0, #q1, #a0, #a1, #b0)
+   4 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q1, (3, 10), pstn861=1.585)->()
+   5 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q1, (3, 10), pstn861=1.585)->()
+   6 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q0, (3, 10), pstn861=1.585)->()
+   7 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q0, (3, 10), pstn861=1.585)->()
+   8 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q1, (3, 10), pstn861=1.585)->()
+   9 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q0, (3, 10), pstn861=1.585)->()
+   10 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   11 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q0, (3, 10), pstn861=1.585)->()
+   12 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   13 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q1, (3, 10), pstn861=1.585)->()
+   14 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q1, (3, 10), pstn861=1.585)->()
+   15 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q0, (3, 10), pstn861=1.585)->()
+   16 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   17 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   18 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q1, (3, 10), pstn861=1.585)->()
+   19 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   20 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q0, (3, 10), pstn861=1.585)->()
+   21 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   22 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q0, (3, 10), pstn861=1.585)->()
+   23 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q0, (3, 10), pstn861=1.585)->()
+   24 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   25 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q1, (3, 10), pstn861=1.585)->()
+   26 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q1, (3, 10), pstn861=1.585)->()
+   27 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q0, (3, 10), pstn861=1.585)->()
+   28 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q1, (3, 10), pstn861=1.585)->()
+   29 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   30 > plan-base-motion:(q512=(1.329, 8.665, 0.823, -3.065), #q0)->(#t26)
+Action plan (2, 1.000): 
+    _
+    grasp_pull_ungrasp_handle ( left, (3, 10)|counter#1::chewie_door_right_joint, pstn861, #p0, #g0, #q0, #q1, #b0, aq136, #a0, #a1 )
+
+Plans: 2 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 3.26 sec
+
+2/10) Stream plan (30, 30, 10.000): 
+   1 > sample-handle-grasp:((3, 10))->(#g0)
+   2 > get-joint-position-closed:((3, 10), pstn861=1.585)->(#p0)
+   3 > inverse-kinematics-pull:(left, (3, 10), pstn861=1.585, #p0, #g0)->(#q0, #q1, #a0, #a1, #b0)
+   4 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q1, (3, 10), pstn861=1.585)->()
+   5 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q1, (3, 10), pstn861=1.585)->()
+   6 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q0, (3, 10), pstn861=1.585)->()
+   7 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q0, (3, 10), pstn861=1.585)->()
+   8 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q1, (3, 10), pstn861=1.585)->()
+   9 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q0, (3, 10), pstn861=1.585)->()
+   10 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   11 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q0, (3, 10), pstn861=1.585)->()
+   12 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   13 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q1, (3, 10), pstn861=1.585)->()
+   14 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q1, (3, 10), pstn861=1.585)->()
+   15 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q0, (3, 10), pstn861=1.585)->()
+   16 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   17 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   18 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q1, (3, 10), pstn861=1.585)->()
+   19 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   20 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q0, (3, 10), pstn861=1.585)->()
+   21 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   22 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q0, (3, 10), pstn861=1.585)->()
+   23 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q0, (3, 10), pstn861=1.585)->()
+   24 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   25 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q1, (3, 10), pstn861=1.585)->()
+   26 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q1, (3, 10), pstn861=1.585)->()
+   27 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q0, (3, 10), pstn861=1.585)->()
+   28 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q1, (3, 10), pstn861=1.585)->()
+   29 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   30 > plan-base-motion:(q512=(1.329, 8.665, 0.823, -3.065), #q0)->(#t27)
+Action plan (2, 1.000): 
+    _
+    grasp_pull_ungrasp_handle ( left, (3, 10)|counter#1::chewie_door_right_joint, pstn861, #p0, #g0, #q0, #q1, #b0, aq136, #a0, #a1 )
+
+Plans: 3 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 3.64 sec
+
+3/10) Stream plan (30, 30, 10.000): 
+   1 > sample-handle-grasp:((3, 10))->(#g0)
+   2 > get-joint-position-closed:((3, 10), pstn861=1.585)->(#p0)
+   3 > inverse-kinematics-pull:(left, (3, 10), pstn861=1.585, #p0, #g0)->(#q0, #q1, #a0, #a1, #b0)
+   4 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q1, (3, 10), pstn861=1.585)->()
+   5 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q1, (3, 10), pstn861=1.585)->()
+   6 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q0, (3, 10), pstn861=1.585)->()
+   7 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q0, (3, 10), pstn861=1.585)->()
+   8 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q1, (3, 10), pstn861=1.585)->()
+   9 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q0, (3, 10), pstn861=1.585)->()
+   10 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   11 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q0, (3, 10), pstn861=1.585)->()
+   12 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   13 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q1, (3, 10), pstn861=1.585)->()
+   14 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q1, (3, 10), pstn861=1.585)->()
+   15 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q0, (3, 10), pstn861=1.585)->()
+   16 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   17 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   18 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q1, (3, 10), pstn861=1.585)->()
+   19 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   20 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q0, (3, 10), pstn861=1.585)->()
+   21 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   22 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q0, (3, 10), pstn861=1.585)->()
+   23 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q0, (3, 10), pstn861=1.585)->()
+   24 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   25 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q1, (3, 10), pstn861=1.585)->()
+   26 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q1, (3, 10), pstn861=1.585)->()
+   27 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q0, (3, 10), pstn861=1.585)->()
+   28 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q1, (3, 10), pstn861=1.585)->()
+   29 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   30 > plan-base-motion:(q512=(1.329, 8.665, 0.823, -3.065), #q0)->(#t28)
+Action plan (2, 1.000): 
+    _
+    grasp_pull_ungrasp_handle ( left, (3, 10)|counter#1::chewie_door_right_joint, pstn861, #p0, #g0, #q0, #q1, #b0, aq136, #a0, #a1 )
+
+Plans: 4 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 4.01 sec
+
+4/10) Stream plan (30, 30, 10.000): 
+   1 > sample-handle-grasp:((3, 10))->(#g0)
+   2 > get-joint-position-closed:((3, 10), pstn861=1.585)->(#p0)
+   3 > inverse-kinematics-pull:(left, (3, 10), pstn861=1.585, #p0, #g0)->(#q0, #q1, #a0, #a1, #b0)
+   4 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q1, (3, 10), pstn861=1.585)->()
+   5 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q1, (3, 10), pstn861=1.585)->()
+   6 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q0, (3, 10), pstn861=1.585)->()
+   7 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q0, (3, 10), pstn861=1.585)->()
+   8 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q1, (3, 10), pstn861=1.585)->()
+   9 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q0, (3, 10), pstn861=1.585)->()
+   10 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   11 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q0, (3, 10), pstn861=1.585)->()
+   12 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   13 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q1, (3, 10), pstn861=1.585)->()
+   14 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q1, (3, 10), pstn861=1.585)->()
+   15 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q0, (3, 10), pstn861=1.585)->()
+   16 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   17 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   18 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q1, (3, 10), pstn861=1.585)->()
+   19 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   20 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q0, (3, 10), pstn861=1.585)->()
+   21 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   22 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q0, (3, 10), pstn861=1.585)->()
+   23 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q0, (3, 10), pstn861=1.585)->()
+   24 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   25 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q1, (3, 10), pstn861=1.585)->()
+   26 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q1, (3, 10), pstn861=1.585)->()
+   27 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q0, (3, 10), pstn861=1.585)->()
+   28 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q1, (3, 10), pstn861=1.585)->()
+   29 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   30 > plan-base-motion:(q512=(1.329, 8.665, 0.823, -3.065), #q0)->(#t29)
+Action plan (2, 1.000): 
+    _
+    grasp_pull_ungrasp_handle ( left, (3, 10)|counter#1::chewie_door_right_joint, pstn861, #p0, #g0, #q0, #q1, #b0, aq136, #a0, #a1 )
+
+Plans: 5 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 4.4 sec
+
+5/10) Stream plan (30, 30, 10.000): 
+   1 > sample-handle-grasp:((3, 10))->(#g0)
+   2 > get-joint-position-closed:((3, 10), pstn861=1.585)->(#p0)
+   3 > inverse-kinematics-pull:(left, (3, 10), pstn861=1.585, #p0, #g0)->(#q0, #q1, #a0, #a1, #b0)
+   4 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q1, (3, 10), pstn861=1.585)->()
+   5 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q1, (3, 10), pstn861=1.585)->()
+   6 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q0, (3, 10), pstn861=1.585)->()
+   7 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q0, (3, 10), pstn861=1.585)->()
+   8 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q1, (3, 10), pstn861=1.585)->()
+   9 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q0, (3, 10), pstn861=1.585)->()
+   10 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   11 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q0, (3, 10), pstn861=1.585)->()
+   12 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   13 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q1, (3, 10), pstn861=1.585)->()
+   14 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q1, (3, 10), pstn861=1.585)->()
+   15 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q0, (3, 10), pstn861=1.585)->()
+   16 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   17 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   18 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q1, (3, 10), pstn861=1.585)->()
+   19 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   20 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q0, (3, 10), pstn861=1.585)->()
+   21 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   22 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q0, (3, 10), pstn861=1.585)->()
+   23 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q0, (3, 10), pstn861=1.585)->()
+   24 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   25 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q1, (3, 10), pstn861=1.585)->()
+   26 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q1, (3, 10), pstn861=1.585)->()
+   27 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q0, (3, 10), pstn861=1.585)->()
+   28 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q1, (3, 10), pstn861=1.585)->()
+   29 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   30 > plan-base-motion:(q512=(1.329, 8.665, 0.823, -3.065), #q0)->(#t30)
+Action plan (2, 1.000): 
+    _
+    grasp_pull_ungrasp_handle ( left, (3, 10)|counter#1::chewie_door_right_joint, pstn861, #p0, #g0, #q0, #q1, #b0, aq136, #a0, #a1 )
+
+Plans: 6 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 4.78 sec
+
+6/10) Stream plan (30, 30, 10.000): 
+   1 > sample-handle-grasp:((3, 10))->(#g0)
+   2 > get-joint-position-closed:((3, 10), pstn861=1.585)->(#p0)
+   3 > inverse-kinematics-pull:(left, (3, 10), pstn861=1.585, #p0, #g0)->(#q0, #q1, #a0, #a1, #b0)
+   4 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q1, (3, 10), pstn861=1.585)->()
+   5 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q1, (3, 10), pstn861=1.585)->()
+   6 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q0, (3, 10), pstn861=1.585)->()
+   7 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q0, (3, 10), pstn861=1.585)->()
+   8 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q1, (3, 10), pstn861=1.585)->()
+   9 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q0, (3, 10), pstn861=1.585)->()
+   10 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   11 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q0, (3, 10), pstn861=1.585)->()
+   12 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   13 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q1, (3, 10), pstn861=1.585)->()
+   14 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q1, (3, 10), pstn861=1.585)->()
+   15 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q0, (3, 10), pstn861=1.585)->()
+   16 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   17 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   18 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q1, (3, 10), pstn861=1.585)->()
+   19 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   20 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q0, (3, 10), pstn861=1.585)->()
+   21 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   22 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q0, (3, 10), pstn861=1.585)->()
+   23 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q0, (3, 10), pstn861=1.585)->()
+   24 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   25 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q1, (3, 10), pstn861=1.585)->()
+   26 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q1, (3, 10), pstn861=1.585)->()
+   27 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q0, (3, 10), pstn861=1.585)->()
+   28 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q1, (3, 10), pstn861=1.585)->()
+   29 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   30 > plan-base-motion:(q512=(1.329, 8.665, 0.823, -3.065), #q0)->(#t31)
+Action plan (2, 1.000): 
+    _
+    grasp_pull_ungrasp_handle ( left, (3, 10)|counter#1::chewie_door_right_joint, pstn861, #p0, #g0, #q0, #q1, #b0, aq136, #a0, #a1 )
+
+Plans: 7 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 5.15 sec
+
+7/10) Stream plan (30, 30, 10.000): 
+   1 > sample-handle-grasp:((3, 10))->(#g0)
+   2 > get-joint-position-closed:((3, 10), pstn861=1.585)->(#p0)
+   3 > inverse-kinematics-pull:(left, (3, 10), pstn861=1.585, #p0, #g0)->(#q0, #q1, #a0, #a1, #b0)
+   4 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q1, (3, 10), pstn861=1.585)->()
+   5 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q1, (3, 10), pstn861=1.585)->()
+   6 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q0, (3, 10), pstn861=1.585)->()
+   7 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q0, (3, 10), pstn861=1.585)->()
+   8 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q1, (3, 10), pstn861=1.585)->()
+   9 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q0, (3, 10), pstn861=1.585)->()
+   10 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   11 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q0, (3, 10), pstn861=1.585)->()
+   12 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   13 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q1, (3, 10), pstn861=1.585)->()
+   14 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q1, (3, 10), pstn861=1.585)->()
+   15 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q0, (3, 10), pstn861=1.585)->()
+   16 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   17 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   18 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q1, (3, 10), pstn861=1.585)->()
+   19 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   20 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q0, (3, 10), pstn861=1.585)->()
+   21 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   22 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q0, (3, 10), pstn861=1.585)->()
+   23 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q0, (3, 10), pstn861=1.585)->()
+   24 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   25 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q1, (3, 10), pstn861=1.585)->()
+   26 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q1, (3, 10), pstn861=1.585)->()
+   27 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q0, (3, 10), pstn861=1.585)->()
+   28 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q1, (3, 10), pstn861=1.585)->()
+   29 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   30 > plan-base-motion:(q512=(1.329, 8.665, 0.823, -3.065), #q0)->(#t32)
+Action plan (2, 1.000): 
+    _
+    grasp_pull_ungrasp_handle ( left, (3, 10)|counter#1::chewie_door_right_joint, pstn861, #p0, #g0, #q0, #q1, #b0, aq136, #a0, #a1 )
+
+Plans: 8 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 5.53 sec
+
+8/10) Stream plan (30, 30, 10.000): 
+   1 > sample-handle-grasp:((3, 10))->(#g0)
+   2 > get-joint-position-closed:((3, 10), pstn861=1.585)->(#p0)
+   3 > inverse-kinematics-pull:(left, (3, 10), pstn861=1.585, #p0, #g0)->(#q0, #q1, #a0, #a1, #b0)
+   4 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q1, (3, 10), pstn861=1.585)->()
+   5 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q1, (3, 10), pstn861=1.585)->()
+   6 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q0, (3, 10), pstn861=1.585)->()
+   7 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q0, (3, 10), pstn861=1.585)->()
+   8 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q1, (3, 10), pstn861=1.585)->()
+   9 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q0, (3, 10), pstn861=1.585)->()
+   10 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   11 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q0, (3, 10), pstn861=1.585)->()
+   12 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   13 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q1, (3, 10), pstn861=1.585)->()
+   14 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q1, (3, 10), pstn861=1.585)->()
+   15 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q0, (3, 10), pstn861=1.585)->()
+   16 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   17 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   18 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q1, (3, 10), pstn861=1.585)->()
+   19 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   20 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q0, (3, 10), pstn861=1.585)->()
+   21 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   22 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q0, (3, 10), pstn861=1.585)->()
+   23 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q0, (3, 10), pstn861=1.585)->()
+   24 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   25 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q1, (3, 10), pstn861=1.585)->()
+   26 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q1, (3, 10), pstn861=1.585)->()
+   27 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q0, (3, 10), pstn861=1.585)->()
+   28 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q1, (3, 10), pstn861=1.585)->()
+   29 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   30 > plan-base-motion:(q512=(1.329, 8.665, 0.823, -3.065), #q0)->(#t33)
+Action plan (2, 1.000): 
+    _
+    grasp_pull_ungrasp_handle ( left, (3, 10)|counter#1::chewie_door_right_joint, pstn861, #p0, #g0, #q0, #q1, #b0, aq136, #a0, #a1 )
+
+Plans: 9 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 6.01 sec
+
+9/10) Stream plan (30, 30, 10.000): 
+   1 > sample-handle-grasp:((3, 10))->(#g0)
+   2 > get-joint-position-closed:((3, 10), pstn861=1.585)->(#p0)
+   3 > inverse-kinematics-pull:(left, (3, 10), pstn861=1.585, #p0, #g0)->(#q0, #q1, #a0, #a1, #b0)
+   4 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q1, (3, 10), pstn861=1.585)->()
+   5 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q1, (3, 10), pstn861=1.585)->()
+   6 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q0, (3, 10), pstn861=1.585)->()
+   7 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q0, (3, 10), pstn861=1.585)->()
+   8 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q1, (3, 10), pstn861=1.585)->()
+   9 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q0, (3, 10), pstn861=1.585)->()
+   10 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   11 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q0, (3, 10), pstn861=1.585)->()
+   12 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   13 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q1, (3, 10), pstn861=1.585)->()
+   14 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q1, (3, 10), pstn861=1.585)->()
+   15 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q0, (3, 10), pstn861=1.585)->()
+   16 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   17 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   18 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q1, (3, 10), pstn861=1.585)->()
+   19 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   20 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q0, (3, 10), pstn861=1.585)->()
+   21 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   22 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q0, (3, 10), pstn861=1.585)->()
+   23 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q0, (3, 10), pstn861=1.585)->()
+   24 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   25 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q1, (3, 10), pstn861=1.585)->()
+   26 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q1, (3, 10), pstn861=1.585)->()
+   27 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q0, (3, 10), pstn861=1.585)->()
+   28 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q1, (3, 10), pstn861=1.585)->()
+   29 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   30 > plan-base-motion:(q512=(1.329, 8.665, 0.823, -3.065), #q0)->(#t34)
+Action plan (2, 1.000): 
+    _
+    grasp_pull_ungrasp_handle ( left, (3, 10)|counter#1::chewie_door_right_joint, pstn861, #p0, #g0, #q0, #q1, #b0, aq136, #a0, #a1 )
+
+Plans: 10 | Solutions: 0 | evaluation_time: 30 sec | Actual time: 6.5 sec
+
+
+
+focused.py | time.time() - start_time = 10.06 (timeout = 60)
+
+Iteration: 2 | Complexity: 5 | Skeletons: 0 | Skeleton Queue: 0 | Disabled: 0 | Evaluations: 144 | Eager Calls: 0 | Cost: inf | Search Time: 3.597 | Sample Time: 6.461 | Total Time: 10.057
+
+
+log | number of evaluations 2: 144
+
+Exhausted optimistic:True
+Plan: 1 | Cost: 1 | Length: 2 | Runtime: 0.327 | Remaining: 9.673
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 2 | Cost: 1 | Length: 2 | Runtime: 0.652 | Remaining: 9.348
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 3 | Cost: 1 | Length: 2 | Runtime: 0.987 | Remaining: 9.013
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 4 | Cost: 1 | Length: 2 | Runtime: 1.305 | Remaining: 8.695
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 5 | Cost: 1 | Length: 2 | Runtime: 1.619 | Remaining: 8.381
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 6 | Cost: 1 | Length: 2 | Runtime: 1.949 | Remaining: 8.051
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 7 | Cost: 1 | Length: 2 | Runtime: 2.272 | Remaining: 7.728
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 8 | Cost: 1 | Length: 2 | Runtime: 2.588 | Remaining: 7.412
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 9 | Cost: 1 | Length: 2 | Runtime: 2.906 | Remaining: 7.094
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plan: 10 | Cost: 1 | Length: 2 | Runtime: 3.221 | Remaining: 6.779
+Actions: [grasp_pull_ungrasp_handle(v10, v8, v38, #p0, #g0, #q0, #q1, #b0, v40, #a0, #a1)]
+
+Plans: 10 | Total runtime: 3.221
+
+
+Count Diverse Time: 3.496
+Count Diverse Plans: 10
+
+
+
+
+1/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+2/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+3/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+4/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+5/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+6/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+7/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+8/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+9/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+10/10) Score: True | Feasible: True | Cost: 1.0 | Length: 1 | Plan: [Action(name='grasp_pull_ungrasp_handle', args=(left, (3, 10), pstn861=1.585, #p0, #g0, #q0, #q1, #b0, aq136=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), #a0, #a1))]
+0/10) Stream plan (30, 30, 10.000): 
+   1 > sample-handle-grasp:((3, 10))->(#g0)
+   2 > get-joint-position-closed:((3, 10), pstn861=1.585)->(#p0)
+   3 > inverse-kinematics-pull:(left, (3, 10), pstn861=1.585, #p0, #g0)->(#q0, #q1, #a0, #a1, #b0)
+   4 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q1, (3, 10), pstn861=1.585)->()
+   5 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q1, (3, 10), pstn861=1.585)->()
+   6 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q0, (3, 10), pstn861=1.585)->()
+   7 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 14), pstn862=-1.64, #q0, (3, 10), pstn861=1.585)->()
+   8 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q1, (3, 10), pstn861=1.585)->()
+   9 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 5), pstn864=0.0, #q0, (3, 10), pstn861=1.585)->()
+   10 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   11 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 10), pstn861=1.585, #q0, (3, 10), pstn861=1.585)->()
+   12 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 5, p340=(0.7, 8.919, 0.923, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   13 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, (3, None, 48), lp31=(0.594, 8.843, 0.722, 0.0, -0.0, 0.0), #q1, (3, 10), pstn861=1.585)->()
+   14 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q1, (3, 10), pstn861=1.585)->()
+   15 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q0, (3, 10), pstn861=1.585)->()
+   16 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q0, (3, 10), pstn861=1.585)->()
+   17 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   18 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q1, (3, 10), pstn861=1.585)->()
+   19 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   20 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (10, 3), pstn866=0.0, #q0, (3, 10), pstn861=1.585)->()
+   21 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 4, p341=(0.7, 8.919, 0.953, 0.0, -0.0, 1.571), #q1, (3, 10), pstn861=1.585)->()
+   22 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q0, (3, 10), pstn861=1.585)->()
+   23 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (3, 48), pstn860=0.0, #q0, (3, 10), pstn861=1.585)->()
+   24 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 14, p344=(0.771, 7.071, 1.152, 0.0, -0.0, 3.142), #q1, (3, 10), pstn861=1.585)->()
+   25 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q1, (3, 10), pstn861=1.585)->()
+   26 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (11, 1), pstn863=0.0, #q1, (3, 10), pstn861=1.585)->()
+   27 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 12, p343=(0.654, 4.846, 1.384, 0.0, 0.0, -0.366), #q0, (3, 10), pstn861=1.585)->()
+   28 > test-cfree-traj-position-at-bconf-at-joint-position:(#a1, (6, 7), pstn865=0.0, #q1, (3, 10), pstn861=1.585)->()
+   29 > test-cfree-traj-pose-at-bconf-at-joint-position:(#a1, 15, p345=(0.764, 7.303, 1.164, 0.0, -0.0, 3.142), #q0, (3, 10), pstn861=1.585)->()
+   30 > plan-base-motion:(q512=(1.329, 8.665, 0.823, -3.065), #q0)->(#t35)
+Action plan (2, 1.000): 
+    _
+    grasp_pull_ungrasp_handle ( left, (3, 10)|counter#1::chewie_door_right_joint, pstn861, #p0, #g0, #q0, #q1, #b0, aq136, #a0, #a1 )
+
+Solved: False
+Cost: 0.000
+--------------------------------------------------
+
+[TIME LOG] (32)
+{'goal': ['open', (3, 14)], 'status': 'solved', 'planning': 10.1367, 'actual_goal': [('graspedhandle', (3, 14))], 'agent_state': 'agent_state_0.pkl', 'goal_original': [['graspedhandle', (3, 14)]], 'last_node': "1_a_['open', 'cabinet left door']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [], 'joint': [(3, 14)], 'surface': [], 'space': []}, 'plan': ["Action(name='move_base', args=(q272=(2.0, 6.25, 0.2, 3.142), q912=(1.843, 7.19, 0.714, 2.463), c848=t(4, 26)))", "Action(name='grasp_pull_ungrasp_handle', args=('left', (3, 14), pstn9=0.0, pstn15=-1.64, hg928=(-0.108, 0.0, 0.0, 1.571, -0.0, 1.571), q912=(1.843, 7.19, 0.714, 2.463), q600=(1.108, 5.759, 0.714, 0.823), c728=t(4, 30), aq984=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), aq656=(0.624, 0.391, 1.743, -0.333, 3.864, -0.586, 0.73), c104=t(7, 82)))"], 'plan_len': 2, 'plan_skeleton': ['move_base()', 'grasp_pull_ungrasp_handle((3, 14))']}
+{'goal': ['open', (3, 48)], 'status': 'failed', 'planning': 23.0561, 'actual_goal': [('graspedhandle', (3, 48))], 'agent_state': 'agent_state_1.pkl', 'goal_original': [['graspedhandle', (3, 48)]], 'last_node': "2_a_['open', 'top drawer']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [], 'joint': [(3, 48)], 'surface': [], 'space': [(3, None, 48)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['open', (3, 48)], 'status': 'failed', 'planning': 23.2499, 'actual_goal': [('graspedhandle', (3, 48))], 'agent_state': 'agent_state_1b.pkl', 'goal_original': [['graspedhandle', (3, 48)]], 'last_node': "2_a_['open', 'top drawer']", 'object_reducer': 'heuristic-movables', 'objects_by_category': {'graspable': [], 'joint': [(3, 48)], 'surface': [], 'space': [(3, None, 48)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['open', (3, 48)], 'status': 'failed', 'planning': 23.3681, 'actual_goal': [('graspedhandle', (3, 48))], 'agent_state': 'agent_state_1c.pkl', 'goal_original': [['graspedhandle', (3, 48)]], 'last_node': "2_a_['open', 'top drawer']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [], 'joint': [(11, 1), (3, 10), (3, 48), (3, 14)], 'surface': [], 'space': [(3, None, 48)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['pick', 16], 'status': 'failed', 'planning': 0.4205, 'actual_goal': [('picked', 16)], 'agent_state': 'agent_state_2.pkl', 'goal_original': [['picked', 16]], 'last_node': "3_a_['pick', 'fork']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [16], 'joint': [], 'surface': [], 'space': [(3, None, 48)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['pick', 16], 'status': 'failed', 'planning': 0.4484, 'actual_goal': [('picked', 16)], 'agent_state': 'agent_state_2b.pkl', 'goal_original': [['picked', 16]], 'last_node': "3_a_['pick', 'fork']", 'object_reducer': 'heuristic-movables', 'objects_by_category': {'graspable': [16], 'joint': [], 'surface': [], 'space': [(3, None, 48)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['pick', 16], 'status': 'failed', 'planning': 7.2376, 'actual_goal': [('picked', 16)], 'agent_state': 'agent_state_2c.pkl', 'goal_original': [['picked', 16]], 'last_node': "3_a_['pick', 'fork']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [16], 'joint': [(11, 1), (3, 10), (3, 48), (3, 14)], 'surface': [], 'space': [(3, None, 48)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['open', (11, 1)], 'status': 'failed', 'planning': 14.2601, 'actual_goal': [('graspedhandle', (11, 1))], 'agent_state': 'agent_state_3.pkl', 'goal_original': [['graspedhandle', (11, 1)]], 'last_node': "4_a_['open', 'fridge door']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [], 'joint': [(11, 1)], 'surface': [], 'space': []}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['open', (11, 1)], 'status': 'failed', 'planning': 14.4208, 'actual_goal': [('graspedhandle', (11, 1))], 'agent_state': 'agent_state_3b.pkl', 'goal_original': [['graspedhandle', (11, 1)]], 'last_node': "4_a_['open', 'fridge door']", 'object_reducer': 'heuristic-movables', 'objects_by_category': {'graspable': [], 'joint': [(11, 1)], 'surface': [], 'space': []}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['open', (11, 1)], 'status': 'failed', 'planning': 14.2044, 'actual_goal': [('graspedhandle', (11, 1))], 'agent_state': 'agent_state_3c.pkl', 'goal_original': [['graspedhandle', (11, 1)]], 'last_node': "4_a_['open', 'fridge door']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [], 'joint': [(11, 1), (3, 10), (3, 48), (3, 14)], 'surface': [], 'space': []}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['pick', 12], 'status': 'failed', 'planning': 15.181, 'actual_goal': [('picked', 12)], 'agent_state': 'agent_state_4.pkl', 'goal_original': [['picked', 12]], 'last_node': "5_a_['pick', 'chicken leg']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [12], 'joint': [], 'surface': [], 'space': []}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['pick', 12], 'status': 'failed', 'planning': 15.5298, 'actual_goal': [('picked', 12)], 'agent_state': 'agent_state_4b.pkl', 'goal_original': [['picked', 12]], 'last_node': "5_a_['pick', 'chicken leg']", 'object_reducer': 'custom_add=fridge#1::fridge_door', 'objects_by_category': {'graspable': [12], 'joint': [(11, 1)], 'surface': [(11, None, 9)], 'space': []}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['pick', 12], 'status': 'failed', 'planning': 16.6783, 'actual_goal': [('picked', 12)], 'agent_state': 'agent_state_4c.pkl', 'goal_original': [['picked', 12]], 'last_node': "5_a_['pick', 'chicken leg']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [12], 'joint': [(11, 1)], 'surface': [(11, None, 9)], 'space': []}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['arrange', 12, (3, None, 27)], 'status': 'failed', 'planning': 0.0823, 'actual_goal': [('placed', 12), ('stacked', 12, (3, None, 27))], 'agent_state': 'agent_state_5.pkl', 'goal_original': [['placed', 12], ['stacked', 12, (3, None, 27)]], 'last_node': "6_a_['arrange', 'chicken leg', 'counter top on the left']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [12], 'joint': [], 'surface': [(3, None, 27)], 'space': []}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['arrange', 12, (3, None, 27)], 'status': 'failed', 'planning': 0.0879, 'actual_goal': [('placed', 12), ('stacked', 12, (3, None, 27))], 'agent_state': 'agent_state_5b.pkl', 'goal_original': [['placed', 12], ['stacked', 12, (3, None, 27)]], 'last_node': "6_a_['arrange', 'chicken leg', 'counter top on the left']", 'object_reducer': 'heuristic-movables', 'objects_by_category': {'graspable': [12], 'joint': [], 'surface': [(3, None, 27)], 'space': []}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['arrange', 12, (3, None, 27)], 'status': 'failed', 'planning': 1.8688, 'actual_goal': [('placed', 12), ('stacked', 12, (3, None, 27))], 'agent_state': 'agent_state_5c.pkl', 'goal_original': [['placed', 12], ['stacked', 12, (3, None, 27)]], 'last_node': "6_a_['arrange', 'chicken leg', 'counter top on the left']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [12], 'joint': [(11, 1), (3, 10), (3, 48), (3, 14)], 'surface': [(3, None, 27)], 'space': []}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['open', (3, 10)], 'status': 'solved', 'planning': 16.9549, 'actual_goal': [('graspedhandle', (3, 10))], 'agent_state': 'agent_state_6.pkl', 'goal_original': [['graspedhandle', (3, 10)]], 'last_node': "7_a_['open', 'cabinet right door']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [], 'joint': [(3, 10)], 'surface': [], 'space': []}, 'plan': ["Action(name='move_base', args=(q592=(1.108, 5.759, 0.714, 0.823), q704=(1.866, 7.064, 0.823, 1.633), c728=t(4, 39)))", "Action(name='grasp_pull_ungrasp_handle', args=('left', (3, 10), pstn691=0.0, pstn698=1.585, hg128=(-0.108, 0.0, 0.0, 1.571, -0.0, 1.571), q704=(1.866, 7.064, 0.823, 1.633), q208=(1.329, 8.665, 0.823, -3.065), c488=t(4, 30), aq688=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), aq992=(1.164, 0.557, 2.171, -0.084, 3.48, -0.724, 0.543), c280=t(7, 87)))"], 'plan_len': 2, 'plan_skeleton': ['move_base()', 'grasp_pull_ungrasp_handle((3, 10))']}
+{'goal': ['pick', 14], 'status': 'failed', 'planning': 8.4239, 'actual_goal': [('picked', 14)], 'agent_state': 'agent_state_7.pkl', 'goal_original': [['picked', 14]], 'last_node': "8_a_['pick', 'salt shaker']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [14], 'joint': [], 'surface': [], 'space': [(3, None, 0)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['pick', 14], 'status': 'failed', 'planning': 8.3672, 'actual_goal': [('picked', 14)], 'agent_state': 'agent_state_7b.pkl', 'goal_original': [['picked', 14]], 'last_node': "8_a_['pick', 'salt shaker']", 'object_reducer': 'heuristic-movables', 'objects_by_category': {'graspable': [14], 'joint': [], 'surface': [], 'space': [(3, None, 0)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['pick', 14], 'status': 'failed', 'planning': 15.8321, 'actual_goal': [('picked', 14)], 'agent_state': 'agent_state_7c.pkl', 'goal_original': [['picked', 14]], 'last_node': "8_a_['pick', 'salt shaker']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [14], 'joint': [(11, 1), (3, 10), (3, 48), (3, 14)], 'surface': [], 'space': [(3, None, 0)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['pick', 15], 'status': 'failed', 'planning': 8.6064, 'actual_goal': [('picked', 15)], 'agent_state': 'agent_state_8.pkl', 'goal_original': [['picked', 15]], 'last_node': "9_a_['pick', 'pepper shaker']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [15], 'joint': [], 'surface': [], 'space': [(3, None, 0)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['pick', 15], 'status': 'failed', 'planning': 8.5197, 'actual_goal': [('picked', 15)], 'agent_state': 'agent_state_8b.pkl', 'goal_original': [['picked', 15]], 'last_node': "9_a_['pick', 'pepper shaker']", 'object_reducer': 'heuristic-movables', 'objects_by_category': {'graspable': [15], 'joint': [], 'surface': [], 'space': [(3, None, 0)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['pick', 15], 'status': 'failed', 'planning': 18.1297, 'actual_goal': [('picked', 15)], 'agent_state': 'agent_state_8c.pkl', 'goal_original': [['picked', 15]], 'last_node': "9_a_['pick', 'pepper shaker']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [15], 'joint': [(11, 1), (3, 10), (3, 48), (3, 14)], 'surface': [], 'space': [(3, None, 0)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['arrange', 14, (3, None, 35)], 'status': 'failed', 'planning': 16.4759, 'actual_goal': [('placed', 14), ('stacked', 14, (3, None, 35))], 'agent_state': 'agent_state_9.pkl', 'goal_original': [['placed', 14], ['stacked', 14, (3, None, 35)]], 'last_node': "10_a_['arrange', 'salt shaker', 'counter top on the right']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [14], 'joint': [], 'surface': [(3, None, 35)], 'space': [(3, None, 0)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['arrange', 14, (3, None, 35)], 'status': 'failed', 'planning': 15.5004, 'actual_goal': [('placed', 14), ('stacked', 14, (3, None, 35))], 'agent_state': 'agent_state_9b.pkl', 'goal_original': [['placed', 14], ['stacked', 14, (3, None, 35)]], 'last_node': "10_a_['arrange', 'salt shaker', 'counter top on the right']", 'object_reducer': 'heuristic-movables', 'objects_by_category': {'graspable': [14], 'joint': [], 'surface': [(3, None, 35)], 'space': [(3, None, 0)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['arrange', 14, (3, None, 35)], 'status': 'failed', 'planning': 30.7664, 'actual_goal': [('placed', 14), ('stacked', 14, (3, None, 35))], 'agent_state': 'agent_state_9c.pkl', 'goal_original': [['placed', 14], ['stacked', 14, (3, None, 35)]], 'last_node': "10_a_['arrange', 'salt shaker', 'counter top on the right']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [14], 'joint': [(11, 1), (3, 10), (3, 48), (3, 14)], 'surface': [(3, None, 35)], 'space': [(3, None, 0)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['arrange', 15, (3, None, 35)], 'status': 'failed', 'planning': 14.2587, 'actual_goal': [('placed', 15), ('stacked', 15, (3, None, 35))], 'agent_state': 'agent_state_10.pkl', 'goal_original': [['placed', 15], ['stacked', 15, (3, None, 35)]], 'last_node': "11_a_['arrange', 'pepper shaker', 'counter top on the right']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [15], 'joint': [], 'surface': [(3, None, 35)], 'space': [(3, None, 0)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['arrange', 15, (3, None, 35)], 'status': 'failed', 'planning': 14.1402, 'actual_goal': [('placed', 15), ('stacked', 15, (3, None, 35))], 'agent_state': 'agent_state_10b.pkl', 'goal_original': [['placed', 15], ['stacked', 15, (3, None, 35)]], 'last_node': "11_a_['arrange', 'pepper shaker', 'counter top on the right']", 'object_reducer': 'heuristic-movables', 'objects_by_category': {'graspable': [15], 'joint': [], 'surface': [(3, None, 35)], 'space': [(3, None, 0)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['arrange', 15, (3, None, 35)], 'status': 'failed', 'planning': 32.465, 'actual_goal': [('placed', 15), ('stacked', 15, (3, None, 35))], 'agent_state': 'agent_state_10c.pkl', 'goal_original': [['placed', 15], ['stacked', 15, (3, None, 35)]], 'last_node': "11_a_['arrange', 'pepper shaker', 'counter top on the right']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [15], 'joint': [(11, 1), (3, 10), (3, 48), (3, 14)], 'surface': [(3, None, 35)], 'space': [(3, None, 0)]}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['close', (3, 10)], 'status': 'failed', 'planning': 15.8246, 'actual_goal': [('graspedhandle', (3, 10))], 'agent_state': 'agent_state_11.pkl', 'goal_original': [['graspedhandle', (3, 10)]], 'last_node': "12_a_['close', 'cabinet right door']", 'object_reducer': 'object-related', 'objects_by_category': {'graspable': [], 'joint': [(3, 10)], 'surface': [], 'space': []}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+{'goal': ['graspedhandle(((3, 10),))'], 'planning': 14.0121, 'goal_original': [['graspedhandle', (3, 10)]], 'objects_by_category': {'graspable': [], 'joint': [(3, 10)], 'surface': [], 'space': []}, 'plan': 'FAILED', 'plan_len': 0, 'plan_skeleton': 'FAILED'}
+
+--------------------------------------------------
+pddlstream.replan    step_count = 4

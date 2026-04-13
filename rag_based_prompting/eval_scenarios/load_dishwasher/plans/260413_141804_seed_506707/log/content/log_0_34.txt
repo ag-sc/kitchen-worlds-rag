@@ -1,0 +1,85 @@
+    _get_log_collisions smaller_world = {}
+    _get_log_collisions self.world = {}
+[llamp_agent.get_action_goal] action = ['close', (11, 1)]
+
+
+saving statistics
+
+
+[llamp_agent._get_current_whole_goal_sequence] previous_goals
+    0    [['graspedhandle', (3, 14)]]
+    1    [['graspedhandle', (11, 1)]]
+    2    [['graspedhandle', (3, 10)]]
+    3    [['graspedhandle', (3, 14)]]
+    4    [['close', (3, 48)]]
+    5    [['graspedhandle', (11, 1)]]
+[llamp_agent._get_current_whole_goal_sequence] future_goals
+    6    [['close', (11, 1)]]
+[llamp_agent.save_time_log]
++-------+------------------------------------------------------------------------------------+---------------+---------------+------------+-----------------+--------------------------------------------------+------------------------+---------------------------------------------------------------+---------------+
+| idx   | goal                                                                               | task_idx      | status        |   plan_len |   planning_time | planning_objects                                 | object_reducer         | planning_node                                                 | agent_state   |
+|-------+------------------------------------------------------------------------------------+---------------+---------------+------------+-----------------+--------------------------------------------------+------------------------+---------------------------------------------------------------+---------------|
+| 1     | ['open', (3, 14)] -> [('graspedhandle', (3, 14))]                                  | 1             | solved        |          2 |          9.8752 | 1 (joint: 1)                                     | object-related         | 1_a_['open', 'cabinet left door']                             |               |
+| 2     | ['open', (3, 48)] -> [('graspedhandle', (3, 48))]                                  | 2             | failed        |          0 |         23.0361 | 2 (joint: 1, space: 1)                           | object-related         | 2_a_['open', 'top drawer']                                    |               |
+| 3     | ['open', (3, 48)] -> [('graspedhandle', (3, 48))]                                  | 2             | failed        |          0 |         23.8733 | 2 (joint: 1, space: 1)                           | heuristic-movables     | 2_a_['open', 'top drawer']                                    |               |
+| 4     | ['open', (3, 48)] -> [('graspedhandle', (3, 48))]                                  | 2             | failed        |          0 |         23.8038 | 5 (joint: 4, space: 1)                           | object-related         | 2_a_['open', 'top drawer']                                    |               |
+| 5     | ['pick', 16] -> [('picked', 16)]                                                   | 3             | failed        |          0 |          0.4251 | 2 (graspable: 1, space: 1)                       | object-related         | 3_a_['pick', 'fork']                                          |               |
+| 6     | ['pick', 16] -> [('picked', 16)]                                                   | 3             | failed        |          0 |          0.4183 | 2 (graspable: 1, space: 1)                       | heuristic-movables     | 3_a_['pick', 'fork']                                          |               |
+| 7     | ['pick', 16] -> [('picked', 16)]                                                   | 3             | failed        |          0 |          7.0516 | 6 (graspable: 1, joint: 4, space: 1)             | object-related         | 3_a_['pick', 'fork']                                          |               |
+| 8     | ['open', (11, 1)] -> [('graspedhandle', (11, 1))]                                  | 4             | solved        |          2 |         10.2041 | 1 (joint: 1)                                     | object-related         | 4_a_['open', 'fridge door']                                   |               |
+| 9     | ['pick', 12] -> [('picked', 12)]                                                   | 5             | failed        |          0 |         12.6512 | 1 (graspable: 1)                                 | object-related         | 5_a_['pick', 'chicken leg']                                   |               |
+| 10    | ['pick', 12] -> [('picked', 12)]                                                   | 5             | failed        |          0 |         11.4939 | 1 (graspable: 1)                                 | heuristic-movables     | 5_a_['pick', 'chicken leg']                                   |               |
+| 11    | ['pick', 12] -> [('picked', 12)]                                                   | 5             | failed        |          0 |         19.597  | 5 (graspable: 1, joint: 4)                       | object-related         | 5_a_['pick', 'chicken leg']                                   |               |
+| 12    | ['arrange', 12, (3, None, 27)] -> [('placed', 12), ('stacked', 12, (3, None, 27))] | 6             | failed        |          0 |          0.0807 | 2 (graspable: 1, surface: 1)                     | object-related         | 6_a_['arrange', 'chicken leg', 'counter top on the left']     |               |
+| 13    | ['arrange', 12, (3, None, 27)] -> [('placed', 12), ('stacked', 12, (3, None, 27))] | 6             | failed        |          0 |          0.0826 | 2 (graspable: 1, surface: 1)                     | heuristic-movables     | 6_a_['arrange', 'chicken leg', 'counter top on the left']     |               |
+| 14    | ['arrange', 12, (3, None, 27)] -> [('placed', 12), ('stacked', 12, (3, None, 27))] | 6             | failed        |          0 |          2.0751 | 6 (graspable: 1, joint: 4, surface: 1)           | object-related         | 6_a_['arrange', 'chicken leg', 'counter top on the left']     |               |
+| 15    | ['open', (3, 10)] -> [('graspedhandle', (3, 10))]                                  | 7             | solved        |          2 |         13.858  | 1 (joint: 1)                                     | object-related         | 7_a_['open', 'cabinet right door']                            |               |
+| 16    | ['pick', 14] -> [('picked', 14)]                                                   | 8             | failed        |          0 |          8.687  | 2 (graspable: 1, space: 1)                       | object-related         | 8_a_['pick', 'salt shaker']                                   |               |
+| 17    | ['pick', 14] -> [('picked', 14)]                                                   | 8             | failed        |          0 |          8.8157 | 2 (graspable: 1, space: 1)                       | heuristic-movables     | 8_a_['pick', 'salt shaker']                                   |               |
+| 18    | ['pick', 14] -> [('picked', 14)]                                                   | 8             | failed        |          0 |         17.7007 | 6 (graspable: 1, joint: 4, space: 1)             | object-related         | 8_a_['pick', 'salt shaker']                                   |               |
+| 19    | ['pick', 15] -> [('picked', 15)]                                                   | 9             | failed        |          0 |          8.7107 | 2 (graspable: 1, space: 1)                       | object-related         | 9_a_['pick', 'pepper shaker']                                 |               |
+| 20    | ['pick', 15] -> [('picked', 15)]                                                   | 9             | failed        |          0 |          9.5509 | 2 (graspable: 1, space: 1)                       | heuristic-movables     | 9_a_['pick', 'pepper shaker']                                 |               |
+| 21    | ['pick', 15] -> [('picked', 15)]                                                   | 9             | failed        |          0 |         16.7157 | 6 (graspable: 1, joint: 4, space: 1)             | object-related         | 9_a_['pick', 'pepper shaker']                                 |               |
+| 22    | ['arrange', 14, (3, None, 35)] -> [('placed', 14), ('stacked', 14, (3, None, 35))] | 10            | failed        |          0 |         14.9474 | 3 (graspable: 1, surface: 1, space: 1)           | object-related         | 10_a_['arrange', 'salt shaker', 'counter top on the right']   |               |
+| 23    | ['arrange', 14, (3, None, 35)] -> [('placed', 14), ('stacked', 14, (3, None, 35))] | 10            | failed        |          0 |         13.8514 | 3 (graspable: 1, surface: 1, space: 1)           | heuristic-movables     | 10_a_['arrange', 'salt shaker', 'counter top on the right']   |               |
+| 24    | ['arrange', 14, (3, None, 35)] -> [('placed', 14), ('stacked', 14, (3, None, 35))] | 10            | failed        |          0 |         34.4728 | 7 (graspable: 1, joint: 4, surface: 1, space: 1) | object-related         | 10_a_['arrange', 'salt shaker', 'counter top on the right']   |               |
+| 25    | ['arrange', 15, (3, None, 35)] -> [('placed', 15), ('stacked', 15, (3, None, 35))] | 11            | failed        |          0 |         15.2143 | 3 (graspable: 1, surface: 1, space: 1)           | object-related         | 11_a_['arrange', 'pepper shaker', 'counter top on the right'] |               |
+| 26    | ['arrange', 15, (3, None, 35)] -> [('placed', 15), ('stacked', 15, (3, None, 35))] | 11            | failed        |          0 |         14.342  | 3 (graspable: 1, surface: 1, space: 1)           | heuristic-movables     | 11_a_['arrange', 'pepper shaker', 'counter top on the right'] |               |
+| 27    | ['arrange', 15, (3, None, 35)] -> [('placed', 15), ('stacked', 15, (3, None, 35))] | 11            | failed        |          0 |         31.7917 | 7 (graspable: 1, joint: 4, surface: 1, space: 1) | object-related         | 11_a_['arrange', 'pepper shaker', 'counter top on the right'] |               |
+| 28    | ['close', (3, 10)] -> [('graspedhandle', (3, 10))]                                 | 12            | failed        |          0 |         14.1602 | 1 (joint: 1)                                     | object-related         | 12_a_['close', 'cabinet right door']                          |               |
+| 29    | ['close', (3, 10)] -> [('graspedhandle', (3, 10))]                                 | 12            | failed        |          0 |         14.2024 | 1 (joint: 1)                                     | heuristic-movables     | 12_a_['close', 'cabinet right door']                          |               |
+| 30    | ['close', (3, 10)] -> [('graspedhandle', (3, 10))]                                 | 12            | failed        |          0 |         15.1448 | 4 (joint: 4)                                     | object-related         | 12_a_['close', 'cabinet right door']                          |               |
+| 31    | ['close', (3, 14)] -> [('graspedhandle', (3, 14))]                                 | 13            | solved        |          2 |         15.149  | 1 (joint: 1)                                     | object-related         | 13_a_['close', 'cabinet left door']                           |               |
+| 32    | ['close([(3, 48)])'] -> [('graspedhandle', (3, 48))]                               | 14            | already       |          0 |          0      |                                                  | object-related         | 14_a_['close', 'top drawer']                                  |               |
+| 33    | ['close', (11, 1)] -> [('graspedhandle', (11, 1))]                                 | 15            | failed        |          0 |         11.7607 | 1 (joint: 1)                                     | object-related         | 15_a_['close', 'fridge door']                                 |               |
+| 35    | ['close', (11, 1)] -> [('graspedhandle', (11, 1))]                                 | 15            | solved        |          2 |         10.9368 | 7 (graspable: 2, joint: 1, surface: 3, space: 1) | custom_add=chicken-leg | 15_a_['close', 'fridge door']                                 |               |
+|       | 0.14 (1 / 7)                                                                       | 2.14 (15 / 7) | 0.36 (5 / 14) |         10 |        434.68   | 60.02 (effective time)                           | 374.66 (wasted time)   |                                                               |               |
++-------+------------------------------------------------------------------------------------+---------------+---------------+------------+-----------------+--------------------------------------------------+------------------------+---------------------------------------------------------------+---------------+
+[llamp_agent._get_current_whole_goal_sequence] previous_goals
+    0    [['graspedhandle', (3, 14)]]
+    1    [['graspedhandle', (11, 1)]]
+    2    [['graspedhandle', (3, 10)]]
+    3    [['graspedhandle', (3, 14)]]
+    4    [['close', (3, 48)]]
+    5    [['graspedhandle', (11, 1)]]
+[llamp_agent._get_current_whole_goal_sequence] future_goals
+    6    [['close', (11, 1)]]
+8    Action(name='move_base', args=[q616=(1.773, 7.135, 0.412, 2.925), q144=(1.732, 6.023, 0.809, -2.903), c848=t(4, 26)])
+pddlstream_agent._update_state(step=8, Action(name='move_base', args=(q616=(1.773, 7.135, 0.412, 2.925), q144=(1.732, 6.023, 0.809, -2.903), c848=t(4, 26))))
+    8    MoveBaseAction{conf: q776=(1.773, 7.135, 0.412, 2.925)}
+9    Action(name='grasp_pull_ungrasp_handle', args=('left', (11, 1), pstn1851=1.755, pstn1858=0.0, hg920=(-0.584, 0.111, 0.234, -3.142, -0.0, 0.0), q144=(1.732, 6.023, 0.809, -2.903), q688=(1.38, 4.11, 0.809, 1.626), c56=t(4, 30), aq952=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), aq528=(0.318, 0.544, 2.715, -0.568, 2.262, -1.607, 3.686), c888=t(7, 57)))
+pddlstream_agent._update_state(step=9, Action(name='grasp_pull_ungrasp_handle', args=('left', (11, 1), pstn1851=1.755, pstn1858=0.0, hg920=(-0.584, 0.111, 0.234, -3.142, -0.0, 0.0), q144=(1.732, 6.023, 0.809, -2.903), q688=(1.38, 4.11, 0.809, 1.626), c56=t(4, 30), aq952=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223), aq528=(0.318, 0.544, 2.715, -0.568, 2.262, -1.607, 3.686), c888=t(7, 57))))
+    9    MoveArmAction{conf: aq736=(0.677, -0.343, 1.2, -1.467, 1.242, -1.954, 2.223)}
+    9    GripperAction{arm: left, extent: None, position: None, teleport: False, verbose: False}
+    9    AttachObjectAction{arm: left, attach_kwargs: {OBJ: False, attach_distance: None, debug_rc2oc: False, verbose: False}, body: (11, 1), grasp: hg920=(-0.584, 0.111, 0.234, -3.142, -0.0, 0.0), verbose: True}
+    9    MoveBaseAction{conf: q472=(1.777, 5.965, 0.809, -2.961)}
+    9    DetachObjectAction{arm: left, body: (11, 1), supporter: None, verbose: False}
+    9    GripperAction{arm: left, extent: 1, position: None, teleport: False, verbose: False}
+    9    MoveArmAction{conf: aq528=(0.318, 0.544, 2.715, -0.568, 2.262, -1.607, 3.686)}
+filter_dynamic_facts     found grasps []
+filter_dynamic_facts     found grasps []
+pddlstream_agent.save_agent_state at /homes/jtoeberg/kitchen-worlds-rag/rag_based_prompting/eval_scenarios/load_dishwasher/plans/260413_141804_seed_506707/states/agent_state_15.pkl
+
+
+finished executing plan
+
