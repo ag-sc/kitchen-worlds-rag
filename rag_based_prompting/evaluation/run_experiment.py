@@ -104,7 +104,7 @@ def run_planning_experiment(goal: str, exp_folder: Path, no_seeds: int):
         RAGPlanManager.add_new_plan(plan)
         time.sleep(5)
 
-    # Perform the 100 experiment seeds
+    # Perform the experiments
     with open(exp_folder / "seeds.txt", "r") as f:
         seeds = [int(line.strip()) for line in f]
     if check_experiment_needed(PLAN_FOLDER, exp_folder, no_seeds):
@@ -137,7 +137,11 @@ def check_experiment_needed(folder: str, experiment_path=EXP_FOLDER_CHICKEN_SOUP
     full_path = full_path.resolve()
     full_path.mkdir(parents=True, exist_ok=True)
     subfolders = [p for p in full_path.iterdir() if p.is_dir()]
-    return len(subfolders) < seed_amount
+    no_folders = len(subfolders)
+    if folder == PLAN_FOLDER:
+        # Subtract the three initial seeds for the planning experiment
+        no_folders = no_folders - len(PLAN_SEEDS)
+    return no_folders < seed_amount
 
 
 def check_seed_needed(folder: str, seed: str, experiment_path=EXP_FOLDER_CHICKEN_SOUP) -> bool:
