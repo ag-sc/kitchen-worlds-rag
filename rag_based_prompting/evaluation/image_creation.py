@@ -143,7 +143,7 @@ def plot_sr_from_plan_amount(experiment_path: Path):
         plt.plot(x, y, marker='o', label=lbls[i])
 
     # Set axis limits
-    plt.xlim(3, 103)
+    plt.xlim(3, len(seeds)+3)
     plt.ylim(0, 1)
 
     # Labels, title, legend

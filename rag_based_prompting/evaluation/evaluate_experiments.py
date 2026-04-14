@@ -24,10 +24,18 @@ def summarise_all_experiments(experiment_path: Path):
         parent_folder = experiment_path / row["subfolder"]
         # Skip the initial seeds for the planning experiment
         if name.lower() == PLAN_FOLDER:
-            matching_folder = [
-                f for f in parent_folder.iterdir()
-                if all(str(s) not in f.name for s in PLAN_SEEDS)
-            ]
+            matching_folder = []
+            for f in parent_folder.iterdir():
+                parts = f.name.split("_seed_")
+                if len(parts) < 2:
+                    continue  # skip unexpected names
+                try:
+                    seed = int(parts[-1])
+                except ValueError:
+                    continue  # skip if seed is not a number
+
+                if seed not in PLAN_SEEDS:
+                    matching_folder.append(f)
         else:
             matching_folder = parent_folder.iterdir()
 
@@ -39,18 +47,21 @@ def summarise_all_experiments(experiment_path: Path):
                 csv_path = res_csv[0]
                 summary_row = pd.read_csv(csv_path).tail(1).squeeze()
                 # For more information on what column corresponds to what value, see result_columns_explanation.md
-                new_row = {
-                    SUMMARY_COLUMNS[0]: int(csv_path.stem.split("_")[1]),
-                    SUMMARY_COLUMNS[1]: summary_row['goal'],
-                    SUMMARY_COLUMNS[2]: summary_row['task_idx'],
-                    SUMMARY_COLUMNS[3]: summary_row['status'],
-                    SUMMARY_COLUMNS[4]: summary_row['plan_len'],
-                    SUMMARY_COLUMNS[5]: summary_row['planning_time'],
-                    SUMMARY_COLUMNS[6]: summary_row['planning_objects'].split()[0],
-                    SUMMARY_COLUMNS[7]: summary_row['object_reducer'].split()[0],
-                }
-                df_exp_summary = pd.concat([df_exp_summary, pd.DataFrame([new_row])], ignore_index=True)
-                df_exp_summary.to_csv(f'{parent_folder / "experiment_summary.csv"}', index=False)
+                try:
+                    new_row = {
+                        SUMMARY_COLUMNS[0]: int(csv_path.stem.split("_")[1]),
+                        SUMMARY_COLUMNS[1]: summary_row['goal'],
+                        SUMMARY_COLUMNS[2]: summary_row['task_idx'],
+                        SUMMARY_COLUMNS[3]: summary_row['status'],
+                        SUMMARY_COLUMNS[4]: summary_row['plan_len'],
+                        SUMMARY_COLUMNS[5]: summary_row['planning_time'],
+                        SUMMARY_COLUMNS[6]: summary_row['planning_objects'].split()[0],
+                        SUMMARY_COLUMNS[7]: summary_row['object_reducer'].split()[0],
+                    }
+                    df_exp_summary = pd.concat([df_exp_summary, pd.DataFrame([new_row])], ignore_index=True)
+                    df_exp_summary.to_csv(f'{parent_folder / "experiment_summary.csv"}', index=False)
+                except:
+                    print(f"Error for {exp_folder}: Empty csv file")
             else:
                 print(f"Warning: {exp_folder} has {len(res_csv)} matching csv files")
 
